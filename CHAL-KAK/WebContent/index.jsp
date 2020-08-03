@@ -82,7 +82,7 @@
 		// 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 		var content = '<div class="customoverlay">'
 				+ '  <a href="https://map.kakao.com/link/map/11394059" target="_blank">'
-				+ '  <img src="view/d.PNG" width="100" height="150"/>'
+				+ '  <img src="/WEB-INF/view/d.PNG" width="100" height="150"/>'
 				+ '    <span class="title">구의야구공원</span>' + '  </a>' + '</div>';
 
 		// 커스텀 오버레이가 표시될 위치입니다 
