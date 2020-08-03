@@ -79,8 +79,6 @@
 			offset : new kakao.maps.Point(27, 69)
 		}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
-		
-
 		// 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 		var content = '<div class="customoverlay">'
 				+ '  <a href="https://map.kakao.com/link/map/11394059" target="_blank">'
