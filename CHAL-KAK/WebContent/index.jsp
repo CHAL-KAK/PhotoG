@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>이미지 마커와 커스텀 오버레이</title>
+<title>메인</title>
 <style>
 .customoverlay {
 	position: relative;
@@ -59,8 +59,11 @@
 </style>
 </head>
 <body>
-	<div id="map" style="width: 100%; height: 800px;"></div>
-
+	<div id="map" style="width: 75%; height: 700px"></div>
+	<div>
+		<a href="/view/join/join.jsp">회원가입</a>
+		<a href="/view/login/login.jsp">로그인</a>
+	</div>
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=63f56496ce33aada63acf5d83d3eb9b9"></script>
 	<script>
@@ -82,7 +85,7 @@
 		// 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 		var content = '<div class="customoverlay">'
 				+ '  <a href="https://map.kakao.com/link/map/11394059" target="_blank">'
-				+ '  <img src="/WEB-INF/view/d.PNG" width="100" height="150"/>'
+				+ '  <img src="../view/d.PNG" width="100" height="150"/>'
 				+ '    <span class="title">구의야구공원</span>' + '  </a>' + '</div>';
 
 		// 커스텀 오버레이가 표시될 위치입니다 
