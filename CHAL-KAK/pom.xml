@@ -86,7 +86,7 @@
          <groupId>javax.servlet</groupId>
          <artifactId>jstl</artifactId>
          <version>1.2</version>
-      </dependency>
+    </dependency>
 	</dependencies>
 	<properties>
 		<spring.version>4.3.27.RELEASE</spring.version>

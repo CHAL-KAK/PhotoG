@@ -43,8 +43,9 @@ public class ModelVO {
 		return m_name;
 	}
 
-	public void setM_naem(String m_naem) {
-		this.m_name = m_naem;
+
+	public void setM_name(String m_name) {
+		this.m_name = m_name;
 	}
 
 	public String getM_gender() {

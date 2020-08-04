@@ -11,6 +11,7 @@
 	<context:annotation-config />
 	<context:component-scan base-package="ck.controller" />
 	<mvc:annotation-driven enable-matrix-variables="true"/>
+	<context:component-scan base-package="ck.validate"/>
 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
