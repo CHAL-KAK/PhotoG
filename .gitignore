@@ -53,3 +53,5 @@ gradle-app.setting
 .settings
 .springBeans
 bin/
+
+.properties
