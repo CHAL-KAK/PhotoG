@@ -6,7 +6,7 @@ public class ModelVO {
 	private int model_seq;
 	private String m_id;
 	private String m_password;
-	private String m_naem;
+	private String m_name;
 	private String m_gender;
 	private Date m_bday;
 	private String m_ka_id;
@@ -39,12 +39,12 @@ public class ModelVO {
 		this.m_password = m_password;
 	}
 
-	public String getM_naem() {
-		return m_naem;
+	public String getM_name() {
+		return m_name;
 	}
 
-	public void setM_naem(String m_naem) {
-		this.m_naem = m_naem;
+	public void setM_name(String m_name) {
+		this.m_name = m_name;
 	}
 
 	public String getM_gender() {

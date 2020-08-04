@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,8 +62,9 @@
 <body>
 	<div id="map" style="width: 75%; height: 700px"></div>
 	<div>
-		<a href="/view/join/join.jsp">회원가입</a>
+		<a href="/CHAL-KAK/model_join.jsp">회원가입</a>
 		<a href="/view/login/login.jsp">로그인</a>
+		<a href="/CHAL-KAK/notice_board.jsp">게시판</a>
 	</div>
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=63f56496ce33aada63acf5d83d3eb9b9"></script>
