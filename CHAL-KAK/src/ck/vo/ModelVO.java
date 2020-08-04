@@ -43,6 +43,7 @@ public class ModelVO {
 		return m_name;
 	}
 
+
 	public void setM_name(String m_name) {
 		this.m_name = m_name;
 	}
@@ -70,5 +71,19 @@ public class ModelVO {
 	public void setM_ka_id(String m_ka_id) {
 		this.m_ka_id = m_ka_id;
 	}
+
+	public ModelVO(String m_id, String m_password) {
+		super();
+		this.m_id = m_id;
+		this.m_password = m_password;
+	}
+
+	@Override
+	public String toString() {
+		return "ModelVO [model_seq=" + model_seq + ", m_id=" + m_id + ", m_password=" + m_password + ", m_naem="
+				+ m_name + ", m_gender=" + m_gender + ", m_bday=" + m_bday + ", m_ka_id=" + m_ka_id + "]";
+	}
+	
+	
 
 }

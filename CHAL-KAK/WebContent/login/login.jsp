@@ -7,7 +7,7 @@
 <title>로그인</title>
 </head>
 <body>
-<form method="post" accept-charset="UTF-8" action="/CHAL-KAK/modelSearch.ck">
+<form method="post" accept-charset="UTF-8" action="/modelSearch.do">
 
 	<input type = "text" name="m_id" placeholder="아이디"><br>
 	<input type = "password" name="m_password" placeholder="비밀번호"><br>
