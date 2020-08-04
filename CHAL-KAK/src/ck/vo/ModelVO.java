@@ -6,7 +6,7 @@ public class ModelVO {
 	private int model_seq;
 	private String m_id;
 	private String m_password;
-	private String m_naem;
+	private String m_name;
 	private String m_gender;
 	private Date m_bday;
 	private String m_ka_id;
@@ -39,12 +39,12 @@ public class ModelVO {
 		this.m_password = m_password;
 	}
 
-	public String getM_naem() {
-		return m_naem;
+	public String getM_name() {
+		return m_name;
 	}
 
 	public void setM_naem(String m_naem) {
-		this.m_naem = m_naem;
+		this.m_name = m_naem;
 	}
 
 	public String getM_gender() {
@@ -70,5 +70,19 @@ public class ModelVO {
 	public void setM_ka_id(String m_ka_id) {
 		this.m_ka_id = m_ka_id;
 	}
+
+	public ModelVO(String m_id, String m_password) {
+		super();
+		this.m_id = m_id;
+		this.m_password = m_password;
+	}
+
+	@Override
+	public String toString() {
+		return "ModelVO [model_seq=" + model_seq + ", m_id=" + m_id + ", m_password=" + m_password + ", m_naem="
+				+ m_name + ", m_gender=" + m_gender + ", m_bday=" + m_bday + ", m_ka_id=" + m_ka_id + "]";
+	}
+	
+	
 
 }
