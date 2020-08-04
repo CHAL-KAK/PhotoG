@@ -33,14 +33,9 @@
 	<bean id="ModelJoinDaoImpl" class="ck.dao.ModelJoinDaoImpl">
 		<property name="dataSource" ref="dataSource"/>	
 	</bean>
-<<<<<<< HEAD
-	
-	<bean id="NoticeBoardDaoImpl" class="ck.dao.NoticeBoardDaoImpl">
-      <property name="dataSource" ref="dataSource"/>
-   </bean>
-=======
+
 	<bean id="NoticeBoardDaoImpl" class="ck.dao.NoticeBoardDaoImpl">
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
->>>>>>> branch 'master' of https://github.com/CHAL-KAK/PhotoG.git
+
 </beans>
