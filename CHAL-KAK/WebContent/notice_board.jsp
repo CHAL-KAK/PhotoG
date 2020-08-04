@@ -8,7 +8,7 @@
 </head>
 <body>
 <%
-	String id = (String) request.getAttribute("id");
+	String id = (String) session.getAttribute("login_user");
 	String path = application.getContextPath();
 %>
 <%

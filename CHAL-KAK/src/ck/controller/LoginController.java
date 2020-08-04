@@ -23,7 +23,7 @@ public class LoginController {
 		ModelVO res = loginBiz.searchModel(vo);
 		String id = res.getM_id();
 		System.out.println(res);
-		ModelAndView mav = new ModelAndView("login_ck/view", "login_user", id);
+		ModelAndView mav = new ModelAndView("redirect:/index.jsp", "login_user", id);
 		return mav;
 	}
 
