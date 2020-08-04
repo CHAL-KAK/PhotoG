@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,48 +66,54 @@
 	<p id="result3"></p>
 	<div id="map" style="width: 75%; height: 600px"></div>
 	<div>
-		<a href="/view/join/join.jsp">È¸¿ø°¡ÀÔ</a> <a href="/view/login/login.jsp">·Î±×ÀÎ</a>
-		<a href="api/cluster.jsp">Å¬·¯½ºÅÍ</a> <a href="api/markerclick.jsp">¸¶Ä¿Å¬¸¯</a>
-		<a href="api/multipleMarker.jsp">¸¶Ä¿ ¿©·¯°³</a>
+
+		<a href="/CHAL-KAK/model_join.jsp">íšŒì›ê°€ì…</a>
+		<a href="/view/login/login.jsp">ë¡œê·¸ì¸</a>
+		<a href="/CHAL-KAK/notice_board.jsp">ê²Œì‹œíŒ</a>
+
+		
+		<a href="api/cluster.jsp">í´ëŸ¬ìŠ¤í„°</a> <a href="api/markerclick.jsp">ë§ˆì»¤í´ë¦­</a>
+		<a href="api/multipleMarker.jsp">ë§ˆì»¤ ì—¬ëŸ¬ê°œ</a>
 	</div>
 	<div>
-		³¯Â¥ <input name="date" type="date"> <br /> ½ÃÀÛ ½Ã°£ <input
-			name="starttime" type="time"><br /> ³¡ ½Ã°£ <input
-			name="endtime" type="time"><br /> ÀÎ¿ø <input name="count"
-			type="text"><br /> ÄÁ¼Á <select name="concept">
-			<option value="1">µ¶»çÁø</option>
-			<option value="2">¿ìÁ¤»çÁø</option>
-			<option value="3">Ä¿ÇÃ»çÁø</option>
-			<option value="4">°¡Á·»çÁø</option>
-		</select><br /> <input type="button" value="°Ë»ö"> <input type="reset"
-			value="Ãë¼Ò"><br />
+		ë‚ ì§œ <input name="date" type="date"> <br /> ì‹œì‘ ì‹œê°„ <input
+			name="starttime" type="time"><br /> ë ì‹œê°„ <input
+			name="endtime" type="time"><br /> ì¸ì› <input name="count"
+			type="text"><br /> ì»¨ì…‰ <select name="concept">
+			<option value="1">ë…ì‚¬ì§„</option>
+			<option value="2">ìš°ì •ì‚¬ì§„</option>
+			<option value="3">ì»¤í”Œì‚¬ì§„</option>
+			<option value="4">ê°€ì¡±ì‚¬ì§„</option>
+		</select><br /> <input type="button" value="ê²€ìƒ‰"> <input type="reset"
+			value="ì·¨ì†Œ"><br />
+
 	</div>
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=63f56496ce33aada63acf5d83d3eb9b9&libraries=clusterer""></script>
 	<script>
-		var mapContainer = document.getElementById('map'), // Áöµµ¸¦ Ç¥½ÃÇÒ div 
+		var mapContainer = document.getElementById('map'), // ì§€ë„ë¥¼ í‘œì‹œí•  div 
 		mapOption = {
-			center : new kakao.maps.LatLng(37.54699, 127.09598), // ÁöµµÀÇ Áß½ÉÁÂÇ¥
+			center : new kakao.maps.LatLng(37.54699, 127.09598), // ì§€ë„ì˜ ì¤‘ì‹¬ì¢Œí‘œ
 			level : 8
-		// ÁöµµÀÇ È®´ë ·¹º§
+		// ì§€ë„ì˜ í™•ëŒ€ ë ˆë²¨
 		};
 
 		var map = new kakao.maps.Map(mapContainer, mapOption);
-		////////////////////////////Å¬·¯½ºÅÍ api
-		// ¸¶Ä¿ Å¬·¯½ºÅÍ·¯¸¦ »ı¼ºÇÕ´Ï´Ù 
+		////////////////////////////í´ëŸ¬ìŠ¤í„° api
+		// ë§ˆì»¤ í´ëŸ¬ìŠ¤í„°ëŸ¬ë¥¼ ìƒì„±í•©ë‹ˆë‹¤ 
 		var clusterer = new kakao.maps.MarkerClusterer({
-			map : map, // ¸¶Ä¿µéÀ» Å¬·¯½ºÅÍ·Î °ü¸®ÇÏ°í Ç¥½ÃÇÒ Áöµµ °´Ã¼ 
-			averageCenter : true, // Å¬·¯½ºÅÍ¿¡ Æ÷ÇÔµÈ ¸¶Ä¿µéÀÇ Æò±Õ À§Ä¡¸¦ Å¬·¯½ºÅÍ ¸¶Ä¿ À§Ä¡·Î ¼³Á¤ 
+			map : map, // ë§ˆì»¤ë“¤ì„ í´ëŸ¬ìŠ¤í„°ë¡œ ê´€ë¦¬í•˜ê³  í‘œì‹œí•  ì§€ë„ ê°ì²´ 
+			averageCenter : true, // í´ëŸ¬ìŠ¤í„°ì— í¬í•¨ëœ ë§ˆì»¤ë“¤ì˜ í‰ê·  ìœ„ì¹˜ë¥¼ í´ëŸ¬ìŠ¤í„° ë§ˆì»¤ ìœ„ì¹˜ë¡œ ì„¤ì • 
 			minLevel : 10,
 			disableClickZoom : true
-		// Å¬·¯½ºÅÍ ÇÒ ÃÖ¼Ò Áöµµ ·¹º§ 
+		// í´ëŸ¬ìŠ¤í„° í•  ìµœì†Œ ì§€ë„ ë ˆë²¨ 
 		});
 
-		// µ¥ÀÌÅÍ¸¦ °¡Á®¿À±â À§ÇØ jQuery¸¦ »ç¿ëÇÕ´Ï´Ù
-		// µ¥ÀÌÅÍ¸¦ °¡Á®¿Í ¸¶Ä¿¸¦ »ı¼ºÇÏ°í Å¬·¯½ºÅÍ·¯ °´Ã¼¿¡ ³Ñ°ÜÁİ´Ï´Ù
+		// ë°ì´í„°ë¥¼ ê°€ì ¸ì˜¤ê¸° ìœ„í•´ jQueryë¥¼ ì‚¬ìš©í•©ë‹ˆë‹¤
+		// ë°ì´í„°ë¥¼ ê°€ì ¸ì™€ ë§ˆì»¤ë¥¼ ìƒì„±í•˜ê³  í´ëŸ¬ìŠ¤í„°ëŸ¬ ê°ì²´ì— ë„˜ê²¨ì¤ë‹ˆë‹¤
 		$.get("api/chicken2.json", function(data) {
-			// µ¥ÀÌÅÍ¿¡¼­ ÁÂÇ¥ °ªÀ» °¡Áö°í ¸¶Ä¿¸¦ Ç¥½ÃÇÕ´Ï´Ù
-			// ¸¶Ä¿ Å¬·¯½ºÅÍ·¯·Î °ü¸®ÇÒ ¸¶Ä¿ °´Ã¼´Â »ı¼ºÇÒ ¶§ Áöµµ °´Ã¼¸¦ ¼³Á¤ÇÏÁö ¾Ê½À´Ï´Ù
+			// ë°ì´í„°ì—ì„œ ì¢Œí‘œ ê°’ì„ ê°€ì§€ê³  ë§ˆì»¤ë¥¼ í‘œì‹œí•©ë‹ˆë‹¤
+			// ë§ˆì»¤ í´ëŸ¬ìŠ¤í„°ëŸ¬ë¡œ ê´€ë¦¬í•  ë§ˆì»¤ ê°ì²´ëŠ” ìƒì„±í•  ë•Œ ì§€ë„ ê°ì²´ë¥¼ ì„¤ì •í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤
 			var markers = $(data.positions).map(
 					function(i, position) {
 						return new kakao.maps.Marker({
@@ -117,12 +124,12 @@
 						});
 					});
 
-			// Å¬·¯½ºÅÍ·¯¿¡ ¸¶Ä¿µéÀ» Ãß°¡ÇÕ´Ï´Ù
+			// í´ëŸ¬ìŠ¤í„°ëŸ¬ì— ë§ˆì»¤ë“¤ì„ ì¶”ê°€í•©ë‹ˆë‹¤
 			clusterer.addMarkers(markers);
 
 			for (var i = 0; i < markers.length; i++) {
 
-				var message2 = '¿©±â¸¦  Å¸´Ï : ' + markers.length;
+				var message2 = 'ì—¬ê¸°ë¥¼  íƒ€ë‹ˆ : ' + markers.length;
 				var resultDiv = document.getElementById('result2');
 				resultDiv.innerHTML = message2;
 
@@ -139,35 +146,35 @@
 			console.log(marker);
 			
 			kakao.maps.event.addListener(marker, 'click', function() {
-				// ¸¶Ä¿ À§¿¡ ÀÎÆ÷À©µµ¿ì¸¦ Ç¥½ÃÇÕ´Ï´Ù
+				// ë§ˆì»¤ ìœ„ì— ì¸í¬ìœˆë„ìš°ë¥¼ í‘œì‹œí•©ë‹ˆë‹¤
 // 				infowindow.open(map, marker);
 				console.log(marker);
 			});
 
 			// 				var posi = marker[0].getPosition();
-			// 				console.log('À§Ä¡' + posi);
+			// 				console.log('ìœ„ì¹˜' + posi);
 			// 				var tet=clusterer.getTexts();
 			// // 				var text = cluster.getTexts();
 			// 				console.log('a'+tet);
 			// 		       console.log(cluster.getMarkers())
 		});
 
-		///////////////////////////////Áöµµ ·¹º§ Ãâ·Â api
-		// Áöµµ È®´ë Ãà¼Ò¸¦ Á¦¾îÇÒ ¼ö ÀÖ´Â  ÁÜ ÄÁÆ®·ÑÀ» »ı¼ºÇÕ´Ï´Ù
+		///////////////////////////////ì§€ë„ ë ˆë²¨ ì¶œë ¥ api
+		// ì§€ë„ í™•ëŒ€ ì¶•ì†Œë¥¼ ì œì–´í•  ìˆ˜ ìˆëŠ”  ì¤Œ ì»¨íŠ¸ë¡¤ì„ ìƒì„±í•©ë‹ˆë‹¤
 		var zoomControl = new kakao.maps.ZoomControl();
 		map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
-		// Áöµµ°¡ È®´ë ¶Ç´Â Ãà¼ÒµÇ¸é ¸¶Áö¸· ÆÄ¶ó¹ÌÅÍ·Î ³Ñ¾î¿Â ÇÔ¼ö¸¦ È£ÃâÇÏµµ·Ï ÀÌº¥Æ®¸¦ µî·ÏÇÕ´Ï´Ù
+		// ì§€ë„ê°€ í™•ëŒ€ ë˜ëŠ” ì¶•ì†Œë˜ë©´ ë§ˆì§€ë§‰ íŒŒë¼ë¯¸í„°ë¡œ ë„˜ì–´ì˜¨ í•¨ìˆ˜ë¥¼ í˜¸ì¶œí•˜ë„ë¡ ì´ë²¤íŠ¸ë¥¼ ë“±ë¡í•©ë‹ˆë‹¤
 		kakao.maps.event.addListener(map, 'zoom_changed', function() {
 
-			// ÁöµµÀÇ ÇöÀç ·¹º§À» ¾ò¾î¿É´Ï´Ù
+			// ì§€ë„ì˜ í˜„ì¬ ë ˆë²¨ì„ ì–»ì–´ì˜µë‹ˆë‹¤
 			var level = map.getLevel();
 
 			if (level > 5) {
 
-				var message = 'ÇöÀç Áöµµ ·¹º§Àº 10 ÀÌ»ó  ' + level + ' ÀÔ´Ï´Ù';
+				var message = 'í˜„ì¬ ì§€ë„ ë ˆë²¨ì€ 10 ì´ìƒ  ' + level + ' ì…ë‹ˆë‹¤';
 			} else {
-				var message = 'ÇöÀç Áöµµ ·¹º§Àº 10 ÀÌÇÏ' + level + ' ÀÔ´Ï´Ù';
+				var message = 'í˜„ì¬ ì§€ë„ ë ˆë²¨ì€ 10 ì´í•˜' + level + ' ì…ë‹ˆë‹¤';
 			}
 
 			var resultDiv = document.getElementById('result');
