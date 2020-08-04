@@ -1,10 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 <meta charset="utf-8">
-<title>╦чюн</title>
+<title>main</title>
 <style>
 .customoverlay {
 	position: relative;
@@ -59,52 +61,130 @@
 </style>
 </head>
 <body>
-	<div id="map" style="width: 75%; height: 700px"></div>
+	<p id="result"></p>
+	<p id="result2"></p>
+	<p id="result3"></p>
+	<div id="map" style="width: 75%; height: 600px"></div>
 	<div>
-		<a href="/view/join/join.jsp">х╦©Ь╟║ют</a>
-		<a href="/view/login/login.jsp">╥н╠вюн</a>
+
+		<a href="/CHAL-KAK/model_join.jsp">К╙╗К█╦М ▄Л⌡░Й╟─Л·┘</a>
+		<a href="/CHAL-KAK/login.jsp">К╙╗К█╦ К║°Й╥╦Л²╦</a>
+		<a href="/CHAL-KAK/notice_board.jsp">Й╡▄Л▀°М▄░</a>
+
+		
+		<a href="api/cluster.jsp">О©╫К▄─О©╫я┼О©╫Ц┘╫О©╫О©╫</a> <a href="api/markerclick.jsp">О╖█О©╫Х─▄Ц┘╫О©╫К▄─Б■┐</a>
+		<a href="api/multipleMarker.jsp">О╖█О©╫Х─▄О©╫ О©╫я┴О©╫я┬О©╫</a>
+	</div>
+	<div>
+		О©╫О©╫О╖·О©╫ <input name="date" type="date"> <br /> О©╫О©╫О©╫О©╫ О©╫О©╫Е╙⌡О©╫ <input
+			name="starttime" type="time"><br /> О©╫О©╫ О©╫О©╫Е╙⌡О©╫ <input
+			name="endtime" type="time"><br /> О©╫К╙└О©╫О©╫ <input name="count"
+			type="text"><br /> Х─▄Б▒╔О©╫О©╫ <select name="concept">
+			<option value="1">О©╫О©╫О©╫я┼О©╫</option>
+			<option value="2">О©╫ЙЁ≈О©╫О©╫О©╫я┼О©╫</option>
+			<option value="3">Х─▄Ц┘╫О©╫О©╫О©╫я┼О©╫</option>
+			<option value="4">Е╙⌡О©╫Х╜╟Й╧├О©╫я┼О©╫</option>
+		</select><br /> <input type="button" value="Е╞┐О©╫О©╫О©╫"> <input type="reset"
+			value="Г≈█Б▒╔О©╫О©╫"><br />
+
 	</div>
 	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=63f56496ce33aada63acf5d83d3eb9b9"></script>
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=63f56496ce33aada63acf5d83d3eb9b9&libraries=clusterer""></script>
 	<script>
-		var mapContainer = document.getElementById('map'), // аЖ╣╣╦╕ г╔╫цгр div 
+		var mapContainer = document.getElementById('map'), // О╖·О©╫О©╫О©╫Г▒°О©╫ О©╫О©╫О©╫О©╫О©╫О©╫ div 
 		mapOption = {
-			center : new kakao.maps.LatLng(37.54699, 127.09598), // аЖ╣╣юг аъ╫иабг╔
-			level : 4
-		// аЖ╣╣юг х╝╢К ╥╧╨╖
+			center : new kakao.maps.LatLng(37.54699, 127.09598), // О╖·О©╫О©╫О©╫О©╫О©╫ Д╩╔О©╫О©╫я┼О©╫О©╫О©╫
+			level : 8
+		// О╖·О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫ О©╫О©╫Х╦╟О©╫
 		};
 
 		var map = new kakao.maps.Map(mapContainer, mapOption);
-
-		var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // ╦╤д©юл╧лаЖюг аж╪рют╢о╢ы    
-		imageSize = new kakao.maps.Size(33, 22), // ╦╤д©юл╧лаЖюг е╘╠Бют╢о╢ы
-		imageOption = {
-			offset : new kakao.maps.Point(27, 69)
-		}; // ╦╤д©юл╧лаЖюг ©и╪гют╢о╢ы. ╦╤д©юг абг╔©м юод║╫цеЁ юл╧лаЖ ╬х©║╪╜юг абг╔╦╕ ╪Ёа╓гу╢о╢ы.
-
-		// д©╫╨ер ©ю╧Ж╥╧юл©║ г╔цБ╣и Ё╩©Кю╦╥н HTML ╧╝юз©╜юлЁ╙ document element╟║ ╟║╢игу╢о╢ы
-		var content = '<div class="customoverlay">'
-				+ '  <a href="https://map.kakao.com/link/map/11394059" target="_blank">'
-				+ '  <img src="img/d.PNG" width="100" height="150"/>'
-				+ '    <span class="title">╠╦юг╬ъ╠╦╟Ь©Ь</span>' + '  </a>' + '</div>';
-
-		// д©╫╨ер ©ю╧Ж╥╧юл╟║ г╔╫ц╣и ю╖д║ют╢о╢ы 
-		var position = new kakao.maps.LatLng(37.54699, 127.09598);
-		var position2 = new kakao.maps.LatLng(37.54, 127.0587);
-
-		// д©╫╨ер ©ю╧Ж╥╧юл╦╕ ╩Щ╪╨гу╢о╢ы
-		var customOverlay = new kakao.maps.CustomOverlay({
-			map : map,
-			position : position,
-			content : content,
-			yAnchor : 1
+		////////////////////////////О©╫К▄─О©╫я┼О©╫Ц┘╫О©╫О©╫ api
+		// О╖█О©╫Х─▄О©╫ О©╫К▄─О©╫я┼О©╫Ц┘╫О©╫ЙЁ∙О©╫я┴О©╫О©╫ О©╫О©╫О©╫Й╧┼О©╫Б▒╦О©╫О©╫О©╫О©╫ 
+		var clusterer = new kakao.maps.MarkerClusterer({
+			map : map, // О╖█О©╫Х─▄Ц┘╩О©╫Ц┘╪О©╫О©╫ О©╫К▄─О©╫я┼О©╫Ц┘╫О©╫ЙЁ∙О©╫ Ф└©О©╫Г■╠я▀О©╫О©╫Ф─╗О©╫ О©╫О©╫О©╫О©╫О©╫О©╫ О╖·О©╫О©╫О©╫ Е╙⌡О©╫О╖ёО©╫ 
+			averageCenter : true, // О©╫К▄─О©╫я┼О©╫Ц┘╫О©╫ЙЁ≈О©╫О©╫ О©╫я▀О©╫Б▒╓О©╫О©╫ О╖█О©╫Х─▄Ц┘╩О©╫Ц┘╪О©╫О©╫ О©╫О©╫Ф╢╧О©╫ О©╫О©╫Г╖╩О©╫Г▒°О©╫ О©╫К▄─О©╫я┼О©╫Ц┘╫О©╫О©╫ О╖█О©╫Х─▄О©╫ О©╫О©╫Г╖╩О©╫Ф©║О©╫ О©╫Ц┘╪О©╫О©╫ 
+			minLevel : 10,
+			disableClickZoom : true
+		// О©╫К▄─О©╫я┼О©╫Ц┘╫О©╫О©╫ О©╫О©╫ О╖╓О©╫О©╫О©╫ О╖·О©╫О©╫О©╫ О©╫О©╫Х╦╟О©╫ 
 		});
-		var customOverlay = new kakao.maps.CustomOverlay({
-			map : map,
-			position : position2,
-			content : content,
-			yAnchor : 1
+
+		// О©╫ЙЁ≈О©╫К▄└О©╫ЙЁ∙О©╫О©╫ Е╙⌡О©╫О©╫К╙└О©╫Ц┘╨К╕╟ О©╫О©╫О©╫О©╫ jQueryГ▒°О©╫ О©╫я┼О©╫Б▒╨О©╫Б▒╦О©╫О©╫О©╫О©╫
+		// О©╫ЙЁ≈О©╫К▄└О©╫ЙЁ∙О©╫О©╫ Е╙⌡О©╫О©╫К╙└О©╫О©╫ О╖█О©╫Х─▄Ц┘╩О©╫О©╫ О©╫О©╫О©╫Й╧┼О©╫О©╫Ф─╗О©╫ О©╫К▄─О©╫я┼О©╫Ц┘╫О©╫ЙЁ∙О©╫О©╫ Е╙⌡О©╫О╖ёК▄│О©╫О©╫ О©╫О©╫Е╞┐Б▒╔О©╫О©╫О©╫О©╫О©╫
+		$.get("api/chicken2.json", function(data) {
+			// О©╫ЙЁ≈О©╫К▄└О©╫ЙЁ≈О©╫О©╫О©╫О©╫ И├╚О©╫О©╫О©╫ Е╙⌡О©╫О©╫О©╫ Е╙⌡О©╫О╖·О©╫Ф─╗О©╫ О╖█О©╫Х─▄Ц┘╩О©╫О©╫ О©╫О©╫О©╫О©╫О©╫Б▒╦О©╫О©╫О©╫О©╫
+			// О╖█О©╫Х─▄О©╫ О©╫К▄─О©╫я┼О©╫Ц┘╫О©╫ЙЁ∙О©╫я┴О©╫ Ф└©О©╫Г■╠я▀О©╫О©╫ О╖█О©╫Х─▄О©╫ Е╙⌡О©╫О╖ёК▄─О©╫О©╫ О©╫О©╫О©╫Й╧┼О©╫О©╫ О©╫О©╫ О╖·О©╫О©╫О©╫ Е╙⌡О©╫О╖ёК▄─О©╫О©╫ О©╫Ц┘╪О©╫О©╫О©╫О©╫О╖·О©╫ О©╫О©╫О©╫К⌠╛О©╫О©╫О©╫О©╫
+			var markers = $(data.positions).map(
+					function(i, position) {
+						return new kakao.maps.Marker({
+							position : new kakao.maps.LatLng(position.lat,
+									position.lng),
+							clickable : true,
+							texts : position.name
+						});
+					});
+
+			// О©╫К▄─О©╫я┼О©╫Ц┘╫О©╫ЙЁ∙О©╫я┼О©╫О©╫ О╖█О©╫Х─▄Ц┘╩О©╫Ц┘╪О©╫О©╫ Г∙╟О©╫Е╙⌡О©╫О©╫Б▒╦О©╫О©╫О©╫О©╫
+			clusterer.addMarkers(markers);
+
+			for (var i = 0; i < markers.length; i++) {
+
+				var message2 = 'О©╫я┬К╕╟Г▒°О©╫  О©╫О©╫О©╫О©╫ : ' + markers.length;
+				var resultDiv = document.getElementById('result2');
+				resultDiv.innerHTML = message2;
+
+				// 				var message3 = markers[0].content;
+				// 				var resultDiv = document.getElementById('result3');
+				// 				resultDiv.innerHTML = message3;
+
+			}
 		});
+
+		kakao.maps.event.addListener(clusterer, 'clusterclick', function(
+				cluster) {
+			var marker = cluster.getMarkers();
+			console.log(marker);
+			
+			kakao.maps.event.addListener(marker, 'click', function() {
+				// О╖█О©╫Х─▄О©╫ О©╫О©╫О©╫О©╫ О©╫К╙┘О©╫я┼О©╫О©╫О©╫О©╫О©╫ЙЁ∙О©╫О©╫ О©╫О©╫О©╫О©╫О©╫Б▒╦О©╫О©╫О©╫О©╫
+// 				infowindow.open(map, marker);
+				console.log(marker);
+			});
+
+			// 				var posi = marker[0].getPosition();
+			// 				console.log('О©╫О©╫Г╖╩О©╫' + posi);
+			// 				var tet=clusterer.getTexts();
+			// // 				var text = cluster.getTexts();
+			// 				console.log('a'+tet);
+			// 		       console.log(cluster.getMarkers())
+		});
+
+		///////////////////////////////О╖·О©╫О©╫О©╫ О©╫О©╫Х╦╟О©╫ Г∙╟О©╫О©╫О©╫ api
+		// О╖·О©╫О©╫О©╫ О©╫О©╫О©╫О©╫ Г∙╟О©╫О©╫О©╫Г▒°О©╫ О©╫О©╫О©╫К▄└О©╫О©╫ О©╫О©╫ О©╫О©╫О©╫О©╫  Д╩╔О©╫ Х─▄Б▒╕О©╫К╙┐б╥О©╫О©╫ О©╫О©╫О©╫Й╧┼О©╫Б▒╦О©╫О©╫О©╫О©╫
+		var zoomControl = new kakao.maps.ZoomControl();
+		map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+		// О╖·О©╫О©╫О©╫Е╙⌡О©╫ О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫ Г∙╟О©╫О©╫О©╫О©╫О©╫О╖▌О©╫ О╖█О©╫О╖·О©╫О╖█О©╫ О©╫О©╫О©╫Л┤╟О©╫К╙┘О©╫ЙЁ∙О©╫ О©╫О©╫О©╫К▄│О©╫О©╫ О©╫Б▒╔О©╫О©╫Г▒°О©╫ О©╫К╙└О©╫О©╫О©╫О©╫О©╫Ф©║О©╫ О©╫К▄─Й╧╫О©╫К╙┐О©╫О©╫ О©╫Й╧┘О©╫О©╫Б▒╦О©╫О©╫О©╫О©╫
+		kakao.maps.event.addListener(map, 'zoom_changed', function() {
+
+			// О╖·О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫ О©╫О©╫Х╦╟Б▒╔О©╫О©╫ О©╫Л┌╢О©╫К▄│О©╫К⌠╛О©╫О©╫О©╫О©╫
+			var level = map.getLevel();
+
+			if (level > 5) {
+
+				var message = 'О©╫О©╫О©╫О©╫ О╖·О©╫О©╫О©╫ О©╫О©╫Х╦╟Б▒╔О©╫О©╫ 10 О©╫К▄│О©╫О©╫  ' + level + ' О©╫О©╫О©╫О©╫О©╫О©╫';
+			} else {
+				var message = 'О©╫О©╫О©╫О©╫ О╖·О©╫О©╫О©╫ О©╫О©╫Х╦╟Б▒╔О©╫О©╫ 10 О©╫К▄└О©╫О©╫' + level + ' О©╫О©╫О©╫О©╫О©╫О©╫';
+			}
+
+			var resultDiv = document.getElementById('result');
+			resultDiv.innerHTML = message;
+
+		});
+
+		///////////
+
+		////
 	</script>
 </body>
 </html>
