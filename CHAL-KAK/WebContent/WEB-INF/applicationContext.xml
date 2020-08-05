@@ -28,6 +28,13 @@
 		</constructor-arg>
 	</bean>
 	
+	<bean class="org.springframework.jdbc.core.simple.SimpleJdbcCall">
+		<constructor-arg>
+			<ref bean="jdbcTemplate" />
+		</constructor-arg>
+	</bean>
+	
+	
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<constructor-arg ref="dataSource" />

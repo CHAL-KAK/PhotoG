@@ -79,7 +79,8 @@
 			} else {
 		%>
 
-		<a href='/CHAL-KAK/logout.jsp'>로그아웃</a> <a href="/CHAL-KAK/Mypage.jsp">마이페이지</a>
+		<a href='/CHAL-KAK/logout.jsp'>로그아웃</a> <a href="/CHAL-KAK/photo_mypage.ck">사진사 마이페이지</a>
+		<a href="/CHAL-KAK/model_mypage.jsp">모델 마이페이지</a>
 		<a href="/CHAL-KAK/notice_board.jsp">게시판</a>
 		<%
 			}

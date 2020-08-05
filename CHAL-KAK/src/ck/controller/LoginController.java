@@ -15,18 +15,18 @@ import ck.vo.AdministratorVO;
 import ck.vo.ModelVO;
 import ck.vo.PhotographerVO;
 
-@SessionAttributes(value="login_user")
+@SessionAttributes(value = "login_user")
 @Controller
 public class LoginController {
 	@Autowired
 	private ModelLoginBiz modelloginBiz;
-	
+
 	@Autowired
 	private PhotographerLoginBiz photographerloginBiz;
-	
+
 	@Autowired
 	private AdministratorLoginBiz administratorloginBiz;
-	
+
 	@RequestMapping(method = RequestMethod.POST, value = "/modelSearch.ck")
 	public ModelAndView search(@ModelAttribute ModelVO vo) {
 		System.out.println(vo);
@@ -36,17 +36,16 @@ public class LoginController {
 		ModelAndView mav = new ModelAndView("redirect:/index.jsp", "login_user", id);
 		return mav;
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST, value = "/photographerSearch.ck")
 	public ModelAndView search(@ModelAttribute PhotographerVO vo) {
 		System.out.println(vo);
 		PhotographerVO res = photographerloginBiz.searchPhotographer(vo);
 		String id = res.getP_id();
-		System.out.println(res);
 		ModelAndView mav = new ModelAndView("redirect:/index.jsp", "login_user", id);
 		return mav;
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST, value = "/administratorSearch.ck")
 	public ModelAndView search(@ModelAttribute AdministratorVO vo) {
 		System.out.println(vo);
@@ -56,6 +55,5 @@ public class LoginController {
 		ModelAndView mav = new ModelAndView("redirect:/index.jsp", "login_user", id);
 		return mav;
 	}
-	
 
 }
