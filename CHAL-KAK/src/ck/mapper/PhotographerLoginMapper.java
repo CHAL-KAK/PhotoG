@@ -2,7 +2,6 @@ package ck.mapper;
 
 import org.apache.ibatis.annotations.Select;
 
-import ck.vo.ModelVO;
 import ck.vo.PhotographerVO;
 
 public interface PhotographerLoginMapper {

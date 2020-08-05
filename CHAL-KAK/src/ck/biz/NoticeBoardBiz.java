@@ -12,8 +12,10 @@ import ck.vo.NoticeBoardVO;
 
 @Service
 public class NoticeBoardBiz {
+
 	@Autowired
-	private NoticeBoardDaoImpl noticeboarddao;
+	@Qualifier("noticeBoardDaoImpl")
+	private NoticeBoardDaoImpl noticeBoardDaoImpl;
 
 	
 	@Autowired
@@ -21,7 +23,7 @@ public class NoticeBoardBiz {
 	private MypageJDBC mypageJDBC;
 	
 	public List<NoticeBoardVO> boardAll() {
-		return noticeboarddao.boardAll();
+		return noticeBoardDaoImpl.boardAll();
 	}
 
 	// mypage notice board
