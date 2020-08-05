@@ -6,14 +6,14 @@ import org.springframework.stereotype.Service;
 import ck.dao.PhotographerJoinDao;
 import ck.vo.PhotographerVO;
 
-@Service("photographerJoinBiz")
+@Service
 public class PhotographerJoinBiz {
 	@Autowired
 	private PhotographerJoinDao photographerjoindao;
 	
 	
-	public void insertPhotographer(PhotographerVO vo) {
-		photographerjoindao.insertPhotographer(vo);
+	public int insertPhotographer(PhotographerVO vo) {
+		return photographerjoindao.insertPhotographer(vo);
 	}
 
 }

@@ -25,22 +25,41 @@ public class CKController{
 		@Autowired
 		NoticeBoardBiz noticeboardbiz;
 		
+		// Join Model
 		@RequestMapping(method = RequestMethod.POST, value="/modeljoin.ck")
 		public String insertModel(@ModelAttribute ModelVO vo) {
-			modeljoinbiz.insertModel(vo);
-			return "redirect:/index.jsp";
+			int res = modeljoinbiz.insertModel(vo);
+			System.out.println(res);
+			if (res == 0) { // 실패
+				return "/join/model_join_fail";
+			} else {		// 성공		
+				return "/join/model_join_success";
+			}
 		}
 		
+		// Join Photographer
 		@RequestMapping(method = RequestMethod.POST, value="/photographerjoin.ck")
 		public String insertPhotographer(@ModelAttribute PhotographerVO vo) {
-			photographerjoinbiz.insertPhotographer(vo);
-			return "redirect:/index.jsp";
+			int res = photographerjoinbiz.insertPhotographer(vo);
+			System.out.println(res);
+			if (res == 0) { // 실패
+				return "/join/photographer_join_fail";
+			} else {		// 성공		
+				return "/join/photographer_join_success";
+			}
 		}
 		
+		// Board Access Fail
+		@RequestMapping(value="/board_access_fail.ck")
+		public String Board_Access_Fail() {
+			return "noticeboard/board_access_fail";
+		}
+		
+		// Board All
 		@RequestMapping(value="/noticeboard.ck")
 		public String Board_All(Model model) {
 			model.addAttribute("all", noticeboardbiz.boardAll());
-			return "noticeboard/Board_all";
+			return "noticeboard/board_all";
 		}
 		
 	

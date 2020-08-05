@@ -19,7 +19,7 @@
 						 <label for="r0">Male</label>&emsp;&emsp;&emsp;&emsp;
 						 <input type="radio" name="m_gender" value="F" id="r1">
 						 <label for="r1">Female</label>
-				BIRTH : <input type="date" name="m_dbay">
+				BIRTH : <input type="date" name="m_bday">
 				KAKAOTALK ID : <input type="text" name="m_ka_id">
 			<input type="submit" value="join" />
 			<input type="button" value="back" onClick="location.href='<%=path%>'">
