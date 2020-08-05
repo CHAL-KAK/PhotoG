@@ -30,16 +30,8 @@ public class PhotographerVO {
 		this.p_password = p_password;
 	}
 
-
-
 	public int getPhotog_seq() {
 		return photog_seq;
-	}
-	
-	public PhotographerVO(String p_id, String p_password) {
-		super();
-		this.p_id = p_id;
-		this.p_password = p_password;
 	}
 
 	public void setPhotog_seq(int photog_seq) {
