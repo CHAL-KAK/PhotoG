@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,65 +67,66 @@
 	<div>
 
 		<%
-	if(session.getAttribute("login_user")==null){%>
-		<a href="/CHAL-KAK/join/model_join.jsp">ëª¨ë¸íšŒì›ê°€ìž…</a>
-		<a href="/CHAL-KAK/join/photographer_join.jsp">ì‚¬ì§„ì‚¬íšŒì›ê°€ìž…</a>
-		<a href="/CHAL-KAK/model_login.jsp">ëª¨ë¸ë¡œê·¸ì¸</a>
-    <a href="/CHAL-KAK/photographer_login.jsp">ì‚¬ì§„ì‚¬ë¡œê·¸ì¸</a>
-    <a href="/CHAL-KAK/administrator_login.jsp">ê´€ë¦¬ìžë¡œê·¸ì¸</a>
-		<a href="/CHAL-KAK/notice_board.jsp">ê²Œì‹œíŒ</a>
-		<%} else {%>
-		
-		<a href='/CHAL-KAK/logout.jsp'>ë¡œê·¸ì•„ì›ƒ</a>
-		<a href="/CHAL-KAK/Mypage.jsp">ë§ˆì´íŽ˜ì´ì§€</a>
-		<a href="/CHAL-KAK/notice_board.jsp">ê²Œì‹œíŒ</a>
-		<%} %>
+			if (session.getAttribute("login_user") == null) {
+		%>
+		<a href="/CHAL-KAK/join/model_join.jsp">¸ðµ¨È¸¿ø°¡ÀÔ</a> <a
+			href="/CHAL-KAK/join/photographer_join.jsp">»çÁø»çÈ¸¿ø°¡ÀÔ</a> <a
+			href="/CHAL-KAK/model_login.jsp">¸ðµ¨·Î±×ÀÎ</a> <a
+			href="/CHAL-KAK/photographer_login.jsp">»çÁø»ç·Î±×ÀÎ</a> <a
+			href="/CHAL-KAK/administrator_login.jsp">°ü¸®ÀÚ·Î±×ÀÎ</a> <a
+			href="/CHAL-KAK/notice_board.jsp">°Ô½ÃÆÇ</a>
+		<%
+			} else {
+		%>
 
-		<a href="api/cluster.jsp">í´ëŸ¬ìŠ¤í„°</a> <a href="api/markerclick.jsp">ë§ˆì»¤í´ë¦­</a>
-		<a href="api/multipleMarker.jsp">ë§ˆì»¤ ì—¬ëŸ¬ê°œ</a>
+		<a href='/CHAL-KAK/logout.jsp'>·Î±×¾Æ¿ô</a> <a href="/CHAL-KAK/Mypage.jsp">¸¶ÀÌÆäÀÌÁö</a>
+		<a href="/CHAL-KAK/notice_board.jsp">°Ô½ÃÆÇ</a>
+		<%
+			}
+		%>
+
+		<a href="api/cluster.jsp">Å¬·¯½ºÅÍ</a> <a href="api/markerclick.jsp">¸¶Ä¿Å¬¸¯</a>
+		<a href="api/multipleMarker.jsp">¸¶Ä¿ ¿©·¯°³</a>
 
 	</div>
 	<div>
-		ë‚ ì§œ <input name="date" type="date"> <br /> ì‹œìž‘ ì‹œê°„ <input
-			name="starttime" type="time"><br /> ë ì‹œê°„ <input
-			name="endtime" type="time"><br /> ì¸ì› <input name="count"
-			type="text"><br /> ì»¨ì…‰ <select name="concept">
-			<option value="1">ë…ì‚¬ì§„</option>
-			<option value="2">ìš°ì •ì‚¬ì§„</option>
-			<option value="3">ì»¤í”Œì‚¬ì§„</option>
-			<option value="4">ê°€ì¡±ì‚¬ì§„</option>
-		</select><br /> <input type="button" value="ê²€ìƒ‰"> <input type="reset"
-			value="ì·¨ì†Œ"><br />
+		³¯Â¥ <input name="date" type="date"> <br /> ½ÃÀÛ ½Ã°£ <input
+			name="starttime" type="time"><br /> ³¡ ½Ã°£ <input
+			name="endtime" type="time"><br /> ÀÎ¿ø <input name="count"
+			type="text"><br /> ÄÁ¼Á <select name="concept">
+			<option value="1">µ¶»çÁø</option>
+			<option value="2">¿ìÁ¤»çÁø</option>
+			<option value="3">Ä¿ÇÃ»çÁø</option>
+			<option value="4">°¡Á·»çÁø</option>
+		</select><br /> <input type="button" value="°Ë»ö"> <input type="reset"
+			value="Ãë¼Ò"><br />
 	</div>
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=63f56496ce33aada63acf5d83d3eb9b9&libraries=clusterer""></script>
 	<script>
-		var mapContainer = document.getElementById('map'), // ì§€ë„ë¥¼ í‘œì‹œí•  div 
+		var mapContainer = document.getElementById('map'), // Áöµµ¸¦ Ç¥½ÃÇÒ div 
 		mapOption = {
-			center : new kakao.maps.LatLng(37.54699, 127.09598), // ì§€ë„ì˜ ì¤‘ì‹¬ì¢Œí‘œ
+			center : new kakao.maps.LatLng(37.54699, 127.09598), // ÁöµµÀÇ Áß½ÉÁÂÇ¥
 			level : 8
-
+		// ÁöµµÀÇ È®´ë ·¹º§
 		};
 
-		// ì§€ë„ì˜ í™•ëŒ€ ë ˆë²¨
-
-
 		var map = new kakao.maps.Map(mapContainer, mapOption);
-		////////////////////////////í´ëŸ¬ìŠ¤í„° api
-		// ë§ˆì»¤ í´ëŸ¬ìŠ¤í„°ëŸ¬ë¥¼ ìƒì„±í•©ë‹ˆë‹¤ 
+		////////////////////////////Å¬·¯½ºÅÍ api
+		// ¸¶Ä¿ Å¬·¯½ºÅÍ·¯¸¦ »ý¼ºÇÕ´Ï´Ù 
 		var clusterer = new kakao.maps.MarkerClusterer({
-			map : map, // ë§ˆì»¤ë“¤ì„ í´ëŸ¬ìŠ¤í„°ë¡œ ê´€ë¦¬í•˜ê³  í‘œì‹œí•  ì§€ë„ ê°ì²´ 
-			averageCenter : true, // í´ëŸ¬ìŠ¤í„°ì— í¬í•¨ëœ ë§ˆì»¤ë“¤ì˜ í‰ê·  ìœ„ì¹˜ë¥¼ í´ëŸ¬ìŠ¤í„° ë§ˆì»¤ ìœ„ì¹˜ë¡œ ì„¤ì • 
+			map : map, // ¸¶Ä¿µéÀ» Å¬·¯½ºÅÍ·Î °ü¸®ÇÏ°í Ç¥½ÃÇÒ Áöµµ °´Ã¼ 
+			averageCenter : true, // Å¬·¯½ºÅÍ¿¡ Æ÷ÇÔµÈ ¸¶Ä¿µéÀÇ Æò±Õ À§Ä¡¸¦ Å¬·¯½ºÅÍ ¸¶Ä¿ À§Ä¡·Î ¼³Á¤ 
 			minLevel : 10,
 			disableClickZoom : true
-		// í´ëŸ¬ìŠ¤í„° í•  ìµœì†Œ ì§€ë„ ë ˆë²¨ 
+		// Å¬·¯½ºÅÍ ÇÒ ÃÖ¼Ò Áöµµ ·¹º§ 
 		});
 		console.log(map);
-		// ë°ì´í„°ë¥¼ ê°€ì ¸ì˜¤ê¸° ìœ„í•´ jQueryë¥¼ ì‚¬ìš©í•©ë‹ˆë‹¤
-		// ë°ì´í„°ë¥¼ ê°€ì ¸ì™€ ë§ˆì»¤ë¥¼ ìƒì„±í•˜ê³  í´ëŸ¬ìŠ¤í„°ëŸ¬ ê°ì²´ì— ë„˜ê²¨ì¤ë‹ˆë‹¤
+		// µ¥ÀÌÅÍ¸¦ °¡Á®¿À±â À§ÇØ jQuery¸¦ »ç¿ëÇÕ´Ï´Ù
+		// µ¥ÀÌÅÍ¸¦ °¡Á®¿Í ¸¶Ä¿¸¦ »ý¼ºÇÏ°í Å¬·¯½ºÅÍ·¯ °´Ã¼¿¡ ³Ñ°ÜÁÝ´Ï´Ù
 		$.get("api/chicken2.json", function(data) {
-			// ë°ì´í„°ì—ì„œ ì¢Œí‘œ ê°’ì„ ê°€ì§€ê³  ë§ˆì»¤ë¥¼ í‘œì‹œí•©ë‹ˆë‹¤
-			// ë§ˆì»¤ í´ëŸ¬ìŠ¤í„°ëŸ¬ë¡œ ê´€ë¦¬í•  ë§ˆì»¤ ê°ì²´ëŠ” ìƒì„±í•  ë•Œ ì§€ë„ ê°ì²´ë¥¼ ì„¤ì •í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤
+			// µ¥ÀÌÅÍ¿¡¼­ ÁÂÇ¥ °ªÀ» °¡Áö°í ¸¶Ä¿¸¦ Ç¥½ÃÇÕ´Ï´Ù
+			// ¸¶Ä¿ Å¬·¯½ºÅÍ·¯·Î °ü¸®ÇÒ ¸¶Ä¿ °´Ã¼´Â »ý¼ºÇÒ ¶§ Áöµµ °´Ã¼¸¦ ¼³Á¤ÇÏÁö ¾Ê½À´Ï´Ù
 			var markers = $(data.positions).map(
 					function(i, position) {
 						return new kakao.maps.Marker({
@@ -136,16 +137,19 @@
 						});
 					});
 
-			// í´ëŸ¬ìŠ¤í„°ëŸ¬ì— ë§ˆì»¤ë“¤ì„ ì¶”ê°€í•©ë‹ˆë‹¤
+			// Å¬·¯½ºÅÍ·¯¿¡ ¸¶Ä¿µéÀ» Ãß°¡ÇÕ´Ï´Ù
 			clusterer.addMarkers(markers);
 			// 			console.log(clusterer.getMarkers());
 
 			for (var i = 0; i < markers.length; i++) {
 
-				var message2 = 'ì—¬ê¸°ë¥¼  íƒ€ë‹ˆ : ' + markers.length;
+				var message2 = '¿©±â¸¦  Å¸´Ï : ' + markers.length;
 				var resultDiv = document.getElementById('result2');
 				resultDiv.innerHTML = message2;
 
+				// 				var message3 = markers[0].content;
+				// 				var resultDiv = document.getElementById('result3');
+				// 				resultDiv.innerHTML = message3;
 
 			}
 		});
@@ -155,80 +159,64 @@
 			marker = cluster.getMarkers();
 			console.log(marker);
 
-			
-			kakao.maps.event.addListener(marker, 'click', function() {
-				console.log(marker);
-			});
-
-		});
-
-		var zoomControl = new kakao.maps.ZoomControl();
-		map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-
-		kakao.maps.event.addListener(map, 'zoom_changed', function() {
-
-
-
 			var posi = marker[0].getPosition();
-			console.log('ìœ„ì¹˜' + posi);
+			console.log('À§Ä¡' + posi);
 			var tet = clusterer.getTexts();
 			console.log('a' + tet);
 			console.log(cluster.getMarkers())
 
 			for (i = 0; i < marker.length; i++) {
+				// 				kakao.maps.event.addListener(marker[i], 'click',
+				// 						makePhoto(marker[i].getPosition(),map));
 				kakao.maps.event.addListener(marker[i], 'click',
-						makePhoto(marker[i].getPosition(),map));
+						makePhoto(marker[i].getPosition()));
 
 			}
 
 		});
-				function makePhoto(posi, map) {
-// 					return function() {
-						alert(posi+'/'+map);
-						mphoto.setMap();
-// 					};
-				}
+		function makePhoto(posi) {
+			alert(posi + '/' + map);
+		}
 
 		var content = '<div class="wrap">'
 				+ '    <div class="info">'
 				+ '        <div class="title">'
-				+ '            ì¹´ì¹´ì˜¤ ìŠ¤íŽ˜ì´ìŠ¤ë‹·ì›'
-				+ '            <div class="close" onclick="closeOverlay()" title="ë‹«ê¸°"></div>'
+				+ '            Ä«Ä«¿À ½ºÆäÀÌ½º´å¿ø'
+				+ '            <div class="close" onclick="closeOverlay()" title="´Ý±â"></div>'
 				+ '        </div>'
 				+ '        <div class="body">'
 				+ '            <div class="img">'
 				+ '                <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">'
 				+ '           </div>'
 				+ '            <div class="desc">'
-				+ '                <div class="ellipsis">ì œì£¼íŠ¹ë³„ìžì¹˜ë„ ì œì£¼ì‹œ ì²¨ë‹¨ë¡œ 242</div>'
-				+ '                <div class="jibun ellipsis">(ìš°) 63309 (ì§€ë²ˆ) ì˜í‰ë™ 2181</div>'
-				+ '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">í™ˆíŽ˜ì´ì§€</a></div>'
+				+ '                <div class="ellipsis">Á¦ÁÖÆ¯º°ÀÚÄ¡µµ Á¦ÁÖ½Ã Ã·´Ü·Î 242</div>'
+				+ '                <div class="jibun ellipsis">(¿ì) 63309 (Áö¹ø) ¿µÆòµ¿ 2181</div>'
+				+ '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">È¨ÆäÀÌÁö</a></div>'
 				+ '            </div>' + '        </div>' + '    </div>'
 				+ '</div>';
 
-// 		var mphoto = new kakao.maps.CustomOverlay({
-// 			content : content,
-// 			map : map,
-// 			position : marker[0].getPosition()
-// 		});
+		// 		var mphoto = new kakao.maps.CustomOverlay({
+		// 			content : content,
+		// 			map : map,
+		// 			position : marker[0].getPosition()
+		// 		});
 
-		///////////////////////////////ì§€ë„ ë ˆë²¨ ì¶œë ¥ api
-		// ì§€ë„ í™•ëŒ€ ì¶•ì†Œë¥¼ ì œì–´í•  ìˆ˜ ìžˆëŠ”  ì¤Œ ì»¨íŠ¸ë¡¤ì„ ìƒì„±í•©ë‹ˆë‹¤
+		///////////////////////////////Áöµµ ·¹º§ Ãâ·Â api
+		// Áöµµ È®´ë Ãà¼Ò¸¦ Á¦¾îÇÒ ¼ö ÀÖ´Â  ÁÜ ÄÁÆ®·ÑÀ» »ý¼ºÇÕ´Ï´Ù
 		var zoomControl = new kakao.maps.ZoomControl();
 		map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
-		// ì§€ë„ê°€ í™•ëŒ€ ë˜ëŠ” ì¶•ì†Œë˜ë©´ ë§ˆì§€ë§‰ íŒŒë¼ë¯¸í„°ë¡œ ë„˜ì–´ì˜¨ í•¨ìˆ˜ë¥¼ í˜¸ì¶œí•˜ë„ë¡ ì´ë²¤íŠ¸ë¥¼ ë“±ë¡í•©ë‹ˆë‹¤
+		// Áöµµ°¡ È®´ë ¶Ç´Â Ãà¼ÒµÇ¸é ¸¶Áö¸· ÆÄ¶ó¹ÌÅÍ·Î ³Ñ¾î¿Â ÇÔ¼ö¸¦ È£ÃâÇÏµµ·Ï ÀÌº¥Æ®¸¦ µî·ÏÇÕ´Ï´Ù
 		kakao.maps.event.addListener(map, 'zoom_changed', function() {
 
-			// ì§€ë„ì˜ í˜„ìž¬ ë ˆë²¨ì„ ì–»ì–´ì˜µë‹ˆë‹¤
-
+			// ÁöµµÀÇ ÇöÀç ·¹º§À» ¾ò¾î¿É´Ï´Ù
 			var level = map.getLevel();
 
 			if (level > 5) {
 
-				var message = 'í˜„ìž¬ ì§€ë„ ë ˆë²¨ì€ 10 ì´ìƒ  ' + level + ' ìž…ë‹ˆë‹¤';
+				var message = 'ÇöÀç Áöµµ ·¹º§Àº 10 ÀÌ»ó  ' + level + ' ÀÔ´Ï´Ù';
 			} else {
-				var message = 'í˜„ìž¬ ì§€ë„ ë ˆë²¨ì€ 10 ì´í•˜' + level + ' ìž…ë‹ˆë‹¤';
+				var message = 'ÇöÀç Áöµµ ·¹º§Àº 10 ÀÌÇÏ' + level + ' ÀÔ´Ï´Ù';
 			}
 
 			var resultDiv = document.getElementById('result');
@@ -236,6 +224,9 @@
 
 		});
 
+		///////////
+
+		////
 	</script>
 </body>
 </html>
