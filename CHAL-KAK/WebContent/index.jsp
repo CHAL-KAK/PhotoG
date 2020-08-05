@@ -108,7 +108,7 @@
 		};
 
 		// 지도의 확대 레벨
-		};
+
 
 		var map = new kakao.maps.Map(mapContainer, mapOption);
 		////////////////////////////클러스터 api

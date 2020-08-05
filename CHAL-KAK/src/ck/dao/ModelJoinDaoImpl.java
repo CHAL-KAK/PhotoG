@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import ck.vo.ModelVO;
 
 
-@Repository
+
 public class ModelJoinDaoImpl extends JdbcDaoSupport implements ModelJoinDao {
 	@Override
 	public void insertModel(ModelVO vo) {
