@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ck.biz.NoticeBoardBiz;
 import ck.vo.NoticeBoardVO;
+import ck.vo.SessionType;
 
 @Controller("myController")
 public class MypageController {
@@ -17,12 +18,12 @@ public class MypageController {
 	private NoticeBoardBiz biz;
 
 	@RequestMapping("/photo_mypage.ck")
-	public ModelAndView photmypage(@SessionAttribute("login_user") String id) {
+	public ModelAndView photmypage(@SessionAttribute("login_user") SessionType loginuser) {
 		List<NoticeBoardVO> list = null;
 		ModelAndView mav = null;
 		try {
-			list = biz.select(id);
-			System.out.println(id);
+			list = biz.select(loginuser.getId());
+			System.out.println(loginuser.getId());
 			System.out.println("list" + list);
 			mav = new ModelAndView("/mypage/photo_mypage", "list", list);
 		} catch (Exception e) {
