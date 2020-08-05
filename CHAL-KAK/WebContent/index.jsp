@@ -74,6 +74,7 @@
 			href="/CHAL-KAK/model_login.jsp">모델로그인</a> <a
 			href="/CHAL-KAK/photographer_login.jsp">사진사로그인</a> <a
 			href="/CHAL-KAK/administrator_login.jsp">관리자로그인</a> <a
+
 			href="/CHAL-KAK/noticeboard/notice_board.jsp">게시판</a>
 			</c:when>
 		<c:otherwise>
@@ -82,7 +83,7 @@
 		<a href="/CHAL-KAK/noticeboard/notice_board.jsp">게시판</a>
 		</c:otherwise>
 		</c:choose>
-		
+
 		<a href="api/cluster.jsp">클러스터</a> <a href="api/markerclick.jsp">마커클릭</a>
 		<a href="api/multipleMarker.jsp">마커 여러개</a>
 

@@ -23,12 +23,13 @@
 				KAKAOTALK ID : <input type="text" name="p_ka_id">
 				<br>
 				CAMERA :<select name="camera_seq">
+					<option>3</option>
+							<option>1</option>
 							<option>7</option>
 							<option>8</option>
 							<option>3</option>
 						</select>
 				Concept :<select name="concept">
-							<option>1</option>
 							<option>2</option>
 							<option>3</option>
 							<option>4</option>							
