@@ -41,13 +41,6 @@
 	</bean>
 	
 	
-	<bean class="org.springframework.jdbc.core.simple.SimpleJdbcCall">
-		<constructor-arg>
-			<ref bean="jdbcTemplate"/>
-		</constructor-arg>
-	</bean>
-	
-	
 
 	<bean id="sqlSessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
