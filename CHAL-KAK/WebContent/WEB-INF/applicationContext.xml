@@ -8,8 +8,8 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-    <context:component-scan base-package="ck"/>
-  	<mybatis-spring:scan base-package="ck.mapper" />
+	<context:component-scan base-package="ck" />
+	<mybatis-spring:scan base-package="ck.mapper" />
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -21,24 +21,34 @@
 		<property name="password" value="ck1234"></property>
 	</bean>
 
+	<bean id="jdbcTemplate"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource"></ref>
+		</constructor-arg>
+	</bean>
+	
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<constructor-arg ref="dataSource" />
 	</bean>
 	
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-      <property name="dataSource" ref="dataSource" />
-   </bean>
-	
-	<bean id="ModelJoinDaoImpl" class="ck.dao.ModelJoinDaoImpl">
-		<property name="dataSource" ref="dataSource"/>	
+
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
 	</bean>
+
+	<bean id="ModelJoinDaoImpl" class="ck.dao.ModelJoinDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
 	
 	<bean id="PhotographerJoinDaoImpl" class="ck.dao.PhotographerJoinDaoImpl">
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
-	
+
 	<bean id="NoticeBoardDaoImpl" class="ck.dao.NoticeBoardDaoImpl">
-		<property name="dataSource" ref="dataSource"/>
+		<property name="dataSource" ref="dataSource" />
 	</bean>
-</beans>
+ </beans>
