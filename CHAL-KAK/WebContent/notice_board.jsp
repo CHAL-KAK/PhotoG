@@ -17,7 +17,7 @@
 		
 	}
 	else{
-		response.sendRedirect("/noticeboard.ck");
+		response.sendRedirect("/CHAL-KAK/noticeboard.ck");
 	}
 %>
 </body>

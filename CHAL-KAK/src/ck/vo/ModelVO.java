@@ -2,12 +2,16 @@ package ck.vo;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 public class ModelVO {
 	private int model_seq;
 	private String m_id;
 	private String m_password;
 	private String m_name;
 	private String m_gender;
+	@DateTimeFormat(iso = ISO.DATE)
 	private Date m_bday;
 	private String m_ka_id;
 

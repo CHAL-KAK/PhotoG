@@ -66,12 +66,18 @@
 	<p id="result3"></p>
 	<div id="map" style="width: 75%; height: 600px"></div>
 	<div>
-
-		<a href="/CHAL-KAK/model_join.jsp">모델회원가입</a>
+		<%
+	if(session.getAttribute("login_user")==null){%>
+		<a href="/CHAL-KAK/join/model_join.jsp">모델회원가입</a>
+		<a href="/CHAL-KAK/join/photographer_join.jsp">사진사회원가입</a>
 		<a href="/CHAL-KAK/login.jsp">모델 로그인</a>
 		<a href="/CHAL-KAK/notice_board.jsp">게시판</a>
-
+		<%} else {%>
 		
+		<a href='/CHAL-KAK/logout.jsp'>로그아웃</a>
+		<a href="/CHAL-KAK/Mypage.jsp">마이페이지</a>
+		<a href="/CHAL-KAK/notice_board.jsp">게시판</a>
+		<%} %>
 		<a href="api/cluster.jsp">�대�ъ�ㅽ��</a> <a href="api/markerclick.jsp">留�而ㅽ�대┃</a>
 		<a href="api/multipleMarker.jsp">留�而� �щ�ш�</a>
 	</div>
@@ -95,25 +101,17 @@
 		mapOption = {
 			center : new kakao.maps.LatLng(37.54699, 127.09598), // 吏����� 以��ъ���
 			level : 8
-		// 吏����� ���� ��踰�
 		};
 
 		var map = new kakao.maps.Map(mapContainer, mapOption);
-		////////////////////////////�대�ъ�ㅽ�� api
-		// 留�而� �대�ъ�ㅽ�곕�щ�� ���깊�⑸���� 
 		var clusterer = new kakao.maps.MarkerClusterer({
-			map : map, // 留�而ㅻ�ㅼ�� �대�ъ�ㅽ�곕� 愿�由ы��怨� ������ 吏��� 媛�泥� 
-			averageCenter : true, // �대�ъ�ㅽ�곗�� �ы�⑤�� 留�而ㅻ�ㅼ�� ��洹� ��移�瑜� �대�ъ�ㅽ�� 留�而� ��移�濡� �ㅼ�� 
+			map : map, 
+			averageCenter : true, 
 			minLevel : 10,
 			disableClickZoom : true
-		// �대�ъ�ㅽ�� �� 理��� 吏��� ��踰� 
 		});
 
-		// �곗�댄�곕�� 媛��몄�ㅺ린 ���� jQuery瑜� �ъ�⑺�⑸����
-		// �곗�댄�곕�� 媛��몄�� 留�而ㅻ�� ���깊��怨� �대�ъ�ㅽ�곕�� 媛�泥댁�� ��寃⑥�����
 		$.get("api/chicken2.json", function(data) {
-			// �곗�댄�곗���� 醫��� 媛��� 媛�吏�怨� 留�而ㅻ�� �����⑸����
-			// 留�而� �대�ъ�ㅽ�곕�щ� 愿�由ы�� 留�而� 媛�泥대�� ���깊�� �� 吏��� 媛�泥대�� �ㅼ����吏� ���듬����
 			var markers = $(data.positions).map(
 					function(i, position) {
 						return new kakao.maps.Marker({
@@ -124,7 +122,6 @@
 						});
 					});
 
-			// �대�ъ�ㅽ�곕�ъ�� 留�而ㅻ�ㅼ�� 異�媛��⑸����
 			clusterer.addMarkers(markers);
 
 			for (var i = 0; i < markers.length; i++) {
@@ -133,9 +130,6 @@
 				var resultDiv = document.getElementById('result2');
 				resultDiv.innerHTML = message2;
 
-				// 				var message3 = markers[0].content;
-				// 				var resultDiv = document.getElementById('result3');
-				// 				resultDiv.innerHTML = message3;
 
 			}
 		});
@@ -146,28 +140,16 @@
 			console.log(marker);
 			
 			kakao.maps.event.addListener(marker, 'click', function() {
-				// 留�而� ���� �명�ъ�����곕�� �����⑸����
-// 				infowindow.open(map, marker);
 				console.log(marker);
 			});
 
-			// 				var posi = marker[0].getPosition();
-			// 				console.log('��移�' + posi);
-			// 				var tet=clusterer.getTexts();
-			// // 				var text = cluster.getTexts();
-			// 				console.log('a'+tet);
-			// 		       console.log(cluster.getMarkers())
 		});
 
-		///////////////////////////////吏��� ��踰� 異��� api
-		// 吏��� ���� 異���瑜� ���댄�� �� ����  以� 而⑦�몃·�� ���깊�⑸����
 		var zoomControl = new kakao.maps.ZoomControl();
 		map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
-		// 吏���媛� ���� ���� 異�����硫� 留�吏�留� ���쇰�명�곕� ���댁�� �⑥��瑜� �몄�����濡� �대깽�몃�� �깅��⑸����
 		kakao.maps.event.addListener(map, 'zoom_changed', function() {
 
-			// 吏����� ���� ��踰⑥�� �살�댁�듬����
 			var level = map.getLevel();
 
 			if (level > 5) {
@@ -182,9 +164,6 @@
 
 		});
 
-		///////////
-
-		////
 	</script>
 </body>
 </html>

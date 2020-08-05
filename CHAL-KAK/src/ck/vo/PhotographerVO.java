@@ -2,12 +2,16 @@ package ck.vo;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 public class PhotographerVO {
 	private int photog_seq;
 	private String p_id;
 	private String p_password;
 	private String p_name;
 	private String p_gender;
+	@DateTimeFormat(iso = ISO.DATE)
 	private Date p_bday;
 	private String p_ka_id;
 	private int camera_seq;
@@ -17,7 +21,6 @@ public class PhotographerVO {
 
 	public PhotographerVO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getPhotog_seq() {

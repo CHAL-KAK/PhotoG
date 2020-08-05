@@ -27,15 +27,17 @@
 				<td><%=board.getStart_time()%></td>
 				<td><%=board.getEnd_time()%></td>
 				<td>
-					<a href="?pid=<%=%>"> profile </a>&emsp;
-					<a href="?pid=<%=%>"> reservation </a>
+					<a href="profile.jsp?pid=<%=board.getP_id()%>"> profile </a>&emsp;
+					<a href="reserv.jsp?pid=<%=board.getP_id()%>"> reservation </a>
 				</td>
 			</tr>
 			
 		<%
 			}
+		out.print(path);
 		%>
-		<form action="<%=path%>/noticeboard/writing.jsp">
+		
+		<form action="<%=path%>/view/noticeboard/writing.jsp">
 			<input type="submit" value="make a list">
 			<input type="button" value="back" onclick="location.href='<%=path%>'">
 		</form>
