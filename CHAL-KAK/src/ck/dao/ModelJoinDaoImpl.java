@@ -1,10 +1,12 @@
 package ck.dao;
 
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
+import org.springframework.stereotype.Repository;
 
 import ck.vo.ModelVO;
 
 
+@Repository
 public class ModelJoinDaoImpl extends JdbcDaoSupport implements ModelJoinDao {
 	@Override
 	public void insertModel(ModelVO vo) {
