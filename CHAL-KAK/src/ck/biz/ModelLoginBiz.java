@@ -3,14 +3,14 @@ package ck.biz;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ck.dao.LoginDao;
+import ck.dao.ModelLoginDao;
 import ck.vo.ModelVO;
 
-@Service(value = "loginBiz")
-public class LoginBiz {
+@Service(value = "modelLoginBiz")
+public class ModelLoginBiz {
 	
 	@Autowired
-	private  LoginDao loginDao;
+	private  ModelLoginDao loginDao;
 	
 
 	public ModelVO searchModel(ModelVO vo) {

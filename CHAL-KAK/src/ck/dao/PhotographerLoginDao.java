@@ -6,20 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import ck.vo.ModelVO;
+import ck.vo.PhotographerVO;
 
 
-@Repository(value = "loginDao")
-public class LoginDao {
+@Repository(value = "photographerLoginDao")
+public class PhotographerLoginDao {
 	
 	@Autowired
 	private SqlSessionFactory sqlSessionFactory;
 	
-	public ModelVO searchModel(ModelVO vo) {
+	public PhotographerVO searchPhotographer(PhotographerVO vo) {
 		SqlSession session = sqlSessionFactory.openSession();
-		ModelVO res = null;
+		PhotographerVO res = null;
 
 		try {
-			res = session.selectOne("ck.mapper.LoginMapper.searchModel",vo);
+			res = session.selectOne("ck.mapper.PhotographerLoginMapper.searchPhotographer",vo);
 		} catch (Exception e) {
 			e.printStackTrace();
 
