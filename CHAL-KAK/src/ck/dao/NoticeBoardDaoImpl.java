@@ -22,7 +22,12 @@ public class NoticeBoardDaoImpl implements NoticeBoardDao {
 	@Autowired
 	private SimpleJdbcCall simpleJdbcCall;
 	
+	public SimpleJdbcCall createSimpleJdbcCall() {
+		return new SimpleJdbcCall(this.jdbcTemplate);
+	}
+	
 	public List<NoticeBoardVO> boardAll(){
+		simpleJdbcCall = createSimpleJdbcCall();
 		simpleJdbcCall
 		.withProcedureName("BOARD_ALL")
 		.returningResultSet("NoticeBoardVO", new RowMapper<NoticeBoardVO>() {

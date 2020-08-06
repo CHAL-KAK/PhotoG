@@ -17,7 +17,7 @@ import ck.vo.NoticeBoardVO;
 
 @Repository
 public class MypageJDBC {
-//application 에 등록한 beans 호출
+//application �뿉 �벑濡앺븳 beans �샇異�
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
@@ -25,7 +25,12 @@ public class MypageJDBC {
 	@Autowired
 	private SimpleJdbcCall simpleJdbcCall;
 
+	public SimpleJdbcCall createSimpleJdbcCall() {
+		return new SimpleJdbcCall(this.jdbcTemplate);
+	}
+	
 	public List<NoticeBoardVO> Photo_Mypage(String id) {
+		simpleJdbcCall = createSimpleJdbcCall();
 		simpleJdbcCall.withProcedureName("P_MYPAGE");
 		SqlParameterSource in = new MapSqlParameterSource().addValue("PID", id);
 		Map<String, Object> list = simpleJdbcCall.execute(in);
