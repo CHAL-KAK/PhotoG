@@ -118,4 +118,15 @@ public class PhotographerVO {
 		this.url = url;
 	}
 
+	@Override
+	public String toString() {
+		return "PhotographerVO [photog_seq=" + photog_seq + ", p_id=" + p_id + ", p_password=" + p_password
+				+ ", p_name=" + p_name + ", p_gender=" + p_gender + ", p_bday=" + p_bday + ", p_ka_id=" + p_ka_id
+				+ ", camera_seq=" + camera_seq + ", concept=" + concept + ", career=" + career + ", url=" + url + "]";
+	}
+	
+	
+	
+	
+
 }

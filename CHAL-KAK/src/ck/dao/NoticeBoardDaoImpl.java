@@ -22,7 +22,12 @@ public class NoticeBoardDaoImpl implements NoticeBoardDao {
 	@Autowired
 	private SimpleJdbcCall simpleJdbcCall;
 	
+	public SimpleJdbcCall createSimpleJdbcCall() {
+		return new SimpleJdbcCall(this.jdbcTemplate);
+	}
+
 	public List<NoticeBoardVO> boardAll(){
+		simpleJdbcCall = createSimpleJdbcCall();
 		simpleJdbcCall
 		.withProcedureName("BOARD_ALL")
 		.returningResultSet("NoticeBoardVO", new RowMapper<NoticeBoardVO>() {
@@ -32,8 +37,9 @@ public class NoticeBoardDaoImpl implements NoticeBoardDao {
 				vo.setPlace(rs.getString("PLACE"));
 				vo.setConcept(rs.getInt("CONCEPT"));
 				vo.setMax(rs.getInt("MAX"));
-				vo.setStart_time(rs.getDate("START_TIME"));
-				vo.setEnd_time(rs.getDate("END_TIME"));
+				vo.setStart_time(rs.getString("START_TIME"));
+				vo.setEnd_time(rs.getString("END_TIME"));
+				vo.setDay(rs.getDate("DAY"));
 				return vo;
 			}
 		});

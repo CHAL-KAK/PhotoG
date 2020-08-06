@@ -68,7 +68,7 @@
 	<div>
 
 		<c:choose>
-		<c:when test="${empty login_user.id}">
+		<c:when test="${empty sessionScope.login_user.id}">
 			<a href="/CHAL-KAK/join/model_join.jsp">모델회원가입</a> <a
 			href="/CHAL-KAK/join/photographer_join.jsp">사진사회원가입</a> <a
 			href="/CHAL-KAK/model_login.jsp">모델로그인</a> <a
@@ -78,7 +78,7 @@
 			href="/CHAL-KAK/noticeboard/notice_board.jsp">게시판</a>
 			</c:when>
 		<c:otherwise>
-		${login_user.id}님 로그인되셨습니다.<br>
+		${sessionScope.login_user.id}님 로그인되셨습니다.<br>
 		<a href='/CHAL-KAK/logout.jsp'>로그아웃</a>
 		<a href="/CHAL-KAK/photo_mypage.ck">사진사 마이페이지</a>
 		<a href="/CHAL-KAK/noticeboard/notice_board.jsp">게시판</a>

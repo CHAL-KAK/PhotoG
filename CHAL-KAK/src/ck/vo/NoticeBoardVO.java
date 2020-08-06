@@ -2,20 +2,20 @@ package ck.vo;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 public class NoticeBoardVO {
 	private int brd_seq;
 	private String p_id;
-	private Date start_time;
-	private Date end_time;
+	@DateTimeFormat(iso = ISO.DATE)
+	private Date day;
+	private String start_time;
+	private String end_time;
 	private String place;
 	private int concept;
 	private int max;
 	private int progress;
-
-	public NoticeBoardVO() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
 	public int getBrd_seq() {
 		return brd_seq;
@@ -33,19 +33,27 @@ public class NoticeBoardVO {
 		this.p_id = p_id;
 	}
 
-	public Date getStart_time() {
+	public Date getDay() {
+		return day;
+	}
+
+	public void setDay(Date day) {
+		this.day = day;
+	}
+
+	public String getStart_time() {
 		return start_time;
 	}
 
-	public void setStart_time(Date start_time) {
+	public void setStart_time(String start_time) {
 		this.start_time = start_time;
 	}
 
-	public Date getEnd_time() {
+	public String getEnd_time() {
 		return end_time;
 	}
 
-	public void setEnd_time(Date end_time) {
+	public void setEnd_time(String end_time) {
 		this.end_time = end_time;
 	}
 
@@ -79,6 +87,18 @@ public class NoticeBoardVO {
 
 	public void setProgress(int progress) {
 		this.progress = progress;
+	}
+
+	public NoticeBoardVO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "NoticeBoardVO [brd_seq=" + brd_seq + ", p_id=" + p_id + ", day=" + day + ", start_time=" + start_time
+				+ ", end_time=" + end_time + ", place=" + place + ", concept=" + concept + ", max=" + max
+				+ ", progress=" + progress + "]";
 	}
 
 }

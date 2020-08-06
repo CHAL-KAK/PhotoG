@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
+
 import org.springframework.web.servlet.ModelAndView;
 
 import ck.biz.NoticeBoardBiz;
@@ -28,23 +29,24 @@ import ck.vo.SessionType;
 import ck.validate.FileValidator;
 
 @Controller("myController")
+@SessionAttributes("login_user")
 public class MypageController {
+	
 	@Autowired
 	private NoticeBoardBiz biz;
 
 	@Autowired
-	private FileValidator fileValidator; // À¯È¿¼º °Ë»ç
+	private FileValidator fileValidator; // ï¿½È¿ï¿½ï¿½ ï¿½Ë»ï¿½
 
 	@Autowired
 	private PhotoSaveBiz photoSaveBiz;
 
 	@RequestMapping("/photo_mypage.ck")
-	public ModelAndView photmypage(@SessionAttribute("login_user") SessionType loginuser) {
+	public ModelAndView photmypage(@SessionAttribute("login_user") SessionType vo) {
 		List<NoticeBoardVO> list = null;
 		ModelAndView mav = null;
 		try {
-			list = biz.select(loginuser.getId());
-			System.out.println(loginuser.getId());
+			list = biz.select(vo.getId());
 			System.out.println("list" + list);
 			mav = new ModelAndView("/mypage/photo_mypage", "list", list);
 		} catch (Exception e) {
@@ -56,24 +58,24 @@ public class MypageController {
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	public ModelAndView fileUpload(@ModelAttribute("uploadFile") UploadFile uploadFile, BindingResult result)
 			throws IOException, ClassNotFoundException, SQLException {
-		// 1. À¯È¿¼º °Ë»ç
+		// 1. ï¿½È¿ï¿½ï¿½ ï¿½Ë»ï¿½
 		fileValidator.validate(uploadFile, result);
 		if (result.hasErrors()) {
 			return new ModelAndView("redirect:/CHAL-KAK/profile/profile_enroll.jsp");
 		}
 
-		// 2. ¾÷·Îµå VOÀÇ °´Ã¼ Áß MultipartFile·Î getFile()À» ¸®ÅÏ ¹Þ´Â´Ù.
+		// 2. ï¿½ï¿½Îµï¿½ VOï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ MultipartFileï¿½ï¿½ getFile()ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ´Â´ï¿½.
 		MultipartFile file = uploadFile.getFile();
 
-		// 3. ¸®ÅÏ ¹ÞÀº MultipartFileÀÇ °´Ã¼ÀÇ ¿øº» ÆÄÀÏ ÀÌ¸§À» ¸®ÅÏ ¹Þ´Â´Ù.
+		// 3. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ MultipartFileï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ´Â´ï¿½.
 		String filename = file.getOriginalFilename();
 
-		// 4. uploadFile.jsp ¿¡¼­ »ç¿ëÇÒ °´Ã¼¸¦ »ý¼ºÇÑ ÈÄ VO¿¡ ÀÔ·ÂÇÑ´Ù.
+		// 4. uploadFile.jsp ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ VOï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ñ´ï¿½.
 		UploadFile fileobj = new UploadFile();
 		fileobj.setFilename(filename);
 		fileobj.setDesc(uploadFile.getDesc());
 
-		// 5. ÀúÀåÀå¼Ò¸¦ ÁöÁ¤ÇÏ°í FileÀÇ °´Ã¼¸¦ ÅëÇØ ÀÐ¾î¼­ ÀúÀåÇÑ´Ù.
+		// 5. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¸ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ Fileï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¾î¼­ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 		InputStream inputStream = null;
 		// InputStream inputStream2 = null;
 		OutputStream outputStream = null;
@@ -112,9 +114,9 @@ public class MypageController {
 			//int rownum = stmt.executeUpdate();
 
 			if (res > 0) {
-				System.out.println("»ðÀÔ¼º°ø");
+				System.out.println("ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½");
 			} else {
-				System.out.println("½ÇÆÐ");
+				System.out.println("ï¿½ï¿½ï¿½ï¿½");
 			}
 
 		} catch (IOException e) {
@@ -122,7 +124,7 @@ public class MypageController {
 		} finally {
 			outputStream.close();
 			inputStream.close();
-			// »ç¿ëÇÑ °´Ã¼ close
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ close
 			try {
 				//if (con != null)
 				//	con.close();

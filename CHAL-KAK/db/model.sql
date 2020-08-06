@@ -1,21 +1,5 @@
-select * from model;
-insert into model values (model_seq.nextval,'a','1','jihye','F',to_date('1995-08-15', 'yyyy-MM-dd'), 'kko');
 
 
+insert into notice_board(BRD_SEQ,P_ID,START_TIME,END_TIME,PLACE,CONCEPT,MAX,progress,day) values(brd_seq.nextval,'a','1:00','2:00','g',1,5,0,sysdate);
 
-
-
-create or replace procedure VOALL(VO_RES OUT SYS_REFCURSOR)
-AS
-BEGIN
-	OPEN VO_RES for
-	SELECT id, password, name FROM tb_customer;
-END;
-/
-
------------------
-var res refcursor;
-1.exec VOALL(VO_RES값을 리턴받을 변수를 대입)
-exec voall(:res)
-2.print VO_RES값을 리턴받을 변수
-print res
+insert into 

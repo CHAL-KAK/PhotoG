@@ -19,13 +19,15 @@
 			<td>${b.max}                <td>
 			<td>${b.start_time}         <td>
 			<td>${b.end_time}           <td>
+			<td>${b.day}				<td>
+			
 			<td>
 				<a href="profile.jsp?pid=${b.p_id}"> profile </a>&emsp;
 				<a href="reserv.jsp?pid=${b.p_id}"> reservation </a>
 			</td>
 		</tr>	
 		</c:forEach>		
-		<form action="<%=path%>/view/noticeboard/writing.jsp">
+		<form action="<%=path%>/notice_form.jsp">
 			<input type="submit" value="make a list">
 			<input type="button" value="back" onclick="location.href='<%=path%>'">
 		</form>
