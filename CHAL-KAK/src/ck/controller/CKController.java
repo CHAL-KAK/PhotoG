@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import ck.biz.ModelJoinBiz;
 import ck.biz.NoticeBoardBiz;
+import ck.biz.NoticeFormBiz;
 import ck.biz.PhotographerJoinBiz;
 import ck.vo.ModelVO;
+import ck.vo.NoticeBoardVO;
 import ck.vo.PhotographerVO;
 
-@Controller("cKController")
+@Controller
 public class CKController{
 
 		@Autowired
@@ -24,6 +26,9 @@ public class CKController{
 		
 		@Autowired
 		NoticeBoardBiz noticeboardbiz;
+		
+		@Autowired
+		NoticeFormBiz noticeformbiz;
 		
 		@RequestMapping(method = RequestMethod.POST, value="/modeljoin.ck")
 		public String insertModel(@ModelAttribute ModelVO vo) {
@@ -41,6 +46,19 @@ public class CKController{
 		public String Board_All(Model model) {
 			model.addAttribute("all", noticeboardbiz.boardAll());
 			return "noticeboard/Board_all";
+		}
+		
+	
+		
+		
+		
+		@RequestMapping(method = RequestMethod.POST, value= "/noticeForm.ck")
+		public String InsertNoticeForm(NoticeBoardVO vo) {
+			System.out.println("InsertNoticeForm");
+			noticeformbiz.insertNoticeForm(vo);
+			System.out.println(vo);
+			return "redirect:/noticeboard.ck";
+			
 		}
 		
 	

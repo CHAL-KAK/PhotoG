@@ -26,8 +26,10 @@ public class NoticeBoardDaoImpl extends JdbcDaoSupport implements NoticeBoardDao
 			vo.setPlace(rs.getString("PLACE"));
 			vo.setConcept(rs.getInt("CONCEPT"));
 			vo.setMax(rs.getInt("MAX"));
-			vo.setStart_time(rs.getDate("START_TIME"));
-			vo.setEnd_time(rs.getDate("END_TIME"));
+			vo.setDay(rs.getDate("DAY"));
+			vo.setStart_time(rs.getString("START_TIME"));
+			vo.setEnd_time(rs.getString("END_TIME"));
+			vo.setProgress(rs.getInt("PROGRESS"));
 			return vo;
 		}
 		
