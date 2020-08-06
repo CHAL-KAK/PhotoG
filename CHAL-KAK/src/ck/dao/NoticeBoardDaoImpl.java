@@ -25,7 +25,7 @@ public class NoticeBoardDaoImpl implements NoticeBoardDao {
 	public SimpleJdbcCall createSimpleJdbcCall() {
 		return new SimpleJdbcCall(this.jdbcTemplate);
 	}
-	
+
 	public List<NoticeBoardVO> boardAll(){
 		simpleJdbcCall = createSimpleJdbcCall();
 		simpleJdbcCall

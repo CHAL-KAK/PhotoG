@@ -12,12 +12,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ck.biz.ModelJoinBiz;
 import ck.biz.NoticeBoardBiz;
+import ck.biz.NoticeFormBiz;
 import ck.biz.PhotographerJoinBiz;
 import ck.vo.ModelVO;
 import ck.vo.NoticeBoardVO;
 import ck.vo.PhotographerVO;
 
-@Controller("cKController")
+@Controller
 public class CKController{
 
 		@Autowired
@@ -29,14 +30,19 @@ public class CKController{
 		@Autowired
 		NoticeBoardBiz noticeboardbiz;
 		
+
+		@Autowired
+		NoticeFormBiz noticeformbiz;
+		
+
 		// Join Model
 		@RequestMapping(method = RequestMethod.POST, value="/modeljoin.ck")
 		public String insertModel(@ModelAttribute ModelVO vo) {
 			int res = modeljoinbiz.insertModel(vo);
 			System.out.println(res);
-			if (res == 0) { // Ω«∆–
+			if (res == 0) { // ¬Ω√á√Ü√ê
 				return "/join/model_join_fail";
-			} else {		// º∫∞¯		
+			} else {		// ¬º¬∫¬∞√∏		
 				return "/join/model_join_success";
 			}
 		}
@@ -46,9 +52,9 @@ public class CKController{
 		public String insertPhotographer(@ModelAttribute PhotographerVO vo) {
 			int res = photographerjoinbiz.insertPhotographer(vo);
 			System.out.println(res);
-			if (res == 0) { // Ω«∆–
+			if (res == 0) { // ¬Ω√á√Ü√ê
 				return "/join/photographer_join_fail";
-			} else {		// º∫∞¯		
+			} else {		// ¬º¬∫¬∞√∏		
 				return "/join/photographer_join_success";
 			}
 		}
@@ -66,6 +72,19 @@ public class CKController{
 			List<NoticeBoardVO> all = noticeboardbiz.boardAll();
 			mav.addObject("all", all);
 			return mav;
+		}
+		
+	
+		
+		
+		
+		@RequestMapping(method = RequestMethod.POST, value= "/noticeForm.ck")
+		public String InsertNoticeForm(NoticeBoardVO vo) {
+			System.out.println("InsertNoticeForm");
+			noticeformbiz.insertNoticeForm(vo);
+			System.out.println(vo);
+			return "redirect:/noticeboard.ck";
+			
 		}
 		
 	
