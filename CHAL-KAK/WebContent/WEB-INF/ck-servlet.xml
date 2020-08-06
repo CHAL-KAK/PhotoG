@@ -20,10 +20,10 @@
 		<property name="prefix" value="/WEB-INF/view/" />
 		<property name="suffix" value=".jsp"></property>
 	</bean>
-	
-	
-	
-
-
-
+		
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="5242880" />
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
 </beans>

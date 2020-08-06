@@ -61,6 +61,4 @@ public class CKController{
 			model.addAttribute("all", noticeboardbiz.boardAll());
 			return "noticeboard/board_all";
 		}
-		
-	
 }
