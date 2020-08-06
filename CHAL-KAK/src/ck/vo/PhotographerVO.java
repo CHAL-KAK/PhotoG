@@ -118,12 +118,6 @@ public class PhotographerVO {
 		this.url = url;
 	}
 
-	public PhotographerVO(String p_id, String p_password) {
-		super();
-		this.p_id = p_id;
-		this.p_password = p_password;
-	}
-
 	@Override
 	public String toString() {
 		return "PhotographerVO [photog_seq=" + photog_seq + ", p_id=" + p_id + ", p_password=" + p_password

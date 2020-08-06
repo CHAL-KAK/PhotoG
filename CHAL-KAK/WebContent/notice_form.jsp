@@ -11,7 +11,7 @@
 
 <form action="/CHAL-KAK/noticeForm.ck" method="post" accept-charset="UTF-8">
 	
-	작성자 <input name="p_id" value='<%=session.getAttribute("login_user") %>' readonly="readonly"><br/>
+	작성자 <input name="p_id" value='${sessionScope.login_user.id}' readonly="readonly"><br/>
 	날짜 <input name="day" type="date"><br/>
 	시작 시간 <input name="start_time" type="time" value="12:00" ><br/> 
 	끝 시간 <input name="end_time" type="time" value="12:00"><br/> 
