@@ -5,7 +5,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-
 import java.sql.SQLException;
 import java.util.List;
 
@@ -16,20 +15,20 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
-
 import org.springframework.web.servlet.ModelAndView;
 
 import ck.biz.NoticeBoardBiz;
 import ck.biz.PhotoSaveBiz;
+import ck.validate.FileValidator;
 import ck.validate.UploadFile;
 import ck.vo.NoticeBoardVO;
 import ck.vo.PhotoSaveVO;
 import ck.vo.SessionType;
-import ck.validate.FileValidator;
 
-@Controller("myController")
 @SessionAttributes("login_user")
+@Controller("myPageController")
 public class MypageController {
 	
 	@Autowired
