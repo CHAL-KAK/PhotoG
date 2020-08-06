@@ -6,7 +6,12 @@ public class SessionType {
 
 	public SessionType() {
 		super();
-		// TODO Auto-generated constructor stub
+	}
+
+	public SessionType(String id, String type) {
+		super();
+		this.id = id;
+		this.type = type;
 	}
 
 	public String getId() {
@@ -23,6 +28,11 @@ public class SessionType {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	@Override
+	public String toString() {
+		return "SessionType [id=" + id + ", type=" + type + "]";
 	}
 
 }

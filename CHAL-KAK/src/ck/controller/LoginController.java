@@ -28,15 +28,11 @@ public class LoginController {
 	@Autowired
 	private AdministratorLoginBiz administratorloginBiz;
 
-	
-	private SessionType st = new SessionType();
-
 	@RequestMapping(method = RequestMethod.POST, value = "/modelSearch.ck")
 	public ModelAndView search(@ModelAttribute ModelVO vo) {
 		ModelVO res = modelloginBiz.searchModel(vo);
 		String id = res.getM_id();
-		st.setId(id);
-		st.setType("M");
+		SessionType st = new SessionType(id, "M");
 		ModelAndView mav = new ModelAndView("redirect:/index.jsp", "login_user", st);
 		return mav;
 	}
@@ -44,9 +40,8 @@ public class LoginController {
 	@RequestMapping(method = RequestMethod.POST, value = "/photographerSearch.ck")
 	public ModelAndView search(@ModelAttribute PhotographerVO vo) {
 		PhotographerVO res = photographerloginBiz.searchPhotographer(vo);
-		String id = res.getP_id();
-		st.setId(id);
-		st.setType("P");
+		String id = res.getP_id(); 
+		SessionType st = new SessionType(id, "P");
 		ModelAndView mav = new ModelAndView("redirect:/index.jsp", "login_user", st);
 
 		return mav;
@@ -56,8 +51,7 @@ public class LoginController {
 	public ModelAndView search(@ModelAttribute AdministratorVO vo) {
 		AdministratorVO res = administratorloginBiz.searchAdministrator(vo);
 		String id = res.getId();
-		st.setId(id);
-		st.setType("A");
+		SessionType st = new SessionType(id, "A");
 		ModelAndView mav = new ModelAndView("redirect:/index.jsp", "login_user", st);
 		return mav;
 	}
