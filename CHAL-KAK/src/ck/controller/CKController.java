@@ -1,11 +1,14 @@
 package ck.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import ck.biz.ModelJoinBiz;
 import ck.biz.NoticeBoardBiz;
@@ -27,25 +30,48 @@ public class CKController{
 		@Autowired
 		NoticeBoardBiz noticeboardbiz;
 		
+
 		@Autowired
 		NoticeFormBiz noticeformbiz;
 		
+
+		// Join Model
 		@RequestMapping(method = RequestMethod.POST, value="/modeljoin.ck")
 		public String insertModel(@ModelAttribute ModelVO vo) {
-			modeljoinbiz.insertModel(vo);
-			return "redirect:/index.jsp";
+			int res = modeljoinbiz.insertModel(vo);
+			System.out.println(res);
+			if (res == 0) { // ½ÇÆÐ
+				return "/join/model_join_fail";
+			} else {		// ¼º°ø		
+				return "/join/model_join_success";
+			}
 		}
 		
+		// Join Photographer
 		@RequestMapping(method = RequestMethod.POST, value="/photographerjoin.ck")
 		public String insertPhotographer(@ModelAttribute PhotographerVO vo) {
-			photographerjoinbiz.insertPhotographer(vo);
-			return "redirect:/index.jsp";
+			int res = photographerjoinbiz.insertPhotographer(vo);
+			System.out.println(res);
+			if (res == 0) { // ½ÇÆÐ
+				return "/join/photographer_join_fail";
+			} else {		// ¼º°ø		
+				return "/join/photographer_join_success";
+			}
 		}
 		
+		// Board Access Fail
+		@RequestMapping(value="/board_access_fail.ck")
+		public String Board_Access_Fail() {
+			return "noticeboard/board_access_fail";
+		}
+		
+		// Board All
 		@RequestMapping(value="/noticeboard.ck")
-		public String Board_All(Model model) {
-			model.addAttribute("all", noticeboardbiz.boardAll());
-			return "noticeboard/Board_all";
+		public ModelAndView Board_All() {
+			ModelAndView mav = new ModelAndView("noticeboard/board_all");
+			List<NoticeBoardVO> all = noticeboardbiz.boardAll();
+			mav.addObject("all", all);
+			return mav;
 		}
 		
 	

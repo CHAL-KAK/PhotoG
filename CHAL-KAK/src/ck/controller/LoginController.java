@@ -14,48 +14,46 @@ import ck.biz.PhotographerLoginBiz;
 import ck.vo.AdministratorVO;
 import ck.vo.ModelVO;
 import ck.vo.PhotographerVO;
+import ck.vo.SessionType;
 
-@SessionAttributes(value="login_user")
+@SessionAttributes(value = "login_user")
 @Controller
 public class LoginController {
 	@Autowired
 	private ModelLoginBiz modelloginBiz;
-	
+
 	@Autowired
 	private PhotographerLoginBiz photographerloginBiz;
-	
+
 	@Autowired
 	private AdministratorLoginBiz administratorloginBiz;
-	
+
 	@RequestMapping(method = RequestMethod.POST, value = "/modelSearch.ck")
 	public ModelAndView search(@ModelAttribute ModelVO vo) {
-		System.out.println(vo);
 		ModelVO res = modelloginBiz.searchModel(vo);
 		String id = res.getM_id();
-		System.out.println(res);
-		ModelAndView mav = new ModelAndView("redirect:/index.jsp", "login_user", id);
+		SessionType st = new SessionType(id, "M");
+		ModelAndView mav = new ModelAndView("redirect:/index.jsp", "login_user", st);
 		return mav;
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST, value = "/photographerSearch.ck")
 	public ModelAndView search(@ModelAttribute PhotographerVO vo) {
-		System.out.println(vo);
 		PhotographerVO res = photographerloginBiz.searchPhotographer(vo);
-		String id = res.getP_id();
-		System.out.println(res);
-		ModelAndView mav = new ModelAndView("redirect:/index.jsp", "login_user", id);
+		String id = res.getP_id(); 
+		SessionType st = new SessionType(id, "P");
+		ModelAndView mav = new ModelAndView("redirect:/index.jsp", "login_user", st);
+
 		return mav;
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST, value = "/administratorSearch.ck")
 	public ModelAndView search(@ModelAttribute AdministratorVO vo) {
-		System.out.println(vo);
 		AdministratorVO res = administratorloginBiz.searchAdministrator(vo);
 		String id = res.getId();
-		System.out.println(res);
-		ModelAndView mav = new ModelAndView("redirect:/index.jsp", "login_user", id);
+		SessionType st = new SessionType(id, "A");
+		ModelAndView mav = new ModelAndView("redirect:/index.jsp", "login_user", st);
 		return mav;
 	}
-	
 
 }

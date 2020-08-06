@@ -22,6 +22,13 @@ public class PhotographerVO {
 	public PhotographerVO() {
 		super();
 	}
+	
+
+	public PhotographerVO(String p_id, String p_password) {
+		super();
+		this.p_id = p_id;
+		this.p_password = p_password;
+	}
 
 	public int getPhotog_seq() {
 		return photog_seq;
