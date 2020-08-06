@@ -86,6 +86,4 @@ public class CKController{
 			return "redirect:/noticeboard.ck";
 			
 		}
-		
-	
 }
