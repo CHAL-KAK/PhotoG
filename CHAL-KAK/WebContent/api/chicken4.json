@@ -1,22 +1,52 @@
 [
-   {
-      "content": "<img src = '/CHAL-KAK/img/d.PNG' width = 100px; height =100px>",
-      "lat": 33.450705,
-      "lng": 126.570677
-   },
-   {
-      "content": "<img src = '/CHAL-KAK/img/d.PNG' width = 100px; height =100px>",
-      "lat": 33.450936,
-      "lng": 126.569477
-   },
-   {
-      "content": "<img src = '/CHAL-KAK/img/d.PNG' width = 100px; height =100px>",
-      "lat": 33.450879,
-      "lng": 126.569940
-   },
-   {
-      "content": "<img src = '/CHAL-KAK/img/d.PNG' width = 100px; height =100px>",
-      "lat": 33.451393,
-      "lng": 126.570738
-   }
+	{
+		"content": "<img src = '/CHAL-KAK/img/d.PNG' width = 100px; height =100px>",
+		"lat": 33.450705,
+		"lng": 126.570677
+	},
+	{
+		"content": "<img src = '/CHAL-KAK/img/d.PNG' width = 100px; height =100px>",
+		"lat": 33.450936,
+		"lng": 126.569477
+	},
+	{
+		"content": "<img src = '/CHAL-KAK/img/d.PNG' width = 100px; height =100px>",
+		"lat": 33.450879,
+		"lng": 126.569940
+	},
+	{
+		"content": "<img src = '/CHAL-KAK/img/d.PNG' width = 100px; height =100px>",
+		"lat": 33.451393,
+		"lng": 126.570738
+	},
+	{
+		"content": "<img src = '/CHAL-KAK/img/d.PNG' width = 100px; height =100px>",
+		"lat": 37.27943075229118,
+		"lng": 127.01763998406159
+	},
+	{
+		"content": "<img src = '/CHAL-KAK/img/d.PNG' width = 100px; height =100px>",
+		"lat": 37.55915668706214,
+		"lng": 126.92536526611102
+	},
+	{
+		"content": "<img src = '/CHAL-KAK/img/d.PNG' width = 100px; height =100px>",
+		"lat": 35.13854258261161,
+		"lng": 129.1014781294671
+	},
+	{
+		"content": "<img src = '/CHAL-KAK/img/d.PNG' width = 100px; height =100px>",
+		"lat": 37.55518388656961,
+		"lng": 126.92926237742505
+	},
+	{
+		"content": "<img src = '/CHAL-KAK/img/d.PNG' width = 100px; height =100px>",
+		"lat":35.20618517638034,
+		"lng": 129.07944301057026
+	},
+	{
+		"content": "<img src = '/CHAL-KAK/img/d.PNG' width = 100px; height =100px>",
+		"lat": 37.561110808242056,
+		"lng": 126.9831268386891
+	}
 ]
