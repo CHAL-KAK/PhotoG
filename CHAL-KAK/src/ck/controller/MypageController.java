@@ -35,11 +35,11 @@ public class MypageController {
 	private NoticeBoardBiz biz;
 
 	@Autowired
-	private FileValidator fileValidator; // �ȿ�� �˻�
+	private FileValidator fileValidator;
 
-	@Autowired
-	private PhotoSaveBiz photoSaveBiz;
-
+	/*
+	 * @Autowired private PhotoSaveBiz photoSaveBiz;
+	 */
 	@RequestMapping("/photo_mypage.ck")
 	public ModelAndView photmypage(@SessionAttribute("login_user") SessionType vo) {
 		List<NoticeBoardVO> list = null;
@@ -100,10 +100,9 @@ public class MypageController {
 			PhotoSaveVO ps = new PhotoSaveVO();
 			ps.setLat(37.606212997293056);
 			ps.setLon(126.96724803443617);
-			ps.setPath("");
 			ps.setP_id("");
 						
-			int res = photoSaveBiz.insertPhoto(ps);
+//			int res = photoSaveBiz.insertPhoto(ps);
 
 			/*
 			 * stmt.setString(1, filename); stmt.setBinaryStream(2, inputStream, (int)
@@ -112,11 +111,10 @@ public class MypageController {
 
 			//int rownum = stmt.executeUpdate();
 
-			if (res > 0) {
-				System.out.println("���Լ���");
-			} else {
-				System.out.println("����");
-			}
+			/*
+			 * if (res > 0) { System.out.println("삽입 성공"); } else {
+			 * System.out.println("실패"); }
+			 */
 
 		} catch (IOException e) {
 			e.printStackTrace();
