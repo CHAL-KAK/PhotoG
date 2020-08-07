@@ -17,7 +17,6 @@ import ck.vo.NoticeBoardVO;
 
 @Repository
 public class MypageJDBC {
-//application �뿉 �벑濡앺븳 beans �샇異�
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
@@ -37,4 +36,15 @@ public class MypageJDBC {
 		List<NoticeBoardVO> all = (List<NoticeBoardVO>) list.get("RES");
 		return all;
 	}
+	
+	public List<NoticeBoardVO> Model_Mypage(String id) {
+		simpleJdbcCall = createSimpleJdbcCall();
+		simpleJdbcCall.withProcedureName("M_MYPAGE");
+		System.out.println("Mypage JDBC 호출");
+		SqlParameterSource in = new MapSqlParameterSource().addValue("MID", id);
+		Map<String, Object> list = simpleJdbcCall.execute(in);
+		List<NoticeBoardVO> all = (List<NoticeBoardVO>) list.get("RES");
+		return all;
+	}
+	
 }

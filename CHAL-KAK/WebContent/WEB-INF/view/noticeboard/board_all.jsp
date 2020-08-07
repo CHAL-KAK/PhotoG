@@ -23,7 +23,7 @@
 			
 			<td>
 				<a href="profile.jsp?pid=${b.p_id}"> profile </a>&emsp;
-				<a href="reserv.jsp?pid=${b.p_id}"> reservation </a>
+				<a href="reserv.jsp?pid=${b.p_id}&${b.day}"> reservation </a>
 			</td>
 		</tr>	
 		</c:forEach>		

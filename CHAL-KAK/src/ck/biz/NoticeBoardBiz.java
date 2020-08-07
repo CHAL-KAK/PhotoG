@@ -26,10 +26,13 @@ public class NoticeBoardBiz {
 		return noticeBoardDaoImpl.boardAll();
 	}
 
-	// mypage notice board
-	public List<NoticeBoardVO> select(String id) {
+	//photographer mypage notice board
+	public List<NoticeBoardVO> photo_mypage(String id) {
 		return mypageJDBC.Photo_Mypage(id);
 	}
 
-	//
+	//model mypage reservation 
+	public List<NoticeBoardVO> model_mypage(String id) {
+		return mypageJDBC.Model_Mypage(id);
+	}
 }

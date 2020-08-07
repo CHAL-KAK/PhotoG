@@ -1,19 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
 <body>
-<c:if test="${empty list}">
-	<h3>ì‚¬ì§„ì‚¬ë‹˜ì´ ì‘ì„±í•œ ê²Œì‹œê¸€ì´ ì—†ì–´ìš” ^_^</h3>
-</c:if>
-<c:if test="${!empty list}">
-	<h3>ê²Œì‹œë¬¼ ë¦¬ìŠ¤íŠ¸</h3>
-	<c:forEach items="${list}" var="board">
+	<c:if test="${empty list}">
+		<h3>¸ğµ¨´ÔÀÌ ÀÛ¼ºÇÑ °Ô½Ã±ÛÀÌ ¾ø¾î¿ä ^_^</h3>
+	</c:if>
+	<c:if test="${!empty list}">
+		<h3>¸ğµ¨ ¸¶ÀÌÆäÀÌÁö</h3>
+		<c:forEach items="${list}" var="board">
 		${board.BRD_SEQ}&nbsp;&nbsp;&nbsp;
 		${board.PLACE}&nbsp;&nbsp;&nbsp;
 		${bord.P_ID}&nbsp;&nbsp;&nbsp;
@@ -22,7 +22,8 @@
 		${board.START_TIME}&nbsp;&nbsp;&nbsp;
 		${board.END_TIME}&nbsp;&nbsp;&nbsp;
 		${board.PROGRESS}&nbsp;&nbsp;&nbsp;
-	</c:forEach>
-</c:if>
+		<hr>
+		</c:forEach>
+	</c:if>
 </body>
 </html>

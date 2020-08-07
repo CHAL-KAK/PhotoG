@@ -21,11 +21,11 @@ public class MypageController {
 	private NoticeBoardBiz biz;
 
 	@RequestMapping("/photo_mypage.ck")
-	public ModelAndView photmypage(@SessionAttribute("login_user") SessionType vo) {
+	public ModelAndView photomypage(@SessionAttribute("login_user") SessionType vo) {
 		List<NoticeBoardVO> list = null;
 		ModelAndView mav = null;
 		try {
-			list = biz.select(vo.getId());
+			list = biz.photo_mypage(vo.getId());
 			System.out.println("list" + list);
 			mav = new ModelAndView("/mypage/photo_mypage", "list", list);
 		} catch (Exception e) {
@@ -33,5 +33,17 @@ public class MypageController {
 		}
 		return mav;
 	}
-
+	
+	@RequestMapping("/model_mypage.ck")
+	public ModelAndView modelmypage(@SessionAttribute("login_user") SessionType vo) {
+		List<NoticeBoardVO> list = null;
+		ModelAndView mav = null;
+		try {
+			list = biz.model_mypage(vo.getId());
+			mav = new ModelAndView("/mypage/model_mypage", "list", list);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return mav;
+	}
 }
