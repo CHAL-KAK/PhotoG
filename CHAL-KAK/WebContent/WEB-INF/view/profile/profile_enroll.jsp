@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
@@ -11,30 +11,18 @@
 </head>
 <body>
 	<form:form method="post" enctype="multipart/form-data"
-		modelAttribute="uploadFile" action="upload">
-		<h3>*** ¾÷·ÎµåÇÒ ÆÄÀÏ ¼±ÅÃ ***</h3>
+		modelAttribute="pictureVO" action="pictureUpload">
+		<h3>*** ì—…ë¡œë“œí•  íŒŒì¼ ì„ íƒ ***</h3>
 		<br>
-	ÆÄÀÏ : <form:input type="file" path="file" name="file" />
+	íŒŒì¼ : <form:input type="file" path="file" name="file" />
 		<br>
 		<br>
-		<form:input type="text" path="filename" name="filename" />
-
 		<p style="color: red; font-weight: bold">
 			<form:errors path="file" />
 		</p>
 		<br>
-		
-	¼³¸í : <br>
-		<form:textarea name="desc" path="desc" cols="40" rows="10" />
-		<br>
-		<br>
 
-		<p style="color: red; font-weight: bold">
-			<form:errors path="desc" />
-		</p>
-		<br>
-
-		<input type="submit" value="Àü¼Û">
+		<input type="submit" value="ì „ì†¡">
 	</form:form>
 </body>
 </html>

@@ -8,12 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<c:if test="${empty list}">
-	<h3>사진사님이 작성한 게시글이 없어요 ^_^</h3>
-</c:if>
-<c:if test="${!empty list}">
-	<h3>게시물 리스트</h3>
-	<c:forEach items="${list}" var="board">
+	<c:if test="${empty list}">
+		<h3>사진사님이 작성한 게시글이 없어요 ^_^</h3>
+	</c:if>
+	<c:if test="${!empty list}">
+		<h3>게시물 리스트</h3>
+		<c:forEach items="${list}" var="board">
 		${board.BRD_SEQ}&nbsp;&nbsp;&nbsp;
 		${board.PLACE}&nbsp;&nbsp;&nbsp;
 		${bord.P_ID}&nbsp;&nbsp;&nbsp;
@@ -23,7 +23,13 @@
 		${board.END_TIME}&nbsp;&nbsp;&nbsp;
 		${board.PROGRESS}&nbsp;&nbsp;&nbsp;
 		<hr>
-	</c:forEach>
-</c:if>
+		</c:forEach>
+	</c:if>
+
+	<!-- <a href="/CHAL-KAK/profile/profile_enroll.jsp">등록</a> -->
+
+	<form action="/CHAL-KAK/upload.ck">
+		<input type=submit value="등록">
+	</form>
 </body>
 </html>
