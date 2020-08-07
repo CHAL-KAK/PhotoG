@@ -23,7 +23,6 @@ import ck.biz.NoticeBoardBiz;
 import ck.biz.ProfileBiz;
 import ck.validate.FileValidator;
 import ck.vo.NoticeBoardVO;
-import ck.vo.PictureList;
 import ck.vo.PictureVO;
 import ck.vo.SessionType;
 
@@ -54,8 +53,8 @@ public class MypageController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/upload", method = RequestMethod.GET)
-	public String getPictureList(@ModelAttribute PictureList pictureList) {
+	@RequestMapping(value = "/upload", method = RequestMethod.POST)
+	public String getPictureList(@ModelAttribute PictureVO pictureVO) {
 		return "profile/profile_enroll";
 	}
 	
@@ -138,6 +137,7 @@ public class MypageController {
 
 			}
 		}
+		// 여기경로 고쳐야해요! 
 		return new ModelAndView("redirect:/CHAL-KAK/photo_mypage.ck");
 	} // upload end
 }

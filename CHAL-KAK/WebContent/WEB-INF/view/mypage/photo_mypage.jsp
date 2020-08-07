@@ -28,7 +28,7 @@
 
 	<!-- <a href="/CHAL-KAK/profile/profile_enroll.jsp">등록</a> -->
 
-	<form action="/CHAL-KAK/upload.ck">
+	<form action="/CHAL-KAK/upload.ck" method="POST">
 		<input type=submit value="등록">
 	</form>
 </body>
