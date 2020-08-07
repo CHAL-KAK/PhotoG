@@ -22,8 +22,9 @@ public class NoticeBoardBiz {
 	@Qualifier("mypageJDBC")
 	private MypageJDBC mypageJDBC;
 
-	@Autowired
-	private PhotoSaveDao photoSaveDao;
+	/*
+	 * @Autowired private PhotoSaveDao photoSaveDao;
+	 */
 
 	public List<NoticeBoardVO> boardAll() {
 		return noticeBoardDaoImpl.boardAll();
