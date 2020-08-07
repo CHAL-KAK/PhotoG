@@ -100,7 +100,6 @@ public class MypageController {
 			PhotoSaveVO ps = new PhotoSaveVO();
 			ps.setLat(37.606212997293056);
 			ps.setLon(126.96724803443617);
-			ps.setPath("");
 			ps.setP_id("");
 						
 //			int res = photoSaveBiz.insertPhoto(ps);
