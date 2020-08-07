@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import ck.dao.MypageJDBC;
 import ck.dao.NoticeBoardDaoImpl;
-import ck.dao.PhotoSaveDao;
 import ck.vo.NoticeBoardVO;
 
 @Service
