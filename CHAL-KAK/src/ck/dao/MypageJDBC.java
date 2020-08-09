@@ -37,4 +37,13 @@ public class MypageJDBC {
 		List<NoticeBoardVO> all = (List<NoticeBoardVO>) list.get("RES");
 		return all;
 	}
+	
+	public List<NoticeBoardVO> Model_Mypage(String id) {
+		simpleJdbcCall = createSimpleJdbcCall();
+		simpleJdbcCall.withProcedureName("M_MYPAGE");
+		SqlParameterSource in = new MapSqlParameterSource().addValue("MID", id);
+		Map<String, Object> list = simpleJdbcCall.execute(in);
+		List<NoticeBoardVO> all = (List<NoticeBoardVO>) list.get("RES");
+		return all;
+	}
 }

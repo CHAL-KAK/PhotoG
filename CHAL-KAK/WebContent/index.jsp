@@ -81,6 +81,7 @@
 		${sessionScope.login_user.type} : ${sessionScope.login_user.id}님 로그인되셨습니다.<br>
 		<a href='/CHAL-KAK/logout.jsp'>로그아웃</a>
 		<a href="/CHAL-KAK/photo_mypage.ck">사진사 마이페이지</a>
+		<a href="/CHAL-KAK/model_mypage.ck">모델 마이페이지</a>
 		<a href="/CHAL-KAK/noticeboard/notice_board.jsp">게시판</a>
 		</c:otherwise>
 		</c:choose>

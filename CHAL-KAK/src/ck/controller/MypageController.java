@@ -40,13 +40,27 @@ public class MypageController {
 	private FileValidator fileValidator;
 
 	@RequestMapping("/photo_mypage.ck")
-	public ModelAndView photmypage(@SessionAttribute("login_user") SessionType vo) {
+	public ModelAndView photomypage(@SessionAttribute("login_user") SessionType vo) {
 		List<NoticeBoardVO> list = null;
 		ModelAndView mav = null;
 		try {
-			list = noticeBoardBiz.select(vo.getId());
-			System.out.println("list" + list);
+			list = noticeBoardBiz.photo_mypage(vo.getId());
+			System.out.println("photo_mypage" + list);
 			mav = new ModelAndView("/mypage/photo_mypage", "list", list);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return mav;
+	}
+	
+	@RequestMapping("/model_mypage.ck")
+	public ModelAndView modelmypage(@SessionAttribute("login_user") SessionType vo) {
+		List<NoticeBoardVO> list = null;
+		ModelAndView mav = null;
+		try {
+			list = noticeBoardBiz.model_mypage(vo.getId());
+			System.out.println("model_mypage" + list);
+			mav = new ModelAndView("/mypage/model_mypage", "list", list);
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
