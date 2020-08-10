@@ -14,24 +14,29 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import ck.biz.MypageListBiz;
 import ck.biz.NoticeBoardBiz;
 import ck.biz.ProfileBiz;
 import ck.validate.FileValidator;
 import ck.vo.NoticeBoardVO;
 import ck.vo.PictureVO;
+import ck.vo.ReservationVO;
 import ck.vo.SessionType;
 
-@SessionAttributes("login_user")
 @Controller("myPageController")
 public class MypageController {
 	
+//	@Autowired
+//	private NoticeBoardBiz noticeBoardBiz;
+	
 	@Autowired
-	private NoticeBoardBiz noticeBoardBiz;
+	private MypageListBiz mypagelistBiz;
 	
 	@Autowired
 	private ProfileBiz profileBiz;
@@ -44,7 +49,7 @@ public class MypageController {
 		List<NoticeBoardVO> list = null;
 		ModelAndView mav = null;
 		try {
-			list = noticeBoardBiz.photo_mypage(vo.getId());
+			list = mypagelistBiz.photo_mypage(vo.getId());
 			System.out.println("photo_mypage" + list);
 			mav = new ModelAndView("/mypage/photo_mypage", "list", list);
 		} catch (Exception e) {
@@ -55,10 +60,10 @@ public class MypageController {
 	
 	@RequestMapping("/model_mypage.ck")
 	public ModelAndView modelmypage(@SessionAttribute("login_user") SessionType vo) {
-		List<NoticeBoardVO> list = null;
+		List<ReservationVO> list = null;
 		ModelAndView mav = null;
 		try {
-			list = noticeBoardBiz.model_mypage(vo.getId());
+			list = mypagelistBiz.model_mypage(vo.getId());
 			System.out.println("model_mypage" + list);
 			mav = new ModelAndView("/mypage/model_mypage", "list", list);
 		} catch (Exception e) {
@@ -66,6 +71,23 @@ public class MypageController {
 		}
 		return mav;
 	}
+	
+	//brd_seq to reservation list 
+	/*
+	@RequestMapping(value="/board_reservlist.ck", method = RequestMethod.POST)
+	public ModelAndView ReservList(@RequestParam("bseq") int bseq) {
+		List<NoticeBoardVO> list = null;
+		ModelAndView mav = null;
+		try {
+			list = mypagelistBiz.reserv_list(bseq);
+			System.out.println("model_mypage" + list);
+			mav = new ModelAndView("/mypage/model_mypage", "list", list);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return mav;
+	}
+	*/
 
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	public String getPictureList(@ModelAttribute PictureVO pictureVO) {

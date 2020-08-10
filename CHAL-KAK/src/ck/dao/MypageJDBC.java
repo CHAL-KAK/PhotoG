@@ -14,6 +14,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.stereotype.Repository;
 
 import ck.vo.NoticeBoardVO;
+import ck.vo.ReservationVO;
 
 @Repository
 public class MypageJDBC {
@@ -38,12 +39,12 @@ public class MypageJDBC {
 		return all;
 	}
 	
-	public List<NoticeBoardVO> Model_Mypage(String id) {
+	public List<ReservationVO> Model_Mypage(String id) {
 		simpleJdbcCall = createSimpleJdbcCall();
 		simpleJdbcCall.withProcedureName("M_MYPAGE");
 		SqlParameterSource in = new MapSqlParameterSource().addValue("MID", id);
 		Map<String, Object> list = simpleJdbcCall.execute(in);
-		List<NoticeBoardVO> all = (List<NoticeBoardVO>) list.get("RES");
+		List<ReservationVO> all = (List<ReservationVO>) list.get("RES");
 		return all;
 	}
 }
