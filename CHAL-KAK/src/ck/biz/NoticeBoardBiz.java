@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import ck.dao.MypageJDBC;
 import ck.dao.NoticeBoardDaoImpl;
-import ck.dao.PhotoSaveDao;
 import ck.vo.NoticeBoardVO;
 
 @Service
@@ -31,8 +30,13 @@ public class NoticeBoardBiz {
 	}
 
 	// mypage notice board
-	public List<NoticeBoardVO> select(String id) {
+	public List<NoticeBoardVO> photo_mypage(String id) {
 		return mypageJDBC.Photo_Mypage(id);
+	}
+	
+	//mypage from reservation
+	public List<NoticeBoardVO> model_mypage(String id) {
+		return mypageJDBC.Model_Mypage(id);
 	}
 
 }

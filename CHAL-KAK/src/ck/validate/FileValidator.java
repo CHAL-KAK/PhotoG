@@ -4,31 +4,28 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-// spring¿¡¼­ Á¦°øÇØÁÖ´Â À¯È¿¼º °Ë»ç Å¬·¡½º¸¦ implements
+import ck.vo.PictureVO;
+
 @Service("fileValidator")
 public class FileValidator implements Validator {
 
 	@Override
 	public boolean supports(Class<?> clazz) {
-		// À¯È¿¼º ´ë»ó Å¬·¡½º
 		return false;
 	}
 
 	@Override
-	public void validate(Object uploadFile, Errors errors) {
-		UploadFile file = (UploadFile) uploadFile;
-		System.out.println(file.getDesc() + " 1");
-		System.out.println(file.getFilename() + " 2");
-		System.out.println(file.getFile().getName() + " 3");
+	public void validate(Object pictureVO, Errors errors) {
+		PictureVO file = (PictureVO) pictureVO;
 
 		if (file != null) {
 			if (file.getFile().getSize() == 0) {
-				errors.rejectValue("file", "uploadForm", "¾ß ÆÄÀÏ ³»¿ëÀÌ ¾øÀÝ¾Æ!");
+				errors.rejectValue("file", "profile_enroll", "WRONG!");
 			}
 
-			if (file.getDesc().isEmpty()) {
-				errors.rejectValue("desc", "uploadForm", "¾ß ¼³¸íÀÌ ¾øÀÝ¾Æ!");
-			}
+//			if (file.getDesc().isEmpty()) {
+//				errors.rejectValue("desc", "uploadForm", "ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý¾ï¿½!");
+//			}
 		}
 	}
 }

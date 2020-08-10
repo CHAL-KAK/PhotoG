@@ -12,11 +12,11 @@ import ck.vo.PhotographerVO;
 public class PhotographerLoginBiz {
 	
 	@Autowired
-	private  PhotographerLoginDao loginDao;
+	private  PhotographerLoginDao photographerLoginDao;
 	
 
 	public PhotographerVO searchPhotographer(PhotographerVO vo) {
-		return loginDao.searchPhotographer(vo);
+		return photographerLoginDao.searchPhotographer(vo);
 	}
 
 }
