@@ -7,15 +7,14 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import ck.dao.MypageJDBC;
-import ck.dao.NoticeBoardDaoImpl;
+import ck.dao.NoticeBoardDao;
 import ck.vo.NoticeBoardVO;
 
 @Service
 public class NoticeBoardBiz {
 
 	@Autowired
-	@Qualifier("noticeBoardDaoImpl")
-	private NoticeBoardDaoImpl noticeBoardDaoImpl;
+	private NoticeBoardDao noticeBoardDao;
 
 	@Autowired
 	@Qualifier("mypageJDBC")
@@ -26,7 +25,7 @@ public class NoticeBoardBiz {
 	 */
 
 	public List<NoticeBoardVO> boardAll() {
-		return noticeBoardDaoImpl.boardAll();
+		return noticeBoardDao.boardAll();
 	}
 
 	// mypage notice board

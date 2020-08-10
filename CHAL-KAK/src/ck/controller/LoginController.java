@@ -52,7 +52,7 @@ public class LoginController {
 		AdministratorVO res = administratorloginBiz.searchAdministrator(vo);
 		String id = res.getId();
 		SessionType st = new SessionType(id, "A");
-		ModelAndView mav = new ModelAndView("redirect:/index.jsp", "login_user", st);
+		ModelAndView mav = new ModelAndView("administrator/admin_index", "login_user", st);
 		return mav;
 	}
 
