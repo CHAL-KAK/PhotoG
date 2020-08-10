@@ -46,11 +46,11 @@ public class MypageController {
 	private FileValidator fileValidator;
 
 	@RequestMapping("/photo_mypage.ck")
-	public ModelAndView photomypage(@SessionAttribute("login_user") SessionType vo) {
+	public ModelAndView photomypage(@RequestParam("id") String id) {
 		List<NoticeBoardVO> list = null;
 		ModelAndView mav = null;
 		try {
-			list = mypagelistBiz.photo_mypage(vo.getId());
+			list = mypagelistBiz.photo_mypage(id);
 			System.out.println("photo_mypage" + list);
 			mav = new ModelAndView("/mypage/photo_mypage", "list", list);
 		} catch (Exception e) {
@@ -60,11 +60,11 @@ public class MypageController {
 	}
 
 	@RequestMapping("/model_mypage.ck")
-	public ModelAndView modelmypage(@SessionAttribute("login_user") SessionType vo) {
+	public ModelAndView modelmypage(@RequestParam("id") String id) {
 		List<ReservationVO> list = null;
 		ModelAndView mav = null;
 		try {
-			list = mypagelistBiz.model_mypage(vo.getId());
+			list = mypagelistBiz.model_mypage(id);
 			System.out.println("model_mypage" + list);
 			mav = new ModelAndView("/mypage/model_mypage", "list", list);
 		} catch (Exception e) {
