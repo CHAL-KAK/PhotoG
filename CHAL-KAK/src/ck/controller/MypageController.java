@@ -32,13 +32,13 @@ import ck.vo.SessionType;
 
 @Controller("myPageController")
 public class MypageController {
-	
+
 //	@Autowired
 //	private NoticeBoardBiz noticeBoardBiz;
-	
+
 	@Autowired
 	private MypageListBiz mypagelistBiz;
-	
+
 	@Autowired
 	private ProfileBiz profileBiz;
 
@@ -58,7 +58,7 @@ public class MypageController {
 		}
 		return mav;
 	}
-	
+
 	@RequestMapping("/model_mypage.ck")
 	public ModelAndView modelmypage(@SessionAttribute("login_user") SessionType vo) {
 		List<ReservationVO> list = null;
@@ -72,10 +72,10 @@ public class MypageController {
 		}
 		return mav;
 	}
-	
-	//brd_seq to reservation list 
-	
-	@RequestMapping(value="/board_reservlist.ck", method = RequestMethod.POST)
+
+	// brd_seq to reservation list
+
+	@RequestMapping(value = "/board_reservlist.ck", method = RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView ReservList(@RequestParam("bseq") int bseq) {
 		List<ReservationVO> list = null;
@@ -89,13 +89,28 @@ public class MypageController {
 		}
 		return mav;
 	}
-	
+
+	@RequestMapping(value = "/reserv_matching.ck", method = RequestMethod.POST)
+	public int ReservMapping(@RequestParam("reseq") String rseq) {
+		System.out.println("rseq" + rseq);
+		int res = mypagelistBiz.reserv_update(Integer.parseInt(rseq));
+		int ret = 0;
+		if (res > 0) {
+			System.out.println("성공" + res);
+			return ret = 1;
+		} else {
+			System.out.println("실패");
+			return ret = 0;
+		}
+//		return ret;
+
+	}
 
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	public String getPictureList(@ModelAttribute PictureVO pictureVO) {
 		return "profile/profile_enroll";
 	}
-	
+
 	@RequestMapping(value = "/pictureUpload", method = RequestMethod.POST)
 	public ModelAndView fileUpload(@ModelAttribute("pictureVO") PictureVO pictureVO, BindingResult result)
 			throws IOException, ClassNotFoundException, SQLException {
@@ -129,14 +144,9 @@ public class MypageController {
 				outputStream.write(b, 0, read);
 			}
 
-			
 			// 디비에 저장하는 것
-			// biz 적는 것부터  시작해 그리고 우선 vo에 저장부터해
-			
-			
-			
-			
-			
+			// biz 적는 것부터 시작해 그리고 우선 vo에 저장부터해
+
 			// File f = new File("C:\\webproject\\temp\\WebContent\\img\\aaa.png");
 			// FileInputStream fis = new FileInputStream(f);
 			// inputStream2 = file.getInputStream();
@@ -145,7 +155,7 @@ public class MypageController {
 //			ps.setLat(37.606212997293056);
 //			ps.setLon(126.96724803443617);
 //			ps.setP_id("");
-						
+
 //			int res = photoSaveBiz.insertPhoto(ps);
 
 			/*
@@ -153,7 +163,7 @@ public class MypageController {
 			 * newFile.length());
 			 */
 
-			//int rownum = stmt.executeUpdate();
+			// int rownum = stmt.executeUpdate();
 
 			/*
 			 * if (res > 0) { System.out.println("�궫�엯 �꽦怨�"); } else {
@@ -167,15 +177,15 @@ public class MypageController {
 			inputStream.close();
 			// 占쏙옙占쏙옙占� 占쏙옙체 close
 			try {
-				//if (con != null)
-				//	con.close();
-				//if (stmt != null)
-				//	stmt.close();
+				// if (con != null)
+				// con.close();
+				// if (stmt != null)
+				// stmt.close();
 			} catch (Exception e) {
 
 			}
 		}
-		// 여기경로 고쳐야해요! 
+		// 여기경로 고쳐야해요!
 		return new ModelAndView("redirect:/CHAL-KAK/photo_mypage.ck");
 	} // upload end
 }
