@@ -40,7 +40,7 @@ public class LoginController {
 	@RequestMapping(method = RequestMethod.POST, value = "/photographerSearch.ck")
 	public ModelAndView search(@ModelAttribute PhotographerVO vo) {
 		PhotographerVO res = photographerloginBiz.searchPhotographer(vo);
-		String id = res.getP_id(); 
+		String id = res.getP_id();
 		SessionType st = new SessionType(id, "P");
 		ModelAndView mav = new ModelAndView("redirect:/index.jsp", "login_user", st);
 

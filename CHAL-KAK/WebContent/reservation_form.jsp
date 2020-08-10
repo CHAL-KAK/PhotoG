@@ -27,7 +27,7 @@ str=arr[0];
 //Date day=new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("day"));//넘겨오는 데이터중에 day속성을 가져옴
 %>
 	게시물 번호 <input name="brd_seq" value='<%=seq%>' readonly="readonly"><br/>
-	작성자 <input name="m_id" value='a' readonly="readonly"><br/>
+	작성자 <input name="m_id" value='${sessionScope.login_user.id}' readonly="readonly"><br/>
 	날짜 <input name="day" value='<%=str%>'  readonly="readonly"><br/>
 	시작 시간 <input name="start_time" type="time" value="12:00" ><br/> 
 	끝 시간 <input name="end_time" type="time" value="12:00"><br/> 

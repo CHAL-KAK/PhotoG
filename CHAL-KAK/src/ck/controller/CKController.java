@@ -89,6 +89,7 @@ public class CKController{
 		
 		@RequestMapping(method = RequestMethod.POST, value="/reservationForm.ck")
 		public String insertReservationForm(ReservationVO vo) {
+			System.out.println("예약폼 작성후 ");
 			reservationbiz.insertReservationForm(vo);
 			return "redirect:/noticeboard.ck";
 		}

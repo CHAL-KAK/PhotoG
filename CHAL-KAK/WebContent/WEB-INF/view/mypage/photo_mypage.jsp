@@ -6,6 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+function resList(boardseq){
+	alert(boardseq);
+}
+</script>
 </head>
 <body>
 	<c:if test="${empty list}">
@@ -22,14 +27,10 @@
 		${board.START_TIME}&nbsp;&nbsp;&nbsp;
 		${board.END_TIME}&nbsp;&nbsp;&nbsp;
 		${board.PROGRESS}&nbsp;&nbsp;&nbsp;
+		<input type="button" value="예약리스트" onclick="resList('${board.BRD_SEQ}')">
 		<hr>
 		</c:forEach>
 	</c:if>
 
-	<!-- <a href="/CHAL-KAK/profile/profile_enroll.jsp">등록</a> -->
-
-	<form action="/CHAL-KAK/upload.ck" method="POST">
-		<input type=submit value="등록">
-	</form>
 </body>
 </html>
