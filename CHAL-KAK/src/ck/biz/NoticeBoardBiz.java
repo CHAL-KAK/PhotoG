@@ -16,12 +16,12 @@ public class NoticeBoardBiz {
 	@Autowired
 	private NoticeBoardDao noticeBoardDao;
 
-	/*
-	 * @Autowired private PhotoSaveDao photoSaveDao;
-	 */
-
 	public List<NoticeBoardVO> boardAll() {
 		return noticeBoardDao.boardAll();
+	}
+
+	public List<NoticeBoardVO> boardOne(int seq) {
+		return noticeBoardDao.boardOne(seq);
 	}
 
 
