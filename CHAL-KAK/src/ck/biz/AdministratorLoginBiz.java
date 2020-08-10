@@ -8,15 +8,15 @@ import ck.dao.ModelLoginDao;
 import ck.vo.AdministratorVO;
 import ck.vo.ModelVO;
 
-@Service(value = "administratorLoginBiz")
+@Service
 public class AdministratorLoginBiz {
 	
 	@Autowired
-	private  AdministratorLoginDao loginDao;
+	private  AdministratorLoginDao administratorLoginDao;
 	
 
 	public AdministratorVO searchAdministrator(AdministratorVO vo) {
-		return loginDao.searchAdministrator(vo);
+		return administratorLoginDao.searchAdministrator(vo);
 	}
 
 }
