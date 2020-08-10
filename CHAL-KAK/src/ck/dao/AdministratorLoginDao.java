@@ -9,7 +9,7 @@ import ck.vo.AdministratorVO;
 import ck.vo.ModelVO;
 
 
-@Repository(value = "administratorLoginDao")
+@Repository
 public class AdministratorLoginDao {
 	
 	@Autowired
