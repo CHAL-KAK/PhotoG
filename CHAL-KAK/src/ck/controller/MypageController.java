@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
@@ -73,21 +74,22 @@ public class MypageController {
 	}
 	
 	//brd_seq to reservation list 
-	/*
+	
 	@RequestMapping(value="/board_reservlist.ck", method = RequestMethod.POST)
+	@ResponseBody
 	public ModelAndView ReservList(@RequestParam("bseq") int bseq) {
-		List<NoticeBoardVO> list = null;
+		List<ReservationVO> list = null;
 		ModelAndView mav = null;
 		try {
 			list = mypagelistBiz.reserv_list(bseq);
-			System.out.println("model_mypage" + list);
-			mav = new ModelAndView("/mypage/model_mypage", "list", list);
+			System.out.println("reserv_list" + list);
+			mav = new ModelAndView("/mypage/board_reslist", "list", list);
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
 		return mav;
 	}
-	*/
+	
 
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	public String getPictureList(@ModelAttribute PictureVO pictureVO) {

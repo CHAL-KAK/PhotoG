@@ -26,4 +26,8 @@ public class MypageListBiz {
 		public List<ReservationVO> model_mypage(String id) {
 			return mypageJDBC.Model_Mypage(id);
 		}
+
+		public List<ReservationVO> reserv_list(int bseq) {
+			return mypageJDBC.Reserv_List(bseq);
+		}
 }
