@@ -9,8 +9,8 @@
 <body>
 <form method="post" accept-charset="UTF-8" action="/CHAL-KAK/administratorSearch.ck">
 
-	<input type = "text" name="m_id" placeholder="아이디"><br>
-	<input type = "password" name="m_password" placeholder="비밀번호"><br>
+	<input type = "text" name="id" placeholder="아이디"><br>
+	<input type = "password" name="password" placeholder="비밀번호"><br>
 	<button id="login_process">로그인</button>
 </form>
 </body>
