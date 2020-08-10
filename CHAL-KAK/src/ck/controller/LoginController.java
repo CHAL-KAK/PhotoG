@@ -31,29 +31,43 @@ public class LoginController {
 	@RequestMapping(method = RequestMethod.POST, value = "/modelSearch.ck")
 	public ModelAndView search(@ModelAttribute ModelVO vo) {
 		ModelVO res = modelloginBiz.searchModel(vo);
-		String id = res.getM_id();
-		SessionType st = new SessionType(id, "M");
-		ModelAndView mav = new ModelAndView("redirect:/index.jsp", "login_user", st);
-		return mav;
+		if (res == null) {
+			ModelAndView mav = new ModelAndView("login_ck/model_login_fail");
+			return mav;
+		} else {
+			String id = res.getM_id();
+			SessionType st = new SessionType(id, "M");
+			ModelAndView mav = new ModelAndView("redirect:/index.jsp", "login_user", st);
+			return mav;
+		}
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/photographerSearch.ck")
 	public ModelAndView search(@ModelAttribute PhotographerVO vo) {
 		PhotographerVO res = photographerloginBiz.searchPhotographer(vo);
-		String id = res.getP_id(); 
-		SessionType st = new SessionType(id, "P");
-		ModelAndView mav = new ModelAndView("redirect:/index.jsp", "login_user", st);
-
-		return mav;
+		if (res == null) {
+			ModelAndView mav = new ModelAndView("login_ck/photographer_login_fail");
+			return mav;
+		} else {
+			String id = res.getP_id();
+			SessionType st = new SessionType(id, "P");
+			ModelAndView mav = new ModelAndView("redirect:/index.jsp", "login_user", st);
+			return mav;
+		}
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/administratorSearch.ck")
 	public ModelAndView search(@ModelAttribute AdministratorVO vo) {
 		AdministratorVO res = administratorloginBiz.searchAdministrator(vo);
-		String id = res.getId();
-		SessionType st = new SessionType(id, "A");
-		ModelAndView mav = new ModelAndView("redirect:/index.jsp", "login_user", st);
-		return mav;
+		if (res == null) {
+			ModelAndView mav = new ModelAndView("login_ck/administrator_login_fail");
+			return mav;
+		} else {
+			String id = res.getId();
+			SessionType st = new SessionType(id, "A");
+			ModelAndView mav = new ModelAndView("redirect:/index.jsp", "login_user", st);
+			return mav;
+		}
 	}
 
 }
