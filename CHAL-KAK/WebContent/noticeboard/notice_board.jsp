@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,20 +8,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-	/* String id = (String) session.getAttribute("login_user"); */
-	String path = application.getContextPath();
-%>
-<%
-	/* if(id == null){
-		response.sendRedirect("/CHAL-KAK/board_access_fail.ck");	
-		
-	}
-	else{
-		response.sendRedirect("/CHAL-KAK/noticeboard.ck");
-	} */
+	<%
+		String path = application.getContextPath();
+	%>
 
-response.sendRedirect("/CHAL-KAK/noticeboard.ck");
-%>
+	<c:choose>
+		<c:when test="${empty sessionScope.login_user.id}">
+			<%
+				response.sendRedirect("/CHAL-KAK/board_access_fail.ck");
+			%>
+		</c:when>
+		<c:otherwise>
+			<%
+				response.sendRedirect("/CHAL-KAK/noticeboard.ck");
+			%>
+		</c:otherwise>
+	</c:choose>
 </body>
 </html>

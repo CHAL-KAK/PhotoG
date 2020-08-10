@@ -83,6 +83,13 @@ public class CKController{
 			return mav;
 		}
 		
+		@RequestMapping(value="/board_one.ck")
+		public ModelAndView Board_one(@RequestParam("seq") int seq) {
+			ModelAndView mav = new ModelAndView("noticeboard/board_one");
+			List<NoticeBoardVO> vo = noticeboardbiz.boardOne(seq);
+			mav.addObject("one", vo);
+			return mav;
+		}
 		
 		@RequestMapping(method = RequestMethod.POST, value= "/noticeForm.ck")
 		public String InsertNoticeForm(NoticeBoardVO vo) {

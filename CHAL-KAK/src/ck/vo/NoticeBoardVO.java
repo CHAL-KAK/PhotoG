@@ -16,6 +16,8 @@ public class NoticeBoardVO {
 	private int concept;
 	private int max;
 	private int progress;
+	private String title;
+	private String content;
 
 	public int getBrd_seq() {
 		return brd_seq;
@@ -92,6 +94,22 @@ public class NoticeBoardVO {
 	public NoticeBoardVO() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 	@Override
