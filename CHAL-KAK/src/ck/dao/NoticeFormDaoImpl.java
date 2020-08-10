@@ -15,8 +15,6 @@ public class NoticeFormDaoImpl implements NoticeFormDao {
 	
 	@Override
 	public int insertNoticeForm(NoticeBoardVO vo) {
-		System.out.println(vo.getEnd_time());
-		System.out.println(vo.getDay());
 		return jdbcTemplate.update("insert into notice_board(BRD_SEQ,P_ID,START_TIME,END_TIME,"
 				+ "PLACE,CONCEPT,MAX,PROGRESS,DAY) values(brd_seq.nextval,?,?,?,?,?,?,0,?)",
 				new Object[] {vo.getP_id(),

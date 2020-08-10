@@ -14,9 +14,11 @@ import ck.biz.ModelJoinBiz;
 import ck.biz.NoticeBoardBiz;
 import ck.biz.NoticeFormBiz;
 import ck.biz.PhotographerJoinBiz;
+import ck.biz.ReservationBiz;
 import ck.vo.ModelVO;
 import ck.vo.NoticeBoardVO;
 import ck.vo.PhotographerVO;
+import ck.vo.ReservationVO;
 
 @Controller
 public class CKController{
@@ -33,6 +35,9 @@ public class CKController{
 
 		@Autowired
 		NoticeFormBiz noticeformbiz;
+		
+		@Autowired
+		ReservationBiz reservationbiz;
 		
 
 		// Join Model
@@ -74,16 +79,18 @@ public class CKController{
 			return mav;
 		}
 		
-	
-		
-		
 		
 		@RequestMapping(method = RequestMethod.POST, value= "/noticeForm.ck")
 		public String InsertNoticeForm(NoticeBoardVO vo) {
-			System.out.println("InsertNoticeForm");
 			noticeformbiz.insertNoticeForm(vo);
-			System.out.println(vo);
 			return "redirect:/noticeboard.ck";
 			
 		}
+		
+		@RequestMapping(method = RequestMethod.POST, value="/reservationForm.ck")
+		public String insertReservationForm(ReservationVO vo) {
+			reservationbiz.insertReservationForm(vo);
+			return "redirect:/noticeboard.ck";
+		}
+
 }
