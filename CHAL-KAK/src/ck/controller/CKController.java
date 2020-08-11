@@ -159,7 +159,7 @@ public class CKController{
 		//		String path = "redirect:/photo_mypage.ck";
 				ModelAndView mav = new ModelAndView(path);
 				return mav;
-
+		}
 
 		@ResponseBody
 		@RequestMapping(value = "/id_check.ck", method = RequestMethod.GET)
