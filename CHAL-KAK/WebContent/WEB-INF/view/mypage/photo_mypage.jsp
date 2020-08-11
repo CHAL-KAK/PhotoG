@@ -27,15 +27,20 @@
 	}
 </script>
 <style type="text/css">
-.common {
-	display: inline-block;
-	width: 45%;
-}
+/* .t1 { */
+/*  	display: inline-block; */
+/* 	width: 30%; */
+/* } */
+
+/* .t2 { */
+/* 	display: inline-block; */
+/* 	width: 30%; */
+/* } */
 </style>
 </head>
 <body>
 	<div>
-		<div class="t common">
+		<div class="t1">
 			<c:if test="${empty list}">
 				<h3>사진사님이 작성한 게시글이 없어요 ^_^</h3>
 			</c:if>
@@ -49,14 +54,14 @@
 					${board.MAX}&nbsp;&nbsp;&nbsp;
 					${board.START_TIME}&nbsp;&nbsp;&nbsp;
 					${board.END_TIME}&nbsp;&nbsp;&nbsp;
-					${board.PROGRESS}&nbsp;&nbsp;&nbsp;
+<%-- 					${board.PROGRESS}&nbsp;&nbsp;&nbsp; --%>
 					<input type="button" value="예약리스트"
 							onclick="resList('${board.BRD_SEQ}')" />
 					<hr>
 				</c:forEach>
 			</c:if>
 		</div>
-		<div id="list" class="t2 common"></div>
+		<div id="list" class="t2"></div>
 	</div>
 	<form action="/CHAL-KAK/upload.ck" method="POST">
 		<input type=submit value="등록">

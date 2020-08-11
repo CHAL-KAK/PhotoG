@@ -1,40 +1,21 @@
 package ck.controller;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttribute;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import ck.biz.MypageListBiz;
-import ck.biz.NoticeBoardBiz;
-import ck.biz.ProfileBiz;
-import ck.validate.FileValidator;
 import ck.vo.NoticeBoardVO;
-import ck.vo.PictureVO;
 import ck.vo.ReservationVO;
-import ck.vo.SessionType;
 
 @Controller("myPageController")
 public class MypageController {
-
-//	@Autowired
-//	private NoticeBoardBiz noticeBoardBiz;
 
 	@Autowired
 	private MypageListBiz mypagelistBiz;
@@ -70,7 +51,6 @@ public class MypageController {
 	// brd_seq to reservation list
 
 	@RequestMapping(value = "/board_reservlist.ck", method = RequestMethod.POST)
-	@ResponseBody
 	public ModelAndView ReservList(@RequestParam("bseq") int bseq) {
 		List<ReservationVO> list = null;
 		ModelAndView mav = null;
@@ -84,20 +64,19 @@ public class MypageController {
 		return mav;
 	}
 
+	// update reservation, notice_board progress
+	@ResponseBody
 	@RequestMapping(value = "/reserv_matching.ck", method = RequestMethod.POST)
-	public int ReservMapping(@RequestParam("reseq") String rseq) {
-		System.out.println("rseq" + rseq);
+	public String ReservMapping(@RequestParam("reseq") String rseq) {
 		int res = mypagelistBiz.reserv_update(Integer.parseInt(rseq));
 		int ret = 0;
 		if (res > 0) {
 			System.out.println("성공" + res);
-			return ret = 1;
+			ret = 1;
 		} else {
 			System.out.println("실패");
-			return ret = 0;
+			ret = 0;
 		}
-//		return ret;
-
+		return Integer.toString(ret);
 	}
-
 }
