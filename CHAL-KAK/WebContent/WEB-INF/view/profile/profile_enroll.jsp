@@ -9,13 +9,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body style="margin: 100px 100px 100px 100px">
 	!!!전송버튼 누르면 안된다!!!
 	<form:form method="post" enctype="multipart/form-data"
 		modelAttribute="pictureVO" action="pictureUpload.ck">
 		<h3>*** 업로드할 파일 선택 ***</h3>
 		<br>
-	파일 : <form:input type="file" path="file" name="file" />
+		<input type="text" name="p_id" value="${sessionScope.login_user.id}" readonly="readonly">의 프로필 등록 창입니다.<br>
+		<hr>
+		파일 : <form:input type="file" path="file" name="file" />
 		<br>
 		<br>
 		<p style="color: red; font-weight: bold">

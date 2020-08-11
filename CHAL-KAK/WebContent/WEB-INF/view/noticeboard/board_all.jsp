@@ -13,23 +13,25 @@
 		%>
 		<c:forEach items="${all}" var="b">
 		<tr>
-			<td>${b.p_id}               <td>
-			<td>${b.place}              <td>
-			<td>${b.concept}            <td>
+			<td><a href="/CHAL-KAK/confirmProfile.ck?id=${b.p_id}">${b.p_id} </a>              <td>
+			<td><a href="board_one.ck?seq=${b.brd_seq}">${b.title}</a></td>
 			<td>${b.max}                <td>
+			<td>${b.day}				<td>
 			<td>${b.start_time}         <td>
 			<td>${b.end_time}           <td>
-			<td>${b.day}				<td>
-			
 			<td>
-				<a href="profile.jsp?pid=${b.p_id}"> profile </a>&emsp;
+				<c:if test="${sessionScope.login_user.type eq 'M'}">
 				<a href="reservation_form.jsp?pid=${b.p_id}&day=${b.day}&seq=${b.brd_seq}"> reservation </a>
+				</c:if>
 			</td>
 		</tr>	
-		</c:forEach>		
+		<hr>
+		</c:forEach>
+		<c:if test="${sessionScope.login_user.type eq 'P'}">
 		<form action="<%=path%>/notice_form.jsp">
 			<input type="submit" value="make a list">
-			<input type="button" value="back" onclick="location.href='<%=path%>'">
 		</form>
+		</c:if>
+			<input type="button" value="back" onclick="location.href='<%=path%>'">
 	</body>
 </html>

@@ -11,7 +11,9 @@
 <div style="margin: 100px 100px 100px 100px">
     	<c:forEach items="${all}" var = "l">
     		<tr>
-    			<td>${l.p_id}            </td>
+    			<td>
+    				<a href="photo_mypage.ck?id=${l.p_id}">${l.p_id}</a>
+				</td>
     			<td>${l.start_time}      </td>
     			<td>${l.end_time}        </td>
     			<td>${l.place}           </td>

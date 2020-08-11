@@ -25,7 +25,9 @@
     <div class="model main_common">
     	<c:forEach items="${model}" var = "m">
     		<tr>
-    			<td>${m.m_id}            </td>
+    			<td>
+    				<a href="model_mypage.ck?id=${m.m_id}">${m.m_id}</a>
+				</td>
     			<td>${m.m_password}      </td>
     			<td>${m.m_name}          </td>
     			<td>${m.m_gender}        </td>
@@ -43,7 +45,7 @@
     	<c:forEach items="${photographer}" var = "p">
     		<tr>
     			<td>
-    				<a href="photo_mypage.ck">${p.p_id}</a>
+    				<a href="photo_mypage.ck?id=${p.p_id}">${p.p_id}</a>
     			</td>
     			<td>${p.p_password}      </td>
     			<td>${p.p_name}          </td>

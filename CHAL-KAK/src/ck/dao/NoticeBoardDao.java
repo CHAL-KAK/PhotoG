@@ -6,4 +6,6 @@ import ck.vo.NoticeBoardVO;
 
 public interface NoticeBoardDao {
 	public List<NoticeBoardVO> boardAll();
+	
+	public List<NoticeBoardVO> boardOne(int seq);
 }

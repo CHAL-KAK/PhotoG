@@ -5,10 +5,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import ck.biz.AdministratorLoginBiz;
+import ck.biz.CheckIDBiz;
 import ck.biz.ModelLoginBiz;
 import ck.biz.PhotographerLoginBiz;
 import ck.vo.AdministratorVO;
@@ -27,6 +30,8 @@ public class LoginController {
 
 	@Autowired
 	private AdministratorLoginBiz administratorloginBiz;
+
+	
 
 	@RequestMapping(method = RequestMethod.POST, value = "/modelSearch.ck")
 	public ModelAndView search(@ModelAttribute ModelVO vo) {
@@ -65,9 +70,10 @@ public class LoginController {
 		} else {
 			String id = res.getId();
 			SessionType st = new SessionType(id, "A");
-			ModelAndView mav = new ModelAndView("redirect:/index.jsp", "login_user", st);
+			ModelAndView mav = new ModelAndView("administrator/admin_index", "login_user", st);
 			return mav;
 		}
 	}
 
+	
 }
