@@ -58,5 +58,11 @@
 		</div>
 		<div id="list" class="t2 common"></div>
 	</div>
+	<form action="/CHAL-KAK/upload.ck" method="POST">
+		<input type=submit value="등록">
+	</form>
+	<form action="/CHAL-KAK/confirmProfile.ck?id=${sessionScope.login_user.id}" method="post">
+		<input type=submit value="프로필 확인">
+	</form>
 </body>
 </html>

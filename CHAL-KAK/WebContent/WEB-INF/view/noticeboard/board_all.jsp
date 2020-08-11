@@ -13,7 +13,7 @@
 		%>
 		<c:forEach items="${all}" var="b">
 		<tr>
-			<td>${b.p_id}               <td>
+			<td><a href="/CHAL-KAK/confirmProfile.ck?id=${b.p_id}">${b.p_id} </a>              <td>
 			<td><a href="board_one.ck?seq=${b.brd_seq}">${b.title}</a></td>
 			<td>${b.max}                <td>
 			<td>${b.day}				<td>
