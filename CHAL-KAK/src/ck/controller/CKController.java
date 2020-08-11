@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import ck.biz.AdministratorBiz;
+import ck.biz.CheckIDBiz;
 import ck.biz.ModelJoinBiz;
 import ck.biz.NoticeBoardBiz;
 import ck.biz.NoticeFormBiz;
@@ -43,6 +45,8 @@ public class CKController{
 		@Autowired
 		AdministratorBiz administratorbiz;
 		
+		@Autowired
+		private CheckIDBiz checkIdBiz;
 
 		// Join Model
 		@RequestMapping(method = RequestMethod.POST, value="/modeljoin.ck")
@@ -134,6 +138,21 @@ public class CKController{
 			List<NoticeBoardVO> all = administratorbiz.confirmBoardList();
 			mav.addObject("all", all);
 			return mav;
+		}
+		
+		@ResponseBody
+		@RequestMapping(value = "/id_check.ck", method = RequestMethod.GET)
+		public String IDCheck(@RequestParam("id") String id) {
+			System.out.println("id 가져와"+id);
+			int mret = checkIdBiz.model_idcheck(id);
+			int pret = checkIdBiz.photo_idcheck(id);
+			int ret = 0;
+			System.out.println("여기도와");
+			if (mret == 0 && pret == 0) {
+				ret = 1;
+				System.out.println("ret 인데");
+			}
+			return Integer.toString(ret);
 		}
 
 }
