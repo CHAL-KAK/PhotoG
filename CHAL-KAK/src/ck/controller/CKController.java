@@ -15,6 +15,7 @@ import ck.biz.ModelJoinBiz;
 import ck.biz.NoticeBoardBiz;
 import ck.biz.NoticeFormBiz;
 import ck.biz.PhotographerJoinBiz;
+import ck.biz.PhotographerModifyBiz;
 import ck.biz.ReservationBiz;
 import ck.vo.ModelVO;
 import ck.vo.NoticeBoardVO;
@@ -32,7 +33,6 @@ public class CKController{
 		
 		@Autowired
 		NoticeBoardBiz noticeboardbiz;
-		
 
 		@Autowired
 		NoticeFormBiz noticeformbiz;
@@ -42,6 +42,9 @@ public class CKController{
 		
 		@Autowired
 		AdministratorBiz administratorbiz;
+		
+		@Autowired
+		PhotographerModifyBiz photographermodifybiz;
 		
 
 		// Join Model
@@ -93,7 +96,6 @@ public class CKController{
 		
 		@RequestMapping(method = RequestMethod.POST, value="/reservationForm.ck")
 		public String insertReservationForm(ReservationVO vo) {
-			System.out.println("예약폼 작성후 ");
 			reservationbiz.insertReservationForm(vo);
 			return "redirect:/noticeboard.ck";
 		}
@@ -127,6 +129,24 @@ public class CKController{
 			List<NoticeBoardVO> all = administratorbiz.confirmBoardList();
 			mav.addObject("all", all);
 			return mav;
+		}
+		
+		@RequestMapping(value = "/modifyform.ck")
+		public ModelAndView selectPhotographer(@RequestParam("id") String id) {
+			ModelAndView mav = new ModelAndView("modifyform/modify_form");
+			List<PhotographerVO> one = photographermodifybiz.selectPhotographer(id);
+			mav.addObject("one", one);
+			return mav;
+		}
+		
+		@RequestMapping(value="/modifyupdate.ck")
+		public ModelAndView updatePhotographer(@ModelAttribute PhotographerVO vo) {
+			int res = photographermodifybiz.updatePhotographer(vo);
+//				String path = "redirect:/photo_mypage.ck?id=" + vo.getP_id();
+				String path = "redirect:/photo_mypage.ck";
+				ModelAndView mav = new ModelAndView(path);
+				return mav;
+
 		}
 
 }

@@ -95,10 +95,10 @@
 			name="starttime" type="time"><br /> 끝 시간 <input
 			name="endtime" type="time"><br /> 인원 <input name="count"
 			type="text"><br /> 컨셉 <select name="concept">
-			<option value="1">독사진</option>
-			<option value="2">우정사진</option>
-			<option value="3">커플사진</option>
-			<option value="4">가족사진</option>
+			<option value="0">독사진</option>
+			<option value="1">우정사진</option>
+			<option value="2">커플사진</option>
+			<option value="3">가족사진</option>
 		</select><br /> <input type="button" value="검색"> <input type="reset"
 			value="취소"><br />
 	</div>
