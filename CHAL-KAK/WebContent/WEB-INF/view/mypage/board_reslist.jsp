@@ -9,24 +9,24 @@
 <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 <script type="text/javascript">
 	function matching(ret) {
-		var rseq = ret.split(",")[0];
-		var bseq = ret.split(",")[1];
-		alert(rseq);
-		alert(bseq);
+		var rseq = ret;
 		$.ajax({
 			url : "reserv_matching.ck",
 			type : "POST",
 			data : {
 				reseq : rseq
 			},
-			success : function(data) {
-				if (data == "1") {
-// 					$("#result").html("성공");
-				} else if (data == "0") {
-// 					$("#result").html("실패");
+			success : function(res) {
+				console.log(res);
+				if (res == 1) {
+					$("#result" + rseq).html("예약완료");
+					$('#butt').hide();
+				} else if (res == 0) {
+					$("#result").html("실패");
 				}
 			},
-			error : function() {
+			error : function(a) {
+				console.log(a);
 
 			},
 			dataType : "text"
@@ -50,14 +50,15 @@
 		${reser.PEOPLE_NUM}&nbsp;&nbsp;&nbsp;
 		${reser.DAY}&nbsp;&nbsp;&nbsp;
 		${reser.START_TIME}&nbsp;&nbsp;&nbsp;
-		${reser.END_TIME}&nbsp;&nbsp;&nbsp;
-		${reser.PROGRESS}&nbsp;&nbsp;&nbsp;
-		<input type="button" value="수락"
-					onclick="matching('${reser.REV_SEQ},${reser.BRD_SEQ}')">
+		${reser.END_TIME}&nbsp;&nbsp;
+		<div id="result${reser.REV_SEQ}">${reser.PROGRESS}&nbsp;&nbsp;&nbsp;</div>
+				<input type="button" value="수락" id="butt"
+					onclick="matching('${reser.REV_SEQ}')" />
 				<br />
 			</c:forEach>
 		</c:if>
-		<div id="result"></div>
+
 	</div>
+
 </body>
 </html>

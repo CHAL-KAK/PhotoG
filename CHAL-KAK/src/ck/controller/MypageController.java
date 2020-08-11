@@ -33,17 +33,8 @@ import ck.vo.SessionType;
 @Controller("myPageController")
 public class MypageController {
 
-//	@Autowired
-//	private NoticeBoardBiz noticeBoardBiz;
-
 	@Autowired
 	private MypageListBiz mypagelistBiz;
-
-	@Autowired
-	private ProfileBiz profileBiz;
-
-	@Autowired
-	private FileValidator fileValidator;
 
 	@RequestMapping("/photo_mypage.ck")
 	public ModelAndView photomypage(@RequestParam("id") String id) {
@@ -76,7 +67,6 @@ public class MypageController {
 	// brd_seq to reservation list
 
 	@RequestMapping(value = "/board_reservlist.ck", method = RequestMethod.POST)
-	@ResponseBody
 	public ModelAndView ReservList(@RequestParam("bseq") int bseq) {
 		List<ReservationVO> list = null;
 		ModelAndView mav = null;
@@ -90,17 +80,19 @@ public class MypageController {
 		return mav;
 	}
 
+	@ResponseBody
 	@RequestMapping(value = "/reserv_matching.ck", method = RequestMethod.POST)
-	public int ReservMapping(@RequestParam("reseq") String rseq) {
+	public String ReservMapping(@RequestParam("reseq") String rseq) {
 		System.out.println("rseq" + rseq);
 		int res = mypagelistBiz.reserv_update(Integer.parseInt(rseq));
 		int ret = 0;
 		if (res > 0) {
 			System.out.println("성공" + res);
-			return ret = 1;
+			ret = 1;
 		} else {
 			System.out.println("실패");
-			return ret = 0;
+			ret = 0;
 		}
+		return Integer.toString(ret);
 	}
 }
