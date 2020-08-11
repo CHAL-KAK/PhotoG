@@ -20,7 +20,7 @@
 				console.log(res);
 				if (res == 1) {
 					$("#result" + rseq).html("예약완료");
-					$('#butt').hide();
+					$('input[id^=butt]').hide();
 				} else if (res == 0) {
 					$("#result").html("실패");
 				}
