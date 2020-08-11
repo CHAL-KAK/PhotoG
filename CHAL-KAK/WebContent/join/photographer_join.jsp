@@ -30,9 +30,10 @@
 							<option>3</option>
 						</select>
 				Concept :<select name="concept">
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>							
+							<option value="0">독사진</option>
+							<option value="1">우정사진</option>
+							<option value="2">커플사진</option>
+							<option value="3">가족사진</option>						
 						</select>
 				Career : <input type="text" name="career">
 				URL : <input type="text" name="url">

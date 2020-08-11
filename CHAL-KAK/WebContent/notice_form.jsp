@@ -18,10 +18,10 @@
 	끝 시간 <input name="end_time" type="time" value="12:00"><br/> 
 	장소 <input name="place" type="text"><br/>
 	컨셉 <select name="concept">
-			<option value="1">독사진</option>
-			<option value="2">우정사진</option>
-			<option value="3">커플사진</option>
-			<option value="4">가족사진</option>
+			<option value="0">독사진</option>
+			<option value="1">우정사진</option>
+			<option value="2">커플사진</option>
+			<option value="3">가족사진</option>
 		</select><br/> 
 	최대 인원 <input name="max" type="text"><br/> 
 	내용 <textarea rows="5" cols="5" name="content"></textarea>

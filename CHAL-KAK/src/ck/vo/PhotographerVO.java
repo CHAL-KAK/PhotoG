@@ -116,6 +116,24 @@ public class PhotographerVO {
 	public void setUrl(String url) {
 		this.url = url;
 	}
+	
+	
+
+	public PhotographerVO(int photog_seq, String p_id, String p_password, String p_name, String p_gender, Date p_bday,
+			String p_ka_id, int camera_seq, int concept, String career, String url) {
+		super();
+		this.photog_seq = photog_seq;
+		this.p_id = p_id;
+		this.p_password = p_password;
+		this.p_name = p_name;
+		this.p_gender = p_gender;
+		this.p_bday = p_bday;
+		this.p_ka_id = p_ka_id;
+		this.camera_seq = camera_seq;
+		this.concept = concept;
+		this.career = career;
+		this.url = url;
+	}
 
 	@Override
 	public String toString() {
