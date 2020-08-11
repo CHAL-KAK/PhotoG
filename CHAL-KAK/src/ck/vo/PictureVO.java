@@ -7,25 +7,26 @@ import org.springframework.web.multipart.MultipartFile;
 public class PictureVO {
 	private int pic_seq;
 	private String p_id;
-	private String file_path01;
-	private String file_path02;
+	private String file_path;
+	private String file_name;
 	private MultipartFile file;
-
 
 	public PictureVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getPic_seq() {
-		return pic_seq;
+	public PictureVO(int pic_seq, String p_id, String file_path, String file_name, MultipartFile file) {
+		super();
+		this.pic_seq = pic_seq;
+		this.p_id = p_id;
+		this.file_path = file_path;
+		this.file_name = file_name;
+		this.file = file;
 	}
 
-	public PictureVO(String file_path01, String file_path02, MultipartFile file) {
-		super();
-		this.file_path01 = file_path01;
-		this.file_path02 = file_path02;
-		this.file = file;
+	public int getPic_seq() {
+		return pic_seq;
 	}
 
 	public void setPic_seq(int pic_seq) {
@@ -40,19 +41,20 @@ public class PictureVO {
 		this.p_id = p_id;
 	}
 
-	public String getFile_path01() {
-		return file_path01;
+	public String getFile_path() {
+		return file_path;
 	}
 
-	public void setFile_path01(String file_path01) {
-		this.file_path01 = file_path01;
+	public void setFile_path(String file_path) {
+		this.file_path = file_path;
 	}
-	public String getFile_path02() {
-		return file_path02;
+
+	public String getFile_name() {
+		return file_name;
 	}
-	
-	public void setFile_path02(String file_path02) {
-		this.file_path02 = file_path02;
+
+	public void setFile_name(String file_name) {
+		this.file_name = file_name;
 	}
 
 	public MultipartFile getFile() {
@@ -62,4 +64,5 @@ public class PictureVO {
 	public void setFile(MultipartFile file) {
 		this.file = file;
 	}
+
 }
