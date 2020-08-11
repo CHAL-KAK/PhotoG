@@ -4,4 +4,6 @@ import ck.vo.PictureVO;
 
 public interface ProfileDao {
 	public int insertSaveProfile(PictureVO vo);
+
+	public String confirmProfile(String id);
 }

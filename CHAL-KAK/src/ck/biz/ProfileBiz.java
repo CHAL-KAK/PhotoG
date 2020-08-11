@@ -14,4 +14,9 @@ public class ProfileBiz {
 	public int insertSaveProfile(PictureVO vo) {
 		return profileDao.insertSaveProfile(vo);
 	}
+
+	public String confirmProfile(String id) {
+		return profileDao.confirmProfile(id);
+	}
+
 }
