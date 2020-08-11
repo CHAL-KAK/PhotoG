@@ -14,4 +14,11 @@ public class MypageDaoImpl implements MypageDao {
 	public int updateReser(int rseq) {
 		return jdbcTemplate.update("UPDATE RESERVATION set PROGRESS=1 WHERE REV_SEQ=?", rseq);
 	}
+
+	@Override
+	public int findProfile(String id) {
+		int a = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM PICTURE WHERE P_ID = ?", int.class, id);
+		System.out.println("DaoImple : " + a);
+		return a;
+	}
 }
