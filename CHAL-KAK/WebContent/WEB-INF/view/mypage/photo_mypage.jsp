@@ -63,11 +63,15 @@
 		</div>
 		<div id="list" class="t2"></div>
 	</div>
+	<c:if test="${reg eq '0'}">
 	<form action="/CHAL-KAK/upload.ck" method="POST">
 		<input type=submit value="등록">
 	</form>
-	<form action="/CHAL-KAK/confirmProfile.ck?id=${sessionScope.login_user.id}" method="post">
+	</c:if>
+	<c:if test="${reg ne '0'}">
+	<form action="/CHAL-KAK/confirmProfile.ck?id=${sessionScope.login_user.id}">
 		<input type=submit value="프로필 확인">
 	</form>
+	</c:if>
 </body>
 </html>

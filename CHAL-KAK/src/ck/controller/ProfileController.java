@@ -115,13 +115,12 @@ public class ProfileController {
 
 			}
 		}
-		// 여기경로 고쳐야해요!
 		String p_id = pictureVO.getP_id();
 		String addr = "redirect:/photo_mypage.ck?id=" + p_id;
 		return new ModelAndView(addr);
 	} // upload end
 	
-	@RequestMapping(value = "/confirmProfile.ck", method = RequestMethod.POST)
+	@RequestMapping(value = "/confirmProfile.ck")
 	public ModelAndView confirmProfile(@RequestParam("id") String id) {
 		ModelAndView mav = new ModelAndView("profile/profile");
 		String file_name = profileBiz.confirmProfile(id);

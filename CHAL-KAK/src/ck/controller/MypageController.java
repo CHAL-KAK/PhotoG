@@ -26,8 +26,11 @@ public class MypageController {
 		ModelAndView mav = null;
 		try {
 			list = mypagelistBiz.photo_mypage(id);
-			System.out.println("photo_mypage" + list);
+			int reg = mypagelistBiz.findProfile(id);
 			mav = new ModelAndView("/mypage/photo_mypage", "list", list);
+			System.out.println(reg);
+			mav.addObject("reg", reg);
+			
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}

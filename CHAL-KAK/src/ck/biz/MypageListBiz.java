@@ -38,4 +38,8 @@ public class MypageListBiz {
 	public int reserv_update(int rseq) {
 		return mypageDao.updateReser(rseq);
 	}
+
+	public int findProfile(String id) {
+		return mypageDao.findProfile(id);
+	}
 }
