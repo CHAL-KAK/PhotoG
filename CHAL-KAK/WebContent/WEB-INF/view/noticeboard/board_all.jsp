@@ -38,13 +38,13 @@
 			${b.end_time}           
 			
 				<c:if test="${sessionScope.login_user.type eq 'M'}">
-				<a href="reservation_form.jsp?pid=${b.p_id}&day=${b.day}&seq=${b.brd_seq}"> reservation </a>
+				<a href="<%=path%>/noticeboard/reservation_form.jsp?pid=${b.p_id}&day=${b.day}&seq=${b.brd_seq}"> reservation </a>
 				</c:if>
 			
 		<hr>
 		</c:forEach>
 		<c:if test="${sessionScope.login_user.type eq 'P'}">
-		<form action="<%=path%>/notice_form.jsp">
+		<form action="<%=path%>/noticeboard/notice_form.jsp">
 			<input type="submit" value="make a list">
 		</form>
 		</c:if>

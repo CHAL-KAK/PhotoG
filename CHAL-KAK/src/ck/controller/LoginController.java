@@ -5,15 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import ck.biz.AdministratorLoginBiz;
-import ck.biz.CheckIDBiz;
-import ck.biz.ModelLoginBiz;
-import ck.biz.PhotographerLoginBiz;
+import ck.biz.LoginBiz;
 import ck.vo.AdministratorVO;
 import ck.vo.ModelVO;
 import ck.vo.PhotographerVO;
@@ -22,22 +17,15 @@ import ck.vo.SessionType;
 @SessionAttributes(value = "login_user")
 @Controller
 public class LoginController {
-	@Autowired
-	private ModelLoginBiz modelloginBiz;
 
 	@Autowired
-	private PhotographerLoginBiz photographerloginBiz;
-
-	@Autowired
-	private AdministratorLoginBiz administratorloginBiz;
-
-	
+	private LoginBiz loginbiz;
 
 	@RequestMapping(method = RequestMethod.POST, value = "/modelSearch.ck")
 	public ModelAndView search(@ModelAttribute ModelVO vo) {
-		ModelVO res = modelloginBiz.searchModel(vo);
+		ModelVO res = loginbiz.searchModel(vo);
 		if (res == null) {
-			ModelAndView mav = new ModelAndView("login_ck/model_login_fail");
+			ModelAndView mav = new ModelAndView("login/model_login_fail");
 			return mav;
 		} else {
 			String id = res.getM_id();
@@ -49,9 +37,9 @@ public class LoginController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/photographerSearch.ck")
 	public ModelAndView search(@ModelAttribute PhotographerVO vo) {
-		PhotographerVO res = photographerloginBiz.searchPhotographer(vo);
+		PhotographerVO res = loginbiz.searchPhotographer(vo);
 		if (res == null) {
-			ModelAndView mav = new ModelAndView("login_ck/photographer_login_fail");
+			ModelAndView mav = new ModelAndView("login/photographer_login_fail");
 			return mav;
 		} else {
 			String id = res.getP_id();
@@ -63,9 +51,9 @@ public class LoginController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/administratorSearch.ck")
 	public ModelAndView search(@ModelAttribute AdministratorVO vo) {
-		AdministratorVO res = administratorloginBiz.searchAdministrator(vo);
+		AdministratorVO res = loginbiz.searchAdministrator(vo);
 		if (res == null) {
-			ModelAndView mav = new ModelAndView("login_ck/administrator_login_fail");
+			ModelAndView mav = new ModelAndView("login/administrator_login_fail");
 			return mav;
 		} else {
 			String id = res.getId();
@@ -75,5 +63,4 @@ public class LoginController {
 		}
 	}
 
-	
 }

@@ -14,6 +14,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.stereotype.Repository;
 
 import ck.vo.NoticeBoardVO;
+import ck.vo.ReservationVO;
 
 @Repository
 public class NoticeBoardDaoImpl implements NoticeBoardDao {
@@ -60,6 +61,21 @@ public class NoticeBoardDaoImpl implements NoticeBoardDao {
 		Map<String, Object> out = simpleJdbcCall.execute(in);
 		List<NoticeBoardVO> one = (List<NoticeBoardVO>) out.get("RES");
 		return one;
+	}
+
+	@Override
+	public int insertNoticeForm(NoticeBoardVO vo) {
+		return jdbcTemplate.update("insert into notice_board values(brd_seq.nextval,?,?,?,?,?,?,0,?,?,?)",
+				new Object[] {vo.getP_id(),
+						vo.getStart_time(), vo.getEnd_time(), 
+						vo.getPlace(), vo.getConcept(), vo.getMax(),vo.getDay(), vo.getTitle(), vo.getContent()});
+	}
+
+	@Override
+	public int insertReservationForm(ReservationVO vo) {
+		return jdbcTemplate.update("insert into reservation values (rev_seq.nextval,?,?,?,?,?,?,0,?)",
+				new Object[] {vo.getBrd_seq(),vo.getM_id(),vo.getConcept(),vo.getPeople_num(),vo.getStart_time(),
+						vo.getEnd_time(),vo.getDay()});
 	}
 
 }

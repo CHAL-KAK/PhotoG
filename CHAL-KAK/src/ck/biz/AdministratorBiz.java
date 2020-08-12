@@ -15,7 +15,7 @@ public class AdministratorBiz {
 
 	@Autowired
 	private AdministratorDao administratorDao;
-	
+
 	public List<ModelVO> confirmModelList() {
 		return administratorDao.confrimModelList();
 	}
