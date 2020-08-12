@@ -59,11 +59,24 @@
 		url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
 }
 </style>
+<script>
+	// 	$().ready(function() {
+	// 		var level = map.getLevel();
+	// 		alert(level);
+	// 		if (level < 12) {
+	// 			alert("12보다 작아짐");
+	// 		}
+	// 	});
+</script>
 </head>
 <body>
 	<p id="result"></p>
 	<p id="result2"></p>
 	<p id="result3"></p>
+
+	<p>
+		<span id="result4"></span>
+	</p>
 
 	<div id="levelresult"></div>
 	<div id="map" style="width: 75%; height: 600px"></div>
@@ -134,22 +147,49 @@
 			level : 13
 		// 지도의 확대 레벨
 		};
+		var clusterer = new kakao.maps.MarkerClusterer({
+			map : map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
+			averageCenter : true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
+			minLevel : 10, // 클러스터 할 최소 지도 레벨
+			disableClickZoom : false
+		// 클러스터 마커를 클릭했을 때 지도가 확대되지 않도록 설정한다
+		});
 
-		///// 각각의 마커에 이벤트 입힐것
-		function getEvent() {
-			$.getJSON('/CHAL-KAK/api/chicken4.json', function(data) {
-				$.each(data, function(i, item) {
+
+		// 데이터를 가져오기 위해 jQuery를 사용합니다
+		// 데이터를 가져와 마커를 생성하고 클러스터러 객체에 넘겨줍니다
+		$.get("/CHAL-KAK/api/chicken.json", function(data) {
+			// 데이터에서 좌표 값을 가지고 마커를 표시합니다
+			// 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
+			var markers = $(data.positions).map(
+					function(i, position) {
+						return new kakao.maps.Marker({
+							position : new kakao.maps.LatLng(position.lat,
+									position.lng)
+						});
+					});
+
+			// 클러스터러에 마커들을 추가합니다
+			clusterer.addMarkers(markers);
+		});
+		function getevent() {
+			alert("호출?");
+			$.getJSON('/CHAL-KAK/api/chicken3.json', function(data) {
+				console.log('여긴?');
+				$.each(data, function(i, position) {
 					var marker = new kakao.maps.Marker({
 						map : map, // 마커를 표시할 지도
-						position : new kakao.maps.LatLng(item.lat, item.lng)
+						position : new kakao.maps.LatLng(position.lat,
+								position.lng)
 					// 마커의 위치
 					});
 
 					// 마커에 표시할 인포윈도우를 생성합니다 
 					var infowindow = new kakao.maps.InfoWindow({
-						content : item.content
+						content : position.content
 					// 인포윈도우에 표시할 내용
 					});
+					console.log("infowindow");
 
 					// 마커에 이벤트를 등록하는 함수 만들고 즉시 호출하여 클로저를 만듭니다
 					// 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
@@ -166,10 +206,11 @@
 									infowindow.close();
 								});
 					})(marker, infowindow);
+					console.log("event 입힙");
 				});
 			});
 		}
-
+		
 		var zoomControl = new kakao.maps.ZoomControl();
 		map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
@@ -179,15 +220,16 @@
 			// 지도의 현재 레벨을 얻어옵니다
 			var level = map.getLevel();
 
-			if (level > 11) {
+			if (level < 12) {
+				getevent();
 				var message = '현재 지도 레벨은 10 이상  ' + level + ' 입니다';
 			} else {
-				getEvent();
 				var message = '현재 지도 레벨은 10 이하' + level + ' 입니다';
 			}
 
-			var resultDiv = document.getElementById('levelresult');
+			var resultDiv = document.getElementById('result4');
 			resultDiv.innerHTML = message;
+
 		});
 	</script>
 </body>
