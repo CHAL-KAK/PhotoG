@@ -79,13 +79,13 @@
 			<c:otherwise>
 				<c:if test="${sessionScope.login_user.type eq 'P'}">
 					${sessionScope.login_user.type} : ${sessionScope.login_user.id}님 로그인되셨습니다.<br>
-					<a href='/CHAL-KAK/login/logout.jsp'>로그아웃</a>
+					<a href='/CHAL-KAK/logout.ck'>로그아웃</a>
 					<a href="/CHAL-KAK/photo_mypage.ck?id=${sessionScope.login_user.id}">사진사 마이페이지</a>
 					<a href="/CHAL-KAK/noticeboard/notice_board.jsp">게시판</a>
 				</c:if>
 				<c:if test="${sessionScope.login_user.type eq 'M'}">
 					${sessionScope.login_user.type} : ${sessionScope.login_user.id}님 로그인되셨습니다.<br>
-					<a href='/CHAL-KAK/login/logout.jsp'>로그아웃</a>
+					<a href='/CHAL-KAK/logout.ck'>로그아웃</a>
 					<a href="/CHAL-KAK/model_mypage.ck?id=${sessionScope.login_user.id}">모델 마이페이지</a>
 					<a href="/CHAL-KAK/noticeboard/notice_board.jsp">게시판</a>
 				</c:if>
@@ -93,7 +93,6 @@
 		</c:choose>
 
 	<hr>
-	<a href='/CHAL-KAK/login/logout.jsp'>로그아웃</a>
 		<a href="api/cluster.jsp">클러스터</a> <a href="api/markerclick.jsp">마커클릭</a>
 		<a href="api/multipleMarker.jsp">마커 여러개</a>
 

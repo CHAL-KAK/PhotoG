@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -46,6 +48,12 @@ public class AdministratorController {
 		ModelAndView mav = new ModelAndView("administrator/boardlist_all");
 		List<NoticeBoardVO> all = administratorbiz.confirmBoardList();
 		mav.addObject("all", all);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/admin_index.ck", method = RequestMethod.POST)
+	public ModelAndView adminIndex() {
+		ModelAndView mav = new ModelAndView("administrator/admin_index");
 		return mav;
 	}
 	

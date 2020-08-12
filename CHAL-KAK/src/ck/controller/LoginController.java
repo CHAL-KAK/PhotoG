@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import ck.biz.LoginBiz;
@@ -61,6 +62,13 @@ public class LoginController {
 			ModelAndView mav = new ModelAndView("administrator/admin_index", "login_user", st);
 			return mav;
 		}
+	}
+	
+	@RequestMapping(value = "/logout.ck")
+	public ModelAndView logout(SessionStatus sessionStatus) {
+		sessionStatus.setComplete();
+		ModelAndView mav = new ModelAndView("redirect:/index.jsp");
+		return mav;
 	}
 
 }
