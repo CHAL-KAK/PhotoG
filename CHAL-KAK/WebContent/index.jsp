@@ -93,6 +93,7 @@
 		</c:choose>
 
 	<hr>
+	<a href='/CHAL-KAK/logout.jsp'>로그아웃</a>
 		<a href="api/cluster.jsp">클러스터</a> <a href="api/markerclick.jsp">마커클릭</a>
 		<a href="api/multipleMarker.jsp">마커 여러개</a>
 
