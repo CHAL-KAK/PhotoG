@@ -4,9 +4,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 <meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+
 <title>main</title>
+<!-- Bootstrap core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom fonts for this template -->
+<link
+	href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i"
+	rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="css/one-page-wonder.min.css" rel="stylesheet">
 <style>
 .customoverlay {
 	position: relative;
@@ -61,149 +80,189 @@
 </style>
 </head>
 <body>
+	<!-- Navigation -->
+	<nav
+		class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="/CHAL-KAK/index.jsp">CHAL KAK</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item"><a class="nav-link" href="/CHAL-KAK/noticeboard/notice_board.jsp">board</a>
+					<li class="nav-item"><a class="nav-link" href="#">Sign Up</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="#">Log In</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<img src="img/photo02.png" width="100%" height="100%"
+		style="border: 1px solid #A9A9A9;">
+
 	<p id="result"></p>
 	<p id="result2"></p>
 	<p id="result3"></p>
-	<div id="map" style="width: 75%; height: 600px"></div>
+<section>
+	<div class="row">
+		<div id="map"
+			style="width: 60%; height: 600px; margin: 30px 0px 0px 30px; border: 1px solid #A9A9A9; float: left;"></div>
+		<div style="float: right; margin: 30px 0px 0px 30px; font-family: Nanum Gothic;">
+			<p>날짜&emsp;<input name="date" type="date"> <br /> </p>
+			<p>시작 시간&emsp;<input name="starttime" type="time"><br /> </p>
+			<p>끝 시간&emsp; <input name="endtime" type="time"><br /> </p>
+			<p>인원 &emsp;<input name="count" type="text"><br /> </p>
+			<p>컨셉&emsp; <select name="concept">
+				<option value="0">독사진</option>
+				<option value="1">우정사진</option>
+				<option value="2">커플사진</option>
+				<option value="3">가족사진</option>
+			</select><br /> </p>
+			<input type="button" value="검색"> 
+			<input type="reset" value="취소"><br />
+		</div>
+	</div>
+</section>	
 	<div>
-
 		<c:choose>
 			<c:when test="${empty sessionScope.login_user.type}">
 				<a href="/CHAL-KAK/join/model_join.jsp">모델회원가입</a>
-				<a href="/CHAL-KAK/join/photographer_join.jsp">사진사회원가입</a><br>
+				<a href="/CHAL-KAK/join/photographer_join.jsp">사진사회원가입</a>
+				<br>
 				<a href="/CHAL-KAK/login/model_login.jsp">모델로그인</a>
 				<a href="/CHAL-KAK/login/photographer_login.jsp">사진사로그인</a>
-				<a href="/CHAL-KAK/login/administrator_login.jsp">관리자로그인</a><br>
-				<a href="/CHAL-KAK/noticeboard/notice_board.jsp">게시판</a>
-				</c:when>
+				<a href="/CHAL-KAK/login/administrator_login.jsp">관리자로그인</a>
+				<br>
+			
+<!-- 				<a href="/CHAL-KAK/noticeboard/notice_board.jsp">게시판</a> -->
+			</c:when>
 			<c:otherwise>
 				<c:if test="${sessionScope.login_user.type eq 'P'}">
 					${sessionScope.login_user.type} : ${sessionScope.login_user.id}님 로그인되셨습니다.<br>
 					<a href='/CHAL-KAK/login/logout.jsp'>로그아웃</a>
-					<a href="/CHAL-KAK/photo_mypage.ck?id=${sessionScope.login_user.id}">사진사 마이페이지</a>
+					<a
+						href="/CHAL-KAK/photo_mypage.ck?id=${sessionScope.login_user.id}">사진사
+						마이페이지</a>
 					<a href="/CHAL-KAK/noticeboard/notice_board.jsp">게시판</a>
 				</c:if>
 				<c:if test="${sessionScope.login_user.type eq 'M'}">
 					${sessionScope.login_user.type} : ${sessionScope.login_user.id}님 로그인되셨습니다.<br>
 					<a href='/CHAL-KAK/login/logout.jsp'>로그아웃</a>
-					<a href="/CHAL-KAK/model_mypage.ck?id=${sessionScope.login_user.id}">모델 마이페이지</a>
+					<a
+						href="/CHAL-KAK/model_mypage.ck?id=${sessionScope.login_user.id}">모델
+						마이페이지</a>
 					<a href="/CHAL-KAK/noticeboard/notice_board.jsp">게시판</a>
 				</c:if>
 			</c:otherwise>
 		</c:choose>
 
-	<hr>
-	<a href='/CHAL-KAK/login/logout.jsp'>로그아웃</a>
-		<a href="api/cluster.jsp">클러스터</a> <a href="api/markerclick.jsp">마커클릭</a>
+		<hr>
+		<a href='/CHAL-KAK/login/logout.jsp'>로그아웃</a> <a
+			href="api/cluster.jsp">클러스터</a> <a href="api/markerclick.jsp">마커클릭</a>
 		<a href="api/multipleMarker.jsp">마커 여러개</a>
 
 	</div>
-	<div>
-		날짜 <input name="date" type="date"> <br /> 시작 시간 <input
-			name="starttime" type="time"><br /> 끝 시간 <input
-			name="endtime" type="time"><br /> 인원 <input name="count"
-			type="text"><br /> 컨셉 <select name="concept">
-			<option value="0">독사진</option>
-			<option value="1">우정사진</option>
-			<option value="2">커플사진</option>
-			<option value="3">가족사진</option>
-		</select><br /> <input type="button" value="검색"> <input type="reset"
-			value="취소"><br />
-	</div>
 	
+
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=63f56496ce33aada63acf5d83d3eb9b9&libraries=clusterer""></script>
 	<script>
-      var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
-      mapOption = {
-         center : new kakao.maps.LatLng(35.76798760178648, 128.0449785654274), // 지도의 중심좌표
-         level : 13
-      // 지도의 확대 레벨
-      };
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+		mapOption = {
+			center : new kakao.maps.LatLng(35.76798760178648, 128.0449785654274), // 지도의 중심좌표
+			level : 13
+		// 지도의 확대 레벨
+		};
 
-      var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다      
-      
-      $.getJSON('/CHAL-KAK/api/chicken4.json', function(data) {
-	    	 $.each(data, function(i, item) {
-	    		  var marker = new kakao.maps.Marker({
-	    	            map : map, // 마커를 표시할 지도
-	    	            position : new kakao.maps.LatLng(item.lat, item.lng)
-	    	         // 마커의 위치
-	    	         });
+		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다      
 
-	    	         // 마커에 표시할 인포윈도우를 생성합니다 
-	    	         var infowindow = new kakao.maps.InfoWindow({
-	    	            content : item.content
-	    	         // 인포윈도우에 표시할 내용
-	    	         });
+		$.getJSON('/CHAL-KAK/api/chicken4.json', function(data) {
+			$.each(data, function(i, item) {
+				var marker = new kakao.maps.Marker({
+					map : map, // 마커를 표시할 지도
+					position : new kakao.maps.LatLng(item.lat, item.lng)
+				// 마커의 위치
+				});
 
-	    	         // 마커에 이벤트를 등록하는 함수 만들고 즉시 호출하여 클로저를 만듭니다
-	    	         // 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-	    	         (function(marker, infowindow) {
-	    	            // 마커에 mouseover 이벤트를 등록하고 마우스 오버 시 인포윈도우를 표시합니다 
-	    	            kakao.maps.event.addListener(marker, 'mouseover', function() {
-	    	               infowindow.open(map, marker);
-	    	            });
+				// 마커에 표시할 인포윈도우를 생성합니다 
+				var infowindow = new kakao.maps.InfoWindow({
+					content : item.content
+				// 인포윈도우에 표시할 내용
+				});
 
-	    	            // 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
-	    	            kakao.maps.event.addListener(marker, 'mouseout', function() {
-	    	               infowindow.close();
-	    	            });
-	    	         })(marker, infowindow);
-	    	  });
-    	  });
-            
-      // 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
-      /* var positions = [
-            {
-               content : '<img src = "/CHAL-KAK/img/d.PNG" width = 100px; height =100px>',
-               latlng : new kakao.maps.LatLng(33.450705, 126.570677)
-            },
-            {
-               content : '<img src = "/CHAL-KAK/img/d.PNG" width = 100px; height =100px>',
-               latlng : new kakao.maps.LatLng(33.450936, 126.569477)
-            },
-            {
-               content : '<img src = "/CHAL-KAK/img/d.PNG" width = 100px; height =100px>',
-               latlng : new kakao.maps.LatLng(33.450879, 126.569940)
-            },
-            {
-               content : '<img src = "/CHAL-KAK/img/d.PNG" width = 100px; height =100px>',
-               latlng : new kakao.maps.LatLng(33.451393, 126.570738)
-            } ]; */
- 
-      /* for (var i = 0; i < positions.length; i++) {
-         // 마커를 생성합니다
-         var marker = new kakao.maps.Marker({
-            map : map, // 마커를 표시할 지도
-            /* position : positions[i].latlng */
-    
-       /*     position : new kakao.maps.LatLng(positions[i].lat, posisions[i].lng)
-         // 마커의 위치     
-         
-         /*
-         });
+				// 마커에 이벤트를 등록하는 함수 만들고 즉시 호출하여 클로저를 만듭니다
+				// 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+				(function(marker, infowindow) {
+					// 마커에 mouseover 이벤트를 등록하고 마우스 오버 시 인포윈도우를 표시합니다 
+					kakao.maps.event.addListener(marker, 'mouseover',
+							function() {
+								infowindow.open(map, marker);
+							});
 
-         // 마커에 표시할 인포윈도우를 생성합니다 
-         var infowindow = new kakao.maps.InfoWindow({
-            content : positions[i].content
-         // 인포윈도우에 표시할 내용
-         });
+					// 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
+					kakao.maps.event.addListener(marker, 'mouseout',
+							function() {
+								infowindow.close();
+							});
+				})(marker, infowindow);
+			});
+		});
 
-         // 마커에 이벤트를 등록하는 함수 만들고 즉시 호출하여 클로저를 만듭니다
-         // 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-         (function(marker, infowindow) {
-            // 마커에 mouseover 이벤트를 등록하고 마우스 오버 시 인포윈도우를 표시합니다 
-            kakao.maps.event.addListener(marker, 'mouseover', function() {
-               infowindow.open(map, marker);
-            });
+		// 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
+		/* var positions = [
+		      {
+		         content : '<img src = "/CHAL-KAK/img/d.PNG" width = 100px; height =100px>',
+		         latlng : new kakao.maps.LatLng(33.450705, 126.570677)
+		      },
+		      {
+		         content : '<img src = "/CHAL-KAK/img/d.PNG" width = 100px; height =100px>',
+		         latlng : new kakao.maps.LatLng(33.450936, 126.569477)
+		      },
+		      {
+		         content : '<img src = "/CHAL-KAK/img/d.PNG" width = 100px; height =100px>',
+		         latlng : new kakao.maps.LatLng(33.450879, 126.569940)
+		      },
+		      {
+		         content : '<img src = "/CHAL-KAK/img/d.PNG" width = 100px; height =100px>',
+		         latlng : new kakao.maps.LatLng(33.451393, 126.570738)
+		      } ]; */
 
-            // 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
-            kakao.maps.event.addListener(marker, 'mouseout', function() {
-               infowindow.close();
-            });
-         })(marker, infowindow);
-      } */
-   </script>
+		/* for (var i = 0; i < positions.length; i++) {
+		   // 마커를 생성합니다
+		   var marker = new kakao.maps.Marker({
+		      map : map, // 마커를 표시할 지도
+		      /* position : positions[i].latlng */
+
+		/*     position : new kakao.maps.LatLng(positions[i].lat, posisions[i].lng)
+		  // 마커의 위치     
+		  
+		  /*
+		  });
+
+		  // 마커에 표시할 인포윈도우를 생성합니다 
+		  var infowindow = new kakao.maps.InfoWindow({
+		     content : positions[i].content
+		  // 인포윈도우에 표시할 내용
+		  });
+
+		  // 마커에 이벤트를 등록하는 함수 만들고 즉시 호출하여 클로저를 만듭니다
+		  // 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+		  (function(marker, infowindow) {
+		     // 마커에 mouseover 이벤트를 등록하고 마우스 오버 시 인포윈도우를 표시합니다 
+		     kakao.maps.event.addListener(marker, 'mouseover', function() {
+		        infowindow.open(map, marker);
+		     });
+
+		     // 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
+		     kakao.maps.event.addListener(marker, 'mouseout', function() {
+		        infowindow.close();
+		     });
+		  })(marker, infowindow);
+		} */
+	</script>
 </body>
 </html>
