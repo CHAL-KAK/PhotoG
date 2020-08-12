@@ -6,7 +6,7 @@ import org.springframework.validation.Validator;
 
 import ck.vo.PictureVO;
 
-@Service("fileValidator")
+@Service
 public class FileValidator implements Validator {
 
 	@Override
@@ -22,10 +22,7 @@ public class FileValidator implements Validator {
 			if (file.getFile().getSize() == 0) {
 				errors.rejectValue("file", "profile_enroll", "WRONG!");
 			}
-
-//			if (file.getDesc().isEmpty()) {
-//				errors.rejectValue("desc", "uploadForm", "�� ������ ���ݾ�!");
-//			}
 		}
 	}
+	
 }

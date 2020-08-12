@@ -118,9 +118,4 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		return all;
 	}
 	
-	
-	
-	
-	
-
 }

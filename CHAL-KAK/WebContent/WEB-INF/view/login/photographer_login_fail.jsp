@@ -9,7 +9,7 @@
 <body>
 	<script type="text/javascript">
 		alert("Login fail "+"Please try again");
-		document.location.href="administrator_login.jsp";
+		document.location.href="login/photographer_login.jsp";
 	</script>
 </body>
 </html>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import ck.dao.NoticeBoardDao;
 import ck.vo.NoticeBoardVO;
+import ck.vo.ReservationVO;
 
 @Service
 public class NoticeBoardBiz {
@@ -20,6 +21,14 @@ public class NoticeBoardBiz {
 
 	public List<NoticeBoardVO> boardOne(int seq) {
 		return noticeBoardDao.boardOne(seq);
+	}
+
+	public int insertNoticeForm(NoticeBoardVO vo) {
+		return noticeBoardDao.insertNoticeForm(vo);
+	}
+
+	public int insertReservationForm(ReservationVO vo) {
+		return noticeBoardDao.insertReservationForm(vo);
 	}
 
 }

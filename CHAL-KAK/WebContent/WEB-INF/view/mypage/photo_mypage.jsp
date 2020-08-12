@@ -26,20 +26,10 @@
 		});
 	}
 </script>
-<style type="text/css">
-/* .t1 { */
-/*  	display: inline-block; */
-/* 	width: 30%; */
-/* } */
 
-/* .t2 { */
-/* 	display: inline-block; */
-/* 	width: 30%; */
-/* } */
-</style>
 </head>
 <body>
-<a href="/CHAL-KAK//modifyform.ck?id=${sessionScope.login_user.id}"> 정보수정 </a>
+<a href="/CHAL-KAK/modifyform.ck?id=${sessionScope.login_user.id}"> 정보수정 </a>
 	<div>
 		<div class="t1">
 			<c:if test="${empty list}">
