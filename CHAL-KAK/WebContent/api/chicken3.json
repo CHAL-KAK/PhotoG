@@ -1,10 +1,9 @@
+[
 {
-	"positions": [
-		{
-		"content": "<img src = '/CHAL-KAK/img/d.PNG' width = 100px; height =100px>",
-		"lat": 33.450705,
-		"lng": 126.570677
-	},
+	"content": "<img src = '/CHAL-KAK/img/d.PNG' width = 100px; height =100px>",
+	"lat": 33.450705,
+	"lng": 126.570677
+},
 	{
 		"content": "<img src = '/CHAL-KAK/img/d.PNG' width = 100px; height =100px>",
 		"lat": 33.450936,
@@ -50,5 +49,5 @@
 		"lat": 37.561110808242056,
 		"lng": 126.9831268386891
 	}
-	]
-}
+
+]
