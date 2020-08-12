@@ -35,12 +35,10 @@
 	border-bottom: 2px solid #ddd;
 	float: left;
 }
-
 .customoverlay:nth-of-type(n) {
 	border: 0;
 	box-shadow: 0px 1px 2px #888;
 }
-
 .customoverlay a {
 	display: block;
 	text-decoration: none;
@@ -55,7 +53,6 @@
 		url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png)
 		no-repeat right 14px center;
 }
-
 .customoverlay .title {
 	display: block;
 	text-align: center;
@@ -65,7 +62,6 @@
 	font-size: 14px;
 	font-weight: bold;
 }
-
 .customoverlay:after {
 	content: '';
 	position: absolute;
@@ -107,7 +103,7 @@
 	<p id="result"></p>
 	<p id="result2"></p>
 	<p id="result3"></p>
-  <div id="levelresult"></div>
+<!--   <div id="levelresult"></div> -->
 <section>
 	<div class="row">
 		<div id="map"
@@ -173,24 +169,19 @@
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=63f56496ce33aada63acf5d83d3eb9b9&libraries=clusterer""></script>
 	<script>
-
 		var map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
 			center : new kakao.maps.LatLng(36.2683, 127.6358), // 지도의 중심좌표 
 			level : 14
 		// 지도의 확대 레벨 
 		});
-
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
 		mapOption = {
 			center : new kakao.maps.LatLng(35.76798760178648, 128.0449785654274), // 지도의 중심좌표
 			level : 13
 		// 지도의 확대 레벨
 		};
-
 		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다      
-
 		
-
 		///// 각각의 마커에 이벤트 입힐것
 		function getEvent() {
 			$.getJSON('/CHAL-KAK/api/chicken4.json', function(data) {
@@ -200,13 +191,11 @@
 						position : new kakao.maps.LatLng(item.lat, item.lng)
 					// 마커의 위치
 					});
-
 					// 마커에 표시할 인포윈도우를 생성합니다 
 					var infowindow = new kakao.maps.InfoWindow({
 						content : item.content
 					// 인포윈도우에 표시할 내용
 					});
-
 					// 마커에 이벤트를 등록하는 함수 만들고 즉시 호출하여 클로저를 만듭니다
 					// 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
 					(function(marker, infowindow) {
@@ -215,7 +204,6 @@
 								function() {
 									infowindow.open(map, marker);
 								});
-
 						// 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
 						kakao.maps.event.addListener(marker, 'mouseout',
 								function() {
@@ -225,26 +213,33 @@
 				});
 			});
 		}
-
 		var zoomControl = new kakao.maps.ZoomControl();
 		map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-
 		// 지도가 확대 또는 축소되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
 		kakao.maps.event.addListener(map, 'zoom_changed', function() {
-
 			// 지도의 현재 레벨을 얻어옵니다
 			var level = map.getLevel();
-
 			if (level > 11) {
 				var message = '현재 지도 레벨은 10 이상  ' + level + ' 입니다';
 			} else {
 				getEvent();
 				var message = '현재 지도 레벨은 10 이하' + level + ' 입니다';
 			}
-
 			var resultDiv = document.getElementById('levelresult');
 			resultDiv.innerHTML = message;
 		});
 	</script>
 </body>
 </html>
+© 2020 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
