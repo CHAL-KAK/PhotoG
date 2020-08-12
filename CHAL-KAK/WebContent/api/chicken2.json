@@ -1,32 +1,32 @@
 {
 	"positions": [
 		{
-			"name": "name1",
+			"content": "<img src = '/CHAL-KAK/img/d.PNG' width = 100px; height =100px>",
 			"lat": 37.27943075229118,
 			"lng": 127.01763998406159
 		},
 		{
-			"name": "name2",
+			"content": "<img src = '/CHAL-KAK/img/d.PNG' width = 100px; height =100px>",
 			"lat": 37.55915668706214,
 			"lng": 126.92536526611102
 		},
 		{
-			"name": "이름3",
+			"content": "<img src = '/CHAL-KAK/img/d.PNG' width = 100px; height =100px>",
 			"lat": 35.13854258261161,
 			"lng": 129.1014781294671
 		},
 		{
-			"name": "이름4",
+			"content": "<img src = '/CHAL-KAK/img/d.PNG' width = 100px; height =100px>",
 			"lat": 37.55518388656961,
 			"lng": 126.92926237742505
 		},
 		{
-			"name": "이름5",
+			"content": "<img src = '/CHAL-KAK/img/d.PNG' width = 100px; height =100px>",
 			"lat": 35.20618517638034,
 			"lng": 129.07944301057026
 		},
 		{
-			"name": "이름6",
+			"content": "<img src = '/CHAL-KAK/img/d.PNG' width = 100px; height =100px>",
 			"lat": 37.561110808242056,
 			"lng": 126.9831268386891
 		}

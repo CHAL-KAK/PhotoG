@@ -9,11 +9,14 @@
 <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 <script type="text/javascript">
 	function resList(boardseq) {
+		var boseq=boardseq.split(",")[0];
+		var pro=boardseq.split(",")[1];
 		$.ajax({
 			url : "board_reservlist.ck",
 			type : "POST",
 			data : {
-				bseq : boardseq
+				bseq : boseq,
+				prog : pro
 			},
 			success : function(data) {
 				$("#list").html(data);
@@ -31,7 +34,7 @@
 <body>
 <a href="/CHAL-KAK/modifyform.ck?id=${sessionScope.login_user.id}"> 정보수정 </a>
 	<div>
-		<div class="t1">
+		<div class="t1" name="plist">
 			<c:if test="${empty list}">
 				<h3>사진사님이 작성한 게시글이 없어요 ^_^</h3>
 			</c:if>
@@ -45,9 +48,11 @@
 					${board.MAX}&nbsp;&nbsp;&nbsp;
 					${board.START_TIME}&nbsp;&nbsp;&nbsp;
 					${board.END_TIME}&nbsp;&nbsp;&nbsp;
+					${board.PROGRESS}&nbsp;&nbsp;&nbsp;
+<%-- 					<input type="hidden" value="${board.PROGRESS}" id="progress"> --%>
 <%-- 					${board.PROGRESS}&nbsp;&nbsp;&nbsp; --%>
 					<input type="button" value="예약리스트"
-							onclick="resList('${board.BRD_SEQ}')" />
+							onclick="resList('${board.BRD_SEQ},${board.PROGRESS}')" />
 					<hr>
 				</c:forEach>
 			</c:if>

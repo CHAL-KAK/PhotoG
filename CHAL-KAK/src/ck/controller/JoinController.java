@@ -39,7 +39,7 @@ public class JoinController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/id_check.ck", method = RequestMethod.GET)
+	@RequestMapping(value = "/id_check.ck", method = RequestMethod.POST)
 	public String IDCheck(@RequestParam("id") String id) {
 		int mret = joinbiz.model_idcheck(id);
 		int pret = joinbiz.photo_idcheck(id);

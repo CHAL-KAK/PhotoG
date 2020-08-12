@@ -66,12 +66,18 @@ public class MypageController {
 
 	// brd_seq to reservation list
 	@RequestMapping(value = "/board_reservlist.ck", method = RequestMethod.POST)
-	public ModelAndView Reserv_List(@RequestParam("bseq") int bseq) {
+	public ModelAndView Reserv_List(@RequestParam("bseq") int bseq, @RequestParam("prog") int pro) {
 		List<ReservationVO> list = null;
 		ModelAndView mav = null;
 		try {
 			list = mypagebiz.Reserv_List(bseq);
-			mav = new ModelAndView("/mypage/board_reslist", "list", list);
+			if(pro==1) {
+				//reservation complete
+				mav = new ModelAndView("/mypage/board_reslist_comp", "list", list);
+			}else {
+				mav = new ModelAndView("/mypage/board_reslist_ing", "list", list);
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
