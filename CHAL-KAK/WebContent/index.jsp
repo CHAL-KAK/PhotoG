@@ -4,9 +4,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 <meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+
 <title>main</title>
+<!-- Bootstrap core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom fonts for this template -->
+<link
+	href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i"
+	rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="css/one-page-wonder.min.css" rel="stylesheet">
 <style>
 .customoverlay {
 	position: relative;
@@ -61,14 +80,56 @@
 </style>
 </head>
 <body>
+	<!-- Navigation -->
+	<nav
+		class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="/CHAL-KAK/index.jsp">CHAL KAK</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item"><a class="nav-link" href="/CHAL-KAK/noticeboard/notice_board.jsp">board</a>
+					<li class="nav-item"><a class="nav-link" href="#">Sign Up</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="#">Log In</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<img src="img/photo02.png" width="100%" height="100%"
+		style="border: 1px solid #A9A9A9;">
+
 	<p id="result"></p>
 	<p id="result2"></p>
 	<p id="result3"></p>
+  <div id="levelresult"></div>
+<section>
+	<div class="row">
+		<div id="map"
+			style="width: 60%; height: 600px; margin: 30px 0px 0px 30px; border: 1px solid #A9A9A9; float: left;"></div>
+		<div style="float: right; margin: 30px 0px 0px 30px; font-family: Nanum Gothic;">
+			<p>날짜&emsp;<input name="date" type="date"> <br /> </p>
+			<p>시작 시간&emsp;<input name="starttime" type="time"><br /> </p>
+			<p>끝 시간&emsp; <input name="endtime" type="time"><br /> </p>
+			<p>인원 &emsp;<input name="count" type="text"><br /> </p>
+			<p>컨셉&emsp; <select name="concept">
+				<option value="0">독사진</option>
+				<option value="1">우정사진</option>
+				<option value="2">커플사진</option>
+				<option value="3">가족사진</option>
+			</select><br /> </p>
+			<input type="button" value="검색"> 
+			<input type="reset" value="취소"><br />
+		</div>
+	</div>
+</section>	
 
-	<div id="levelresult"></div>
-	<div id="map" style="width: 75%; height: 600px"></div>
 	<div>
-
 		<c:choose>
 			<c:when test="${empty sessionScope.login_user.type}">
 				<a href="/CHAL-KAK/join/model_join.jsp">모델회원가입</a>
@@ -78,7 +139,8 @@
 				<a href="/CHAL-KAK/login/photographer_login.jsp">사진사로그인</a>
 				<a href="/CHAL-KAK/login/administrator_login.jsp">관리자로그인</a>
 				<br>
-				<a href="/CHAL-KAK/noticeboard/notice_board.jsp">게시판</a>
+			
+<!-- 				<a href="/CHAL-KAK/noticeboard/notice_board.jsp">게시판</a> -->
 			</c:when>
 			<c:otherwise>
 				<c:if test="${sessionScope.login_user.type eq 'P'}">
@@ -106,22 +168,12 @@
 		<a href="api/multipleMarker.jsp">마커 여러개</a>
 
 	</div>
-	<div>
-		날짜 <input name="date" type="date"> <br /> 시작 시간 <input
-			name="starttime" type="time"><br /> 끝 시간 <input
-			name="endtime" type="time"><br /> 인원 <input name="count"
-			type="text"><br /> 컨셉 <select name="concept">
-			<option value="0">독사진</option>
-			<option value="1">우정사진</option>
-			<option value="2">커플사진</option>
-			<option value="3">가족사진</option>
-		</select><br /> <input type="button" value="검색"> <input type="reset"
-			value="취소"><br />
-	</div>
+
 
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=63f56496ce33aada63acf5d83d3eb9b9&libraries=clusterer""></script>
 	<script>
+
 		var map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
 			center : new kakao.maps.LatLng(36.2683, 127.6358), // 지도의 중심좌표 
 			level : 14
@@ -134,6 +186,10 @@
 			level : 13
 		// 지도의 확대 레벨
 		};
+
+		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다      
+
+		
 
 		///// 각각의 마커에 이벤트 입힐것
 		function getEvent() {
