@@ -17,8 +17,6 @@ public class MypageDaoImpl implements MypageDao {
 
 	@Override
 	public int findProfile(String id) {
-		int a = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM PICTURE WHERE P_ID = ?", int.class, id);
-		System.out.println("DaoImple : " + a);
-		return a;
+		return jdbcTemplate.queryForObject("SELECT COUNT(*) FROM PICTURE WHERE P_ID = ?", int.class, id);
 	}
 }
