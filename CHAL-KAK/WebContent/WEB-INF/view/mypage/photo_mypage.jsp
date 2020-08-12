@@ -70,7 +70,8 @@
 	</form>
 	</c:if>
 	<c:if test="${reg ne '0'}">
-	<form action="/CHAL-KAK/confirmProfile.ck?id=${sessionScope.login_user.id}">
+	<form action="/CHAL-KAK/confirmProfile.ck">
+		<input type="hidden" name="id" value="${sessionScope.login_user.id}">
 		<input type=submit value="프로필 확인">
 	</form>
 	</c:if>
