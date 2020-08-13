@@ -274,37 +274,28 @@ translateY
 	<%
 		String path = application.getContextPath();
 	%>
-
-	<form method="post" action="/CHAL-KAK/modeljoin.ck" name="join">
-		<!-- Navigation -->
-		<nav
-			class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
-			<div class="container">
-				<a class="navbar-brand" href="/CHAL-KAK/index.jsp">CHAL KAK</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse"
-					data-target="#navbarResponsive" aria-controls="navbarResponsive"
-					aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarResponsive">
-					<ul class="navbar-nav ml-auto">
-						<li class="nav-item"><a class="nav-link"
-							href="/CHAL-KAK/noticeboard/notice_board.jsp">board</a>
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#" id="navdrop"
-							role="button" data-toggle="dropdown" data-hover="dropdown">Log
-								In</a>
-							<div class="dropdown-menu" aria-labelledby="navdrop">
-								<a href="/CHAL-KAK/login/model_login.jsp" class="dropdown-item">Model</a>
-								<a href="/CHAL-KAK/login/photographer_login.jsp"
-									class="dropdown-item">Photographer</a> <a
-									href="/CHAL-KAK/login/administrator_login.jsp"
-									class="dropdown-item">Administrator</a>
-							</div></li>
-					</ul>
-				</div>
+	
+	<!-- Navigation -->
+	<nav
+		class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="/CHAL-KAK/index.jsp">CHAL KAK</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item"><a class="nav-link" href="/CHAL-KAK/noticeboard/notice_board.jsp">board</a>
+					<li class="nav-item"><a class="nav-link" href="/CHAL-KAK/join/join.jsp">Sign Up</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="#">Log In</a></li>
+				</ul>
 			</div>
-		</nav>
+		</div>
+	</nav>
+	
 		<div class="container register">
 			<div class="row">
 				<div class="col-md-3 register-left">
@@ -317,6 +308,7 @@ translateY
 
 				</div>
 				<div class="col-md-9 register-right">
+
 					<ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
 						<li class="nav-item"><a class="nav-link active" id="home-tab"
 							data-toggle="tab" href="#home" role="tab" aria-controls="home"
@@ -327,7 +319,9 @@ translateY
 							style="font-color: white;">Photographer</a></li>
 					</ul>
 					<div class="tab-content" id="myTabContent">
+					<form method="post" action="/CHAL-KAK/modeljoin.ck" name="join">
 						<div class="tab-pane fade show active" id="home" role="tabpanel"
+						
 							aria-labelledby="home-tab">
 							<h3 class="register-heading">Model Join</h3>
 							<div class="row register-form">
@@ -378,6 +372,8 @@ translateY
 								</div>
 							</div>
 						</div>
+						</form>
+						<form method="post" action="/CHAL-KAK/photographerjoin.ck" name="join">
 						<div class="tab-pane fade show" id="profile" role="tabpanel"
 							aria-labelledby="profile-tab">
 							<h3 class="register-heading">Photographer Join</h3>
@@ -424,24 +420,23 @@ translateY
 
 									</div>
 									<div class="form-group">
-										<select class="form-control">
-											<option class="hidden" selected disabled>카메라 기종을 선택해
-												주세요.</option>
-											<option>1</option>
-											<option>7</option>
-											<option>8</option>
-											<option>3</option>
-										</select>
+
+										<select class="form-control" name="camera_seq">
+                                                <option class="hidden"  selected disabled>카메라 기종을 선택해 주세요.</option>
+                                                <option>1</option>
+                                                <option>7</option>
+                                                <option>8</option>
+                                                <option>3</option>
+                                            </select>
 									</div>
 									<div class="form-group">
-										<select class="form-control">
-											<option class="hidden" selected disabled>주로 찍는 사진
-												컨셉을 선택해주세요.</option>
-											<option value="0">독사진</option>
-											<option value="1">우정사진</option>
-											<option value="2">커플사진</option>
-											<option value="3">가족사진</option>
-										</select>
+										<select class="form-control" name="concept">
+                                                <option class="hidden"  selected disabled>주로 찍는 사진 컨셉을 선택해주세요.</option>
+                                               <option value="0">독사진</option>
+					    					   <option value="1">우정사진</option>
+							                   <option value="2">커플사진</option>
+						                       <option value="3">가족사진</option>	
+                                            </select>
 									</div>
 									<div class="form-group">
 										<input type="text" name="career" class="form-control"
@@ -461,11 +456,15 @@ translateY
 							</div>
 						</div>
 					</div>
+					</form>
 				</div>
 
 			</div>
 
 		</div>
-	</form>
+		
+		</div>
+	
+
 </body>
 </html>
