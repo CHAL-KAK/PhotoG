@@ -88,52 +88,51 @@
 						role="button" data-toggle="dropdown" data-hover="dropdown">User</a>
 						<div class="dropdown-menu" aria-labelledby="navdrop">
 							<a href="/CHAL-KAK/admin_model_list.ck" class="dropdown-item">Model</a>
-							<a href="/CHAL-KAK/admin_photographer_list.ck"
-								class="dropdown-item">Photographer</a>
 						</div></li>
+					<li class="nav-item"><a class="nav-link"
+						href="/CHAL-KAK/admin_board_list.ck">전체 게시글 확인</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="/CHAL-KAK/logout.ck">Logout</a></li>
 				</ul>
-				</div>
+			</div>
 		</div>
 	</nav>
-	<div class="wrapper" style="margin: 50px auto;">
+<div class="wrapper=" style="margin: 50px auto;">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
 					<div class="description">
-						<h2>Board</h2>
+						<h2>Photographer List</h2>
 					</div>
 
 					<div class="fresh-table full-color-orange">
-
 						<table id="fresh-table" class="table">
 							<thead>
-								<th data-field="id" data-sortable="true">PhotographerId</th>
-								<th data-field="title" data-sortable="true">Title</th>
-								<th data-field="maximun_number" data-sortable="true">Maximun
-									Number</th>
-								<th data-field="hope_date" data-sortable="true">Hope Date</th>
-								<th data-field="start_time" data-sortable="true">Start Time</th>
-								<th data-field="end_time" data-sortable="true">End Time</th>
-								<th data-field="progress" data-sortable="true">Progress</th>
+								<th data-field="id" data-sortable="true">Id</th>
+								<th data-field="password" data-sortable="true">Password</th>
+								<th data-field="name" data-sortable="true">Name</th>
+								<th data-field="gender" data-sortable="true">Gender</th>
+								<th data-field="bday" data-sortable="true">BDAY</th>
+								<th data-field="kid" data-sortable="true">Kakao Id</th>
+								<th data-field="actions">Actions</th>
 							</thead>
 							<tbody>
-								<c:forEach items="${all}" var = "l">
+								<c:forEach items="${photographer}" var="p">
 									<tr>
-										<td><a href="photo_mypage.ck?id=${l.p_id}">${l.p_id}</a></td>
-										<td><a href="board_one.ck?seq=${l.brd_seq}">${l.title}</a></td>
-										<td>${l.max}</td>
-										<td>${l.day}</td>
-										<td>${l.start_time}</td>
-										<td>${l.end_time}</td>
-										<td>${l.progress}</td>
+										<td><a href="photo_mypage.ck?id=${p.p_id}">${p.p_id}</a></td>
+										<td>${p.p_password}</td>
+										<td>${p.p_name}</td>
+										<td>${p.p_gender}</td>
+										<td>${p.p_bday}</td>
+										<td>${p.p_ka_id}</td>
+										<td><a href="deletePhotographer.ck?seq=${p.photog_seq}">delete</a>
+										</td>
 									</tr>
 								</c:forEach>
 							</tbody>
 						</table>
-							<form action="<%=path%>/admin_index.ck">
-								<input type="submit" value="back">
+						<form action="<%=path%>/admin_index.ck">
+							<input type="submit" value="back">
 						</form>
 					</div>
 				</div>

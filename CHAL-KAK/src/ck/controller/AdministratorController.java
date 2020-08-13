@@ -21,11 +21,17 @@ public class AdministratorController {
 	@Autowired
 	AdministratorBiz administratorbiz;
 
-	@RequestMapping(value = "/admin_member_list.ck")
-	public ModelAndView confirmMemberList() {
-		ModelAndView mav = new ModelAndView("administrator/memberlist_all");
+	@RequestMapping(value = "/admin_model_list.ck")
+	public ModelAndView confirmModelList() {
+		ModelAndView mav = new ModelAndView("administrator/model_list");
 		List<ModelVO> model = administratorbiz.confirmModelList();
 		mav.addObject("model", model);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/admin_photographer_list.ck")
+	public ModelAndView confirmMemberList() {
+		ModelAndView mav = new ModelAndView("administrator/photographer_list");
 		List<PhotographerVO> photographer = administratorbiz.confirmPhotographerList();
 		mav.addObject("photographer", photographer);
 		return mav;
@@ -51,7 +57,7 @@ public class AdministratorController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/admin_index.ck", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin_index.ck")
 	public ModelAndView adminIndex() {
 		ModelAndView mav = new ModelAndView("administrator/admin_index");
 		return mav;
