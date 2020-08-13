@@ -159,7 +159,7 @@
 					</div>
 				</c:when>
 				<c:otherwise>
-				<a class="navbar-brand" href="/CHAL-KAK/index.jsp">CHAL KAK ${sessionScope.login_user.id}님 </a>
+				<a class="navbar-brand" href="/CHAL-KAK/index.jsp">CHAL KAK</a>
 					<c:if test="${sessionScope.login_user.type eq 'P'}">
 					
 						<div class="collapse navbar-collapse" id="navbarResponsive">
@@ -234,42 +234,6 @@
 			</div>
 		</div>
 	</section>
-
-	<div>
-		<c:choose>
-			<c:when test="${empty sessionScope.login_user.type}">
-				<a href="/CHAL-KAK/join/model_join.jsp">모델회원가입</a>
-				<a href="/CHAL-KAK/join/photographer_join.jsp">사진사회원가입</a>
-				<br>
-				<a href="/CHAL-KAK/login/model_login.jsp">모델로그인</a>
-				<a href="/CHAL-KAK/login/photographer_login.jsp">사진사로그인</a>
-				<a href="/CHAL-KAK/login/administrator_login.jsp">관리자로그인</a>
-				<br>
-
-				<!-- 				<a href="/CHAL-KAK/noticeboard/notice_board.jsp">게시판</a> -->
-			</c:when>
-			<c:otherwise>
-				<c:if test="${sessionScope.login_user.type eq 'P'}">
-					${sessionScope.login_user.type} : ${sessionScope.login_user.id}님 로그인되셨습니다.<br>
-					<a href='/CHAL-KAK/logout.ck'>로그아웃</a>
-					<a
-						href="/CHAL-KAK/photo_mypage.ck?id=${sessionScope.login_user.id}">사진사
-						마이페이지</a>
-
-					<a href="/CHAL-KAK/noticeboard/notice_board.jsp">게시판</a>
-				</c:if>
-				<c:if test="${sessionScope.login_user.type eq 'M'}">
-					${sessionScope.login_user.type} : ${sessionScope.login_user.id}님 로그인되셨습니다.<br>
-					<a href='/CHAL-KAK/logout.ck'>로그아웃</a>
-					<a
-						href="/CHAL-KAK/model_mypage.ck?id=${sessionScope.login_user.id}">모델
-						마이페이지</a>
-
-					<a href="/CHAL-KAK/noticeboard/notice_board.jsp">게시판</a>
-				</c:if>
-			</c:otherwise>
-		</c:choose>
-	</div>
 	<!-- Footer -->
 	<footer class="py-5 bg-secondary">
 		<div class="container">
