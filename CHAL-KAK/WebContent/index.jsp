@@ -10,12 +10,35 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-
 <link
 	href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean"
 	rel="stylesheet">
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-
+<script type="text/javascript">
+	$().ready(function() {
+		$('#search').click(function() {
+			var day = document.search.date.value;
+			var count = document.search.count.value;
+			var concept = document.search.concept.value;
+			$.ajax({
+				url :"searchNotice.ck",
+				type:"POST",
+				data:{
+					date : day,
+					cnt : count,
+					con : concept,
+				},
+				success:function (res){
+					$('#searchresult').html(res);
+				},
+				error: function(res){
+					$('#searchresult').html('에러 발생');
+				},
+				dataType:"text"
+			});
+		});
+	});
+</script>
 <title>main</title>
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -101,6 +124,7 @@
 				aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
+
 			<c:choose>
 				<c:when test="${empty sessionScope.login_user.type}">
 				<a class="navbar-brand" href="/CHAL-KAK/index.jsp">CHAL KAK</a>
@@ -178,43 +202,84 @@
 	<section>
 		<div class="row">
 			<div id="map"
-				style="width: 60%; height: 600px; margin: 30px 0px 30px 30px; border: 1px solid #A9A9A9; float: left;"></div>
-			<div
-				style="float: right; margin: 30px 0px 0px 30px; font-family: Nanum Gothic;">
-				<p>
-					날짜&emsp;<input name="date" type="date"> <br />
-				</p>
-				<p>
-					시작 시간&emsp;<input name="starttime" type="time"><br />
-				</p>
-				<p>
-					끝 시간&emsp; <input name="endtime" type="time"><br />
-				</p>
-				<p>
-					인원 &emsp;<input name="count" type="text"><br />
-				</p>
-				<p>
-					컨셉&emsp; <select name="concept">
-						<option value="0">독사진</option>
-						<option value="1">우정사진</option>
-						<option value="2">커플사진</option>
-						<option value="3">가족사진</option>
-					</select><br />
-				</p>
-				<input type="button" value="검색"> <input type="reset"
-					value="취소"><br />
-			</div>
+
+				style="width: 60%; height: 600px; margin: 30px 0px 0px 30px; border: 1px solid #A9A9A9; float: left;"></div>
+			<form name="search" action="/search_notice.ck">
+				<div
+					style="float: right; margin: 30px 0px 0px 30px; font-family: Nanum Gothic;">
+					<p>
+						날짜&emsp;<input name="date" type="date"> <br />
+					</p>
+					<!-- 			<p>시작 시간&emsp;<input name="starttime" type="time"><br /> </p> -->
+					<!-- 			<p>끝 시간&emsp; <input name="endtime" type="time"><br /> </p> -->
+					<p>
+						인원 &emsp;<input name="count" type="text"><br />
+					</p>
+					<p>
+						컨셉&emsp; <select name="concept">
+							<option value="0">독사진</option>
+							<option value="1">우정사진</option>
+							<option value="2">커플사진</option>
+							<option value="3">가족사진</option>
+						</select><br />
+					</p>
+					<input type="button" value="검색" id="search"> <input
+						type="reset" value="취소"><br />
+				</div>
+
+			</form>
+			<div id="searchresult"></div>
 		</div>
 	</section>
 
+	<div>
+		<c:choose>
+			<c:when test="${empty sessionScope.login_user.type}">
+				<a href="/CHAL-KAK/join/model_join.jsp">모델회원가입</a>
+				<a href="/CHAL-KAK/join/photographer_join.jsp">사진사회원가입</a>
+				<br>
+				<a href="/CHAL-KAK/login/model_login.jsp">모델로그인</a>
+				<a href="/CHAL-KAK/login/photographer_login.jsp">사진사로그인</a>
+				<a href="/CHAL-KAK/login/administrator_login.jsp">관리자로그인</a>
+				<br>
+
+				<!-- 				<a href="/CHAL-KAK/noticeboard/notice_board.jsp">게시판</a> -->
+			</c:when>
+			<c:otherwise>
+				<c:if test="${sessionScope.login_user.type eq 'P'}">
+					${sessionScope.login_user.type} : ${sessionScope.login_user.id}님 로그인되셨습니다.<br>
+					<a href='/CHAL-KAK/logout.ck'>로그아웃</a>
+					<a
+						href="/CHAL-KAK/photo_mypage.ck?id=${sessionScope.login_user.id}">사진사
+						마이페이지</a>
+
+					<a href="/CHAL-KAK/noticeboard/notice_board.jsp">게시판</a>
+				</c:if>
+				<c:if test="${sessionScope.login_user.type eq 'M'}">
+					${sessionScope.login_user.type} : ${sessionScope.login_user.id}님 로그인되셨습니다.<br>
+					<a href='/CHAL-KAK/logout.ck'>로그아웃</a>
+					<a
+						href="/CHAL-KAK/model_mypage.ck?id=${sessionScope.login_user.id}">모델
+						마이페이지</a>
+
+					<a href="/CHAL-KAK/noticeboard/notice_board.jsp">게시판</a>
+				</c:if>
+			</c:otherwise>
+		</c:choose>
+	</div>
 	<!-- Footer -->
-  <footer class="py-5 bg-secondary">
-    <div class="container">
-      <p class="m-0 text-center text-white small"> 만든이 : 배윤희 오지혜 조재웅 최은혜 </p>
-      <p class="m-0 text-center text-white small"> https://github.com/CHAL-KAK/PhotoG</p>
-    </div>
-    <!-- /.container -->
-  </footer>
+	<footer class="py-5 bg-secondary">
+		<div class="container">
+			<p class="m-0 text-center text-white small">만든이 : 배윤희 오지혜 조재웅 최은혜
+			</p>
+			<p class="m-0 text-center text-white small">
+				https://github.com/CHAL-KAK/PhotoG</p>
+		</div>
+		<!-- /.container -->
+	</footer>
+
+
+
 
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=63f56496ce33aada63acf5d83d3eb9b9&libraries=clusterer""></script>
@@ -276,8 +341,10 @@
 				var message = '현재 지도 레벨은 10 이하' + level + ' 입니다';
 			}
 
+
 // 			var resultDiv = document.getElementById('levelresult');
 // 			resultDiv.innerHTML = message;
+
 		});
 	</script>
 </body>

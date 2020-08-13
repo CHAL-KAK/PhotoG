@@ -43,14 +43,12 @@
 				<c:forEach items="${list}" var="board">
 					${board.BRD_SEQ}&nbsp;&nbsp;&nbsp;
 					${board.PLACE}&nbsp;&nbsp;&nbsp;
-					${bord.P_ID}&nbsp;&nbsp;&nbsp;
+					${board.TITLE}&nbsp;&nbsp;&nbsp;
 					${board.CONCEPT}&nbsp;&nbsp;&nbsp;
 					${board.MAX}&nbsp;&nbsp;&nbsp;
+					${board.DAY}&nbsp;&nbsp;&nbsp;
 					${board.START_TIME}&nbsp;&nbsp;&nbsp;
 					${board.END_TIME}&nbsp;&nbsp;&nbsp;
-					${board.PROGRESS}&nbsp;&nbsp;&nbsp;
-<%-- 					<input type="hidden" value="${board.PROGRESS}" id="progress"> --%>
-<%-- 					${board.PROGRESS}&nbsp;&nbsp;&nbsp; --%>
 					<input type="button" value="예약리스트"
 							onclick="resList('${board.BRD_SEQ},${board.PROGRESS}')" />
 					<hr>
