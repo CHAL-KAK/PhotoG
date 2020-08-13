@@ -14,4 +14,6 @@ public interface NoticeBoardDao {
 	public int insertNoticeForm(NoticeBoardVO noticeboard);
 	
 	public int insertReservationForm(ReservationVO vo);
+	
+	public List<NoticeBoardVO> boardSearch(NoticeBoardVO vo);
 }

@@ -66,16 +66,26 @@ public class NoticeBoardDaoImpl implements NoticeBoardDao {
 	@Override
 	public int insertNoticeForm(NoticeBoardVO vo) {
 		return jdbcTemplate.update("insert into notice_board values(brd_seq.nextval,?,?,?,?,?,?,0,?,?,?)",
-				new Object[] {vo.getP_id(),
-						vo.getStart_time(), vo.getEnd_time(), 
-						vo.getPlace(), vo.getConcept(), vo.getMax(),vo.getDay(), vo.getTitle(), vo.getContent()});
+				new Object[] { vo.getP_id(), vo.getStart_time(), vo.getEnd_time(), vo.getPlace(), vo.getConcept(),
+						vo.getMax(), vo.getDay(), vo.getTitle(), vo.getContent() });
 	}
 
 	@Override
 	public int insertReservationForm(ReservationVO vo) {
 		return jdbcTemplate.update("insert into reservation values (rev_seq.nextval,?,?,?,?,?,?,0,?)",
-				new Object[] {vo.getBrd_seq(),vo.getM_id(),vo.getConcept(),vo.getPeople_num(),vo.getStart_time(),
-						vo.getEnd_time(),vo.getDay()});
+				new Object[] { vo.getBrd_seq(), vo.getM_id(), vo.getConcept(), vo.getPeople_num(), vo.getStart_time(),
+						vo.getEnd_time(), vo.getDay() });
+	}
+
+	@Override
+	public List<NoticeBoardVO> boardSearch(NoticeBoardVO vo) {
+		simpleJdbcCall = createSimpleJdbcCall();
+		simpleJdbcCall.withProcedureName("P_SEARCH_BOARD");
+		SqlParameterSource in = new MapSqlParameterSource().addValue("S_DAY", vo.getDay())
+				.addValue("S_MAX", vo.getMax()).addValue("S_CONCEPT", vo.getConcept());
+		Map<String, Object> out = simpleJdbcCall.execute(in);
+		List<NoticeBoardVO> list = (List<NoticeBoardVO>) out.get("RES");
+		return list;
 	}
 
 }

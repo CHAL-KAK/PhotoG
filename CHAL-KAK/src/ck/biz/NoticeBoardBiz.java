@@ -30,5 +30,9 @@ public class NoticeBoardBiz {
 	public int insertReservationForm(ReservationVO vo) {
 		return noticeBoardDao.insertReservationForm(vo);
 	}
+	
+	public List<NoticeBoardVO> searchBoard(NoticeBoardVO vo){
+		return noticeBoardDao.boardSearch(vo);
+	}
 
 }

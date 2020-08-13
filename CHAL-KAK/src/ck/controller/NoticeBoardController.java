@@ -1,5 +1,8 @@
 package ck.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import ck.biz.NoticeBoardBiz;
@@ -15,7 +19,7 @@ import ck.vo.ReservationVO;
 
 @Controller
 public class NoticeBoardController {
-	
+
 	@Autowired
 	NoticeBoardBiz noticeboardbiz;
 
@@ -55,4 +59,20 @@ public class NoticeBoardController {
 		return "redirect:/noticeboard.ck";
 	}
 
+//	@ResponseBody
+	@RequestMapping(method = RequestMethod.POST, value = "/searchNotice.ck")
+	public ModelAndView searchNotice(@RequestParam("date") String date, @RequestParam("cnt") int max,
+			@RequestParam("con") int concept) throws ParseException {
+		SimpleDateFormat fm = new SimpleDateFormat("yy-MM-dd");
+		Date day = fm.parse(date);
+
+		NoticeBoardVO vo = new NoticeBoardVO();
+		vo.setDay(day);
+		vo.setMax(max);
+		vo.setConcept(concept);
+		List<NoticeBoardVO> list = noticeboardbiz.searchBoard(vo);
+		System.out.println(list);
+		ModelAndView mav = new ModelAndView("/noticeboard/searchResult", "result", list);
+		return mav;
+	}
 }
