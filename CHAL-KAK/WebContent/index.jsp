@@ -203,10 +203,11 @@
 		<div class="row">
 			<div id="map"
 
-				style="width: 60%; height: 600px; margin: 30px 0px 0px 30px; border: 1px solid #A9A9A9; float: left;"></div>
+				style="width: 60%; height: 600px; margin: 30px 0px 0px 30px; border: 1px solid #A9A9A9; float: left;">
+			</div>
+			<div class="col" style="float: right; margin: 30px 0px 0px 30px;">
 			<form name="search" action="/search_notice.ck">
-				<div
-					style="float: right; margin: 30px 0px 0px 30px; font-family: Nanum Gothic;">
+				<div font-family: Nanum Gothic;">
 					<p>
 						날짜&emsp;<input name="date" type="date"> <br />
 					</p>
@@ -228,7 +229,9 @@
 				</div>
 
 			</form>
+			<hr>
 			<div id="searchresult"></div>
+			</div>
 		</div>
 	</section>
 

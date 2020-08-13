@@ -57,6 +57,7 @@ public class MypageController {
 		ModelAndView mav = null;
 		try {
 			list = mypagebiz.Model_Mypage(id);
+
 			mav = new ModelAndView("/mypage/model_mypage", "list", list);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -71,13 +72,13 @@ public class MypageController {
 		ModelAndView mav = null;
 		try {
 			list = mypagebiz.Reserv_List(bseq);
-			if(pro==1) {
-				//reservation complete
+			if (pro == 1) {
+				// reservation complete
 				mav = new ModelAndView("/mypage/board_reslist_comp", "list", list);
-			}else {
+			} else {
 				mav = new ModelAndView("/mypage/board_reslist_ing", "list", list);
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -172,5 +173,5 @@ public class MypageController {
 		mav.addObject("file_name", file_name);
 		return mav;
 	}
-	
+
 }
