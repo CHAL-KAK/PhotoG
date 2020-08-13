@@ -66,6 +66,8 @@ transform
 
 
 translateY
+
+
 (
 
 
@@ -73,9 +75,9 @@ translateY
 
 
 )
+
+
 ;
-
-
 }
 }
 @
@@ -95,6 +97,8 @@ transform
 
 
 translateY
+
+
 (
 
 
@@ -102,9 +106,9 @@ translateY
 
 
 )
+
+
 ;
-
-
 }
 }
 .register-left p {
@@ -203,17 +207,14 @@ translateY
 						$('#idresult').html('이미 존재하는 ID 입니다.');
 						$('#idresult').addClass('mb-3');
 					}
-
 				},
 				error : function(ret) {
 					console.log(ret);
 				},
 				dataType : "text"
 			});
-
 		});
 	});
-
 	$(document).ready(function() {
 		$('#idcheck1').click(function() {
 			var id = document.join.id.value;
@@ -233,14 +234,12 @@ translateY
 						$('#idresult1').html('이미 존재하는 ID 입니다.');
 						$('#idresult1').addClass('mb-3');
 					}
-
 				},
 				error : function(ret) {
 					console.log(ret);
 				},
 				dataType : "text"
 			});
-
 		});
 	});
 </script>
@@ -274,7 +273,7 @@ translateY
 	<%
 		String path = application.getContextPath();
 	%>
-	
+
 	<!-- Navigation -->
 	<nav
 		class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
@@ -287,45 +286,43 @@ translateY
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" href="/CHAL-KAK/noticeboard/notice_board.jsp">board</a>
-					<li class="nav-item"><a class="nav-link" href="/CHAL-KAK/join/join.jsp">Sign Up</a>
-					</li>
+					<li class="nav-item"><a class="nav-link"
+						href="/CHAL-KAK/noticeboard/notice_board.jsp">board</a>
+					<li class="nav-item"><a class="nav-link"
+						href="/CHAL-KAK/join/join.jsp">Sign Up</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">Log In</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-	
-		<div class="container register">
-			<div class="row">
-				<div class="col-md-3 register-left">
-					<img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
-					<h3>Welcome</h3>
-					<p>
-						Picture On Life</br>Picture Of Life
-					</p>
+
+	<div class="container register">
+		<div class="row">
+			<div class="col-md-3 register-left">
+				<img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+				<h3>Welcome</h3>
+				<p>Picture On Life <br> Picture Of Life</p>
 
 
-				</div>
-				<div class="col-md-9 register-right">
+			</div>
+			<div class="col-md-9 register-right">
 
-					<ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
-						<li class="nav-item"><a class="nav-link active" id="home-tab"
-							data-toggle="tab" href="#home" role="tab" aria-controls="home"
-							aria-selected="true">Model</a></li>
-						<li class="nav-item"><a class="nav-link" id="profile-tab"
-							data-toggle="tab" href="#profile" role="tab"
-							aria-controls="profile" aria-selected="false"
-							style="font-color: white;">Photographer</a></li>
-					</ul>
-					<div class="tab-content" id="myTabContent">
-					<form method="post" action="/CHAL-KAK/modeljoin.ck" name="join">
-						<div class="tab-pane fade show active" id="home" role="tabpanel"
-						
-							aria-labelledby="home-tab">
-							<h3 class="register-heading">Model Join</h3>
-							<div class="row register-form">
-								<div class="col-md-12">
+				<ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+					<li class="nav-item"><a class="nav-link active" id="home-tab"
+						data-toggle="tab" href="#home" role="tab" aria-controls="home"
+						aria-selected="true">Model</a></li>
+					<li class="nav-item"><a class="nav-link" id="profile-tab"
+						data-toggle="tab" href="#profile" role="tab"
+						aria-controls="profile" aria-selected="false"
+						style="font-color: white;">Photographer</a></li>
+				</ul>
+				<div class="tab-content" id="myTabContent">
+					<div class="tab-pane fade show active" id="home" role="tabpanel"
+						aria-labelledby="home-tab">
+						<h3 class="register-heading">Model Join</h3>
+						<div class="row register-form">
+							<div class="col-md-12">
+								<form method="post" action="/CHAL-KAK/modeljoin.ck" name="join">
 									<div class="form-group row my-1 mb-1" style="padding: 3%">
 										<input type="text" name="m_id" id="id"
 											class="form-control col-sm-9" placeholder="ID" /> <input
@@ -369,16 +366,17 @@ translateY
 									<!-- 									<input type="button" value="back" class="btnRegister" -->
 									<%-- 											onClick="location.href='<%=path%>'"> --%>
 
-								</div>
+								</form>
 							</div>
 						</div>
-						</form>
-						<form method="post" action="/CHAL-KAK/photographerjoin.ck" name="join">
-						<div class="tab-pane fade show" id="profile" role="tabpanel"
-							aria-labelledby="profile-tab">
-							<h3 class="register-heading">Photographer Join</h3>
-							<div class="row register-form">
-								<div class="col-md-12">
+					</div>
+					<div class="tab-pane fade show" id="profile" role="tabpanel"
+						aria-labelledby="profile-tab">
+						<h3 class="register-heading">Photographer Join</h3>
+						<div class="row register-form">
+							<div class="col-md-12">
+								<form method="post" action="/CHAL-KAK/photographerjoin.ck"
+									name="join">
 									<div class="form-group row my-1 mb-1" style="padding: 3%">
 										<input type="text" name="p_id" id="id"
 											class="form-control col-sm-9" placeholder="ID" /> <input
@@ -422,21 +420,23 @@ translateY
 									<div class="form-group">
 
 										<select class="form-control" name="camera_seq">
-                                                <option class="hidden"  selected disabled>카메라 기종을 선택해 주세요.</option>
-                                                <option>1</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>3</option>
-                                            </select>
+											<option class="hidden" selected disabled>카메라 기종을 선택해
+												주세요.</option>
+											<option>1</option>
+											<option>7</option>
+											<option>8</option>
+											<option>3</option>
+										</select>
 									</div>
 									<div class="form-group">
 										<select class="form-control" name="concept">
-                                                <option class="hidden"  selected disabled>주로 찍는 사진 컨셉을 선택해주세요.</option>
-                                               <option value="0">독사진</option>
-					    					   <option value="1">우정사진</option>
-							                   <option value="2">커플사진</option>
-						                       <option value="3">가족사진</option>	
-                                            </select>
+											<option class="hidden" selected disabled>주로 찍는 사진
+												컨셉을 선택해주세요.</option>
+											<option value="0">독사진</option>
+											<option value="1">우정사진</option>
+											<option value="2">커플사진</option>
+											<option value="3">가족사진</option>
+										</select>
 									</div>
 									<div class="form-group">
 										<input type="text" name="career" class="form-control"
@@ -452,19 +452,19 @@ translateY
 									<!-- 									<input type="button" value="back" class="btnRegister" -->
 									<%-- 											onClick="location.href='<%=path%>'"> --%>
 
-								</div>
+								</form>
 							</div>
-						
+						</div>
+
 					</div>
-					</form>
 				</div>
 
 			</div>
 
 		</div>
-		
-		</div>
-	
+
+	</div>
+
 
 </body>
 </html>

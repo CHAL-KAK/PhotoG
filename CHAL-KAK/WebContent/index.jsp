@@ -108,8 +108,18 @@
 						<ul class="navbar-nav ml-auto">
 							<li class="nav-item"><a class="nav-link"
 								href="/CHAL-KAK/noticeboard/notice_board.jsp">board</a>
-							<li class="nav-item"><a class="nav-link"
-								href="/CHAL-KAK/join/join.jsp">Sign Up</a></li>
+								
+							<li class="nav-item dropdown"><a
+								class="nav-link dropdown-toggle" href="#" id="navdrop"
+								role="button" data-toggle="dropdown" data-hover="dropdown">Sign Up</a>
+								<div class="dropdown-menu" aria-labelledby="navdrop">
+									<a href="/CHAL-KAK/join/model_join.jsp" class="dropdown-item">Model</a>
+									<a href="/CHAL-KAK/join/photographer_join.jsp"
+										class="dropdown-item">Photographer</a>
+								</div></li>
+								
+								
+								
 							<li class="nav-item dropdown"><a
 								class="nav-link dropdown-toggle" href="#" id="navdrop"
 								role="button" data-toggle="dropdown" data-hover="dropdown">Log
