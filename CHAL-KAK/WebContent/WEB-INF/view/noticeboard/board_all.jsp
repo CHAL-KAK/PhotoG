@@ -55,61 +55,14 @@
 
 <!-- Custom styles for this template -->
 <link href="css/one-page-wonder.min.css" rel="stylesheet">
-<style>
-.customoverlay {
-	position: relative;
-	bottom: 85px;
-	border-radius: 6px;
-	border: 1px solid #ccc;
-	border-bottom: 2px solid #ddd;
-	float: left;
-}
-.customoverlay:nth-of-type(n) {
-	border: 0;
-	box-shadow: 0px 1px 2px #888;
-}
-.customoverlay a {
-	display: block;
-	text-decoration: none;
-	color: #000;
-	text-align: center;
-	border-radius: 6px;
-	font-size: 14px;
-	font-weight: bold;
-	overflow: hidden;
-	background: #d95050;
-	background: #d95050
-		url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png)
-		no-repeat right 14px center;
-}
-.customoverlay .title {
-	display: block;
-	text-align: center;
-	background: #fff;
-	margin-right: 35px;
-	padding: 10px 15px;
-	font-size: 14px;
-	font-weight: bold;
-}
-.customoverlay:after {
-	content: '';
-	position: absolute;
-	margin-left: -12px;
-	left: 50%;
-	bottom: -12px;
-	width: 22px;
-	height: 12px;
-	background:
-		url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
-}
-</style>
+
 </head>
 <body>
 	<!-- Navigation -->
 	<nav
 		class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="/CHAL-KAK/index.jsp">CHAL KAK</a>
+			<a class="navbar-brand" href="/CHAL-KAK/index.jsp">CHAL KAK ${sessionScope.login_user.id}님</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarResponsive" aria-controls="navbarResponsive"
 				aria-expanded="false" aria-label="Toggle navigation">
@@ -117,10 +70,17 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" href="/CHAL-KAK/noticeboard/notice_board.jsp">board</a>
-					<li class="nav-item"><a class="nav-link" href="/CHAL-KAK/join/join.jsp">Sign Up</a>
+				<li class="nav-item"><a class="nav-link"
+									href="/CHAL-KAK/logout.ck">Logout</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="#">Log In</a></li>
+					<c:if test="${sessionScope.login_user.type eq 'P'}">
+					<li class="nav-item"><a class="nav-link"
+									href="/CHAL-KAK/photo_mypage.ck?id=${sessionScope.login_user.id}">MyPage</a>
+					</c:if>
+					<c:if test="${sessionScope.login_user.type eq 'M'}">
+					<li class="nav-item"><a class="nav-link"
+									href="/CHAL-KAK/model_mypage.ck?id=${sessionScope.login_user.id}">MyPage</a>
+					</c:if>
 				</ul>
 			</div>
 		</div>

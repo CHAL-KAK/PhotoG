@@ -5,11 +5,10 @@
 <html>
 <head>
 <meta charset="utf-8">
-  
+
 <style type="text/css">
 .register {
-	
-background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+	background: -webkit-linear-gradient(left, #3931af, #00c6ff);
 	margin-top: 7%;
 	padding: 3%;
 }
@@ -34,9 +33,10 @@ background: -webkit-linear-gradient(left, #3931af, #00c6ff);
 }
 
 .register-right {
-	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
-	background:rgba(0,0,0,0.5);
-/* 	background: #f8f9fa; */
+	box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0
+		rgba(0, 0, 0, .19);
+	background: rgba(0, 0, 0, 0.5);
+	/* 	background: #f8f9fa; */
 	border-top-left-radius: 10% 50%;
 	border-bottom-left-radius: 10% 50%;
 }
@@ -55,13 +55,27 @@ background: -webkit-linear-gradient(left, #3931af, #00c6ff);
 }
 
 100
+
+
 %
 {
 transform
+
+
 :
-translateY(
+
+
+translateY
+(
+
+
 -20px
-);
+
+
+)
+;
+
+
 }
 }
 @
@@ -70,13 +84,27 @@ keyframes mover { 0% {
 }
 
 100
+
+
 %
 {
 transform
+
+
 :
-translateY(
+
+
+translateY
+(
+
+
 -20px
-);
+
+
+)
+;
+
+
 }
 }
 .register-left p {
@@ -127,7 +155,7 @@ translateY(
 }
 
 .register .nav-tabs .nav-link.active {
-/* 	width: 100px; */
+	/* 	width: 100px; */
 	color: #0062cc;
 	border: 2px solid #0062cc;
 	border-top-left-radius: 1.5rem;
@@ -185,7 +213,7 @@ translateY(
 
 		});
 	});
-	
+
 	$(document).ready(function() {
 		$('#idcheck1').click(function() {
 			var id = document.join.id.value;
@@ -216,18 +244,23 @@ translateY(
 		});
 	});
 </script>
- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-    <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<!-- Bootstrap core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Custom fonts for this template -->
-  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+<!-- Custom fonts for this template -->
+<link
+	href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i"
+	rel="stylesheet">
 
-  <!-- Custom styles for this template -->
-  <link href="/CHAL-KAK/css/one-page-wonder.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="/CHAL-KAK/css/one-page-wonder.min.css" rel="stylesheet">
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
@@ -241,7 +274,6 @@ translateY(
 	<%
 		String path = application.getContextPath();
 	%>
-	
 	
 	<!-- Navigation -->
 	<nav
@@ -264,29 +296,27 @@ translateY(
 		</div>
 	</nav>
 	
-	
-	
-	
-	
-	
 		<div class="container register">
 			<div class="row">
 				<div class="col-md-3 register-left">
 					<img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
 					<h3>Welcome</h3>
-					<p>Picture On Life</br>Picture Of Life</p>
-					
-					
+					<p>
+						Picture On Life</br>Picture Of Life
+					</p>
+
+
 				</div>
-				
-				<div class="col-md-9 register-right" >
+				<div class="col-md-9 register-right">
+
 					<ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
 						<li class="nav-item"><a class="nav-link active" id="home-tab"
 							data-toggle="tab" href="#home" role="tab" aria-controls="home"
 							aria-selected="true">Model</a></li>
 						<li class="nav-item"><a class="nav-link" id="profile-tab"
 							data-toggle="tab" href="#profile" role="tab"
-							aria-controls="profile" aria-selected="false" style="font-color:white;">Photographer</a></li>
+							aria-controls="profile" aria-selected="false"
+							style="font-color: white;">Photographer</a></li>
 					</ul>
 					<div class="tab-content" id="myTabContent">
 					<form method="post" action="/CHAL-KAK/modeljoin.ck" name="join">
@@ -298,9 +328,8 @@ translateY(
 								<div class="col-md-12">
 									<div class="form-group row my-1 mb-1" style="padding: 3%">
 										<input type="text" name="m_id" id="id"
-											class="form-control col-sm-9" placeholder="ID" /> 
-										<input type="button"
-											id="idcheck" value="중복체크" class="btn col-sm-3"
+											class="form-control col-sm-9" placeholder="ID" /> <input
+											type="button" id="idcheck" value="중복체크" class="btn col-sm-3"
 											style="background: #0062cc; color: #fff;" />
 									</div>
 									<div>
@@ -308,35 +337,38 @@ translateY(
 									</div>
 									<div class="form-group">
 										<input type="password" name="m_password" class="form-control"
-											placeholder="password"/>
+											placeholder="password" />
 									</div>
 									<div class="form-group">
 										<input type="text" name="m_name" class="form-control"
 											placeholder="name" value="" />
 									</div>
-									
+
 									<div class="form-group">
-										<div class="maxl" style="color:white;">
-											<label class="radio inline"> <input type="radio" name="m_gender" value="M" id="r0" checked> <span>
+										<div class="maxl" style="color: white;">
+											<label class="radio inline"> <input type="radio"
+												name="m_gender" value="M" id="r0" checked> <span>
 													Male </span>
 											</label> <label class="radio inline"> <input type="radio"
-												name="m_gender" value="F" id="r1"> <span>Female </span>
+												name="m_gender" value="F" id="r1"> <span>Female
+											</span>
 											</label>
 										</div>
 									</div>
 									<div class="form-group">
-										<h6 style="color:white;">Birth </h6><input type="date" name="m_bday" class="form-control" 
+										<h6 style="color: white;">Birth</h6>
+										<input type="date" name="m_bday" class="form-control"
 											placeholder="Birth" />
 									</div>
 									<div class="form-group">
 										<input type="text" name="m_ka_id" class="form-control"
-											placeholder="kakao ID"  />
+											placeholder="kakao ID" />
 									</div>
-									
+
 									<input type="submit" class="btnRegister" value="Register" />
-<!-- 									<input type="button" value="back" class="btnRegister" -->
-<%-- 											onClick="location.href='<%=path%>'"> --%>
-									
+									<!-- 									<input type="button" value="back" class="btnRegister" -->
+									<%-- 											onClick="location.href='<%=path%>'"> --%>
+
 								</div>
 							</div>
 						</div>
@@ -349,43 +381,46 @@ translateY(
 								<div class="col-md-12">
 									<div class="form-group row my-1 mb-1" style="padding: 3%">
 										<input type="text" name="p_id" id="id"
-											class="form-control col-sm-9" placeholder="ID" /> 
-										<input type="button"
-											id="idcheck1" value="중복체크" class="btn col-sm-3"
+											class="form-control col-sm-9" placeholder="ID" /> <input
+											type="button" id="idcheck1" value="중복체크" class="btn col-sm-3"
 											style="background: #0062cc; color: #fff;" />
 									</div>
-									
+
 									<div>
 										<div id="idresult1"></div>
 									</div>
 									<div class="form-group">
 										<input type="password" name="p_password" class="form-control"
-											placeholder="password"/>
+											placeholder="password" />
 									</div>
 									<div class="form-group">
 										<input type="text" name="p_name" class="form-control"
 											placeholder="name" value="" />
 									</div>
-									
+
 									<div class="form-group">
-										<div class="maxl" style="color:white;">
-											<label class="radio inline"> <input type="radio" name="p_gender" value="M" id="r0" checked> <span>
+										<div class="maxl" style="color: white;">
+											<label class="radio inline"> <input type="radio"
+												name="p_gender" value="M" id="r0" checked> <span>
 													Male </span>
 											</label> <label class="radio inline"> <input type="radio"
-												name="p_gender" value="F" id="r1"> <span>Female </span>
+												name="p_gender" value="F" id="r1"> <span>Female
+											</span>
 											</label>
 										</div>
 									</div>
 									<div class="form-group">
-										<h6 style="color:white;">Birth </h6><input type="date" name="p_bday" class="form-control" 
+										<h6 style="color: white;">Birth</h6>
+										<input type="date" name="p_bday" class="form-control"
 											placeholder="Birth" />
 									</div>
 									<div class="form-group">
 										<input type="text" name="p_ka_id" class="form-control"
-											placeholder="kakao ID"  />
-					
+											placeholder="kakao ID" />
+
 									</div>
 									<div class="form-group">
+
 										<select class="form-control" name="camera_seq">
                                                 <option class="hidden"  selected disabled>카메라 기종을 선택해 주세요.</option>
                                                 <option>1</option>
@@ -405,28 +440,31 @@ translateY(
 									</div>
 									<div class="form-group">
 										<input type="text" name="career" class="form-control"
-											placeholder="경력사항을 입력해주세요."  />		
+											placeholder="경력사항을 입력해주세요." />
 									</div>
 									<div class="form-group">
 										<input type="text" name="url" class="form-control"
-											placeholder="포트폴리오 url을 첨부해주세요."  />		
+											placeholder="포트폴리오 url을 첨부해주세요." />
 									</div>
-									
-									
+
+
 									<input type="submit" class="btnRegister" value="Register" />
-<!-- 									<input type="button" value="back" class="btnRegister" -->
-<%-- 											onClick="location.href='<%=path%>'"> --%>
-									
+									<!-- 									<input type="button" value="back" class="btnRegister" -->
+									<%-- 											onClick="location.href='<%=path%>'"> --%>
+
 								</div>
 							</div>
+						</div>
 					</div>
 					</form>
 				</div>
+
 			</div>
 
 		</div>
 		
 		</div>
 	
+
 </body>
 </html>

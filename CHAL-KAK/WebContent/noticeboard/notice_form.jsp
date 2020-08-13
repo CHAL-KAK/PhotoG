@@ -52,8 +52,7 @@
 	<nav
 		class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="/CHAL-KAK/index.jsp">CHAL
-				KAK</a>
+			<a class="navbar-brand" href="/CHAL-KAK/index.jsp">CHAL KAK ${sessionScope.login_user.id}님</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarResponsive" aria-controls="navbarResponsive"
 				aria-expanded="false" aria-label="Toggle navigation">
