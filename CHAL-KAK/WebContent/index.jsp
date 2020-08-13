@@ -9,6 +9,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
+
 <link
 	href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean"
 	rel="stylesheet">
@@ -52,6 +53,13 @@
 
 <!-- Custom styles for this template -->
 <link href="css/one-page-wonder.min.css" rel="stylesheet">
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style>
 .customoverlay {
 	position: relative;
@@ -110,21 +118,77 @@
 	<nav
 		class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="/CHAL-KAK/index.jsp">CHAL KAK</a>
+<!-- 			<a class="navbar-brand" href="/CHAL-KAK/index.jsp">CHAL KAK</a> -->
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarResponsive" aria-controls="navbarResponsive"
 				aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link"
-						href="/CHAL-KAK/noticeboard/notice_board.jsp">board</a>
-					<li class="nav-item"><a class="nav-link" href="#">Sign Up</a>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="#">Log In</a></li>
-				</ul>
-			</div>
+
+			<c:choose>
+				<c:when test="${empty sessionScope.login_user.type}">
+				<a class="navbar-brand" href="/CHAL-KAK/index.jsp">CHAL KAK</a>
+					<div class="collapse navbar-collapse" id="navbarResponsive">
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item"><a class="nav-link"
+								href="/CHAL-KAK/noticeboard/notice_board.jsp">board</a>
+								
+							<li class="nav-item dropdown"><a
+								class="nav-link dropdown-toggle" href="#" id="navdrop"
+								role="button" data-toggle="dropdown" data-hover="dropdown">Sign Up</a>
+								<div class="dropdown-menu" aria-labelledby="navdrop">
+									<a href="/CHAL-KAK/join/model_join.jsp" class="dropdown-item">Model</a>
+									<a href="/CHAL-KAK/join/photographer_join.jsp"
+										class="dropdown-item">Photographer</a>
+								</div></li>
+								
+								
+								
+							<li class="nav-item dropdown"><a
+								class="nav-link dropdown-toggle" href="#" id="navdrop"
+								role="button" data-toggle="dropdown" data-hover="dropdown">Log
+									In</a>
+								<div class="dropdown-menu" aria-labelledby="navdrop">
+									<a href="/CHAL-KAK/login/model_login.jsp" class="dropdown-item">Model</a>
+									<a href="/CHAL-KAK/login/photographer_login.jsp"
+										class="dropdown-item">Photographer</a> <a
+										href="/CHAL-KAK/login/administrator_login.jsp"
+										class="dropdown-item">Administrator</a>
+								</div></li>
+						</ul>
+					</div>
+				</c:when>
+				<c:otherwise>
+				<a class="navbar-brand" href="/CHAL-KAK/index.jsp">CHAL KAK ${sessionScope.login_user.id}님 </a>
+					<c:if test="${sessionScope.login_user.type eq 'P'}">
+					
+						<div class="collapse navbar-collapse" id="navbarResponsive">
+							<ul class="navbar-nav ml-auto">
+								<li class="nav-item"><a class="nav-link"
+									href="/CHAL-KAK/logout.ck">Logout</a>
+								<li class="nav-item"><a class="nav-link"
+									href="/CHAL-KAK/photo_mypage.ck?id=${sessionScope.login_user.id}">MyPage</a>
+								<li class="nav-item"><a class="nav-link"
+									href="/CHAL-KAK/noticeboard/notice_board.jsp">board</a></li>
+
+							</ul>
+						</div>
+					</c:if>
+					<c:if test="${sessionScope.login_user.type eq 'M'}">
+						<div class="collapse navbar-collapse" id="navbarResponsive">
+							<ul class="navbar-nav ml-auto">
+								<li class="nav-item"><a class="nav-link"
+									href="/CHAL-KAK/logout.ck">Logout</a>
+								<li class="nav-item"><a class="nav-link"
+									href="/CHAL-KAK/model_mypage.ck?id=${sessionScope.login_user.id}">MyPage</a>
+								<li class="nav-item"><a class="nav-link"
+									href="/CHAL-KAK/noticeboard/notice_board.jsp">board</a></li>
+
+							</ul>
+						</div>
+					</c:if>
+				</c:otherwise>
+			</c:choose>
 		</div>
 	</nav>
 
@@ -138,6 +202,7 @@
 	<section>
 		<div class="row">
 			<div id="map"
+
 				style="width: 60%; height: 600px; margin: 30px 0px 0px 30px; border: 1px solid #A9A9A9; float: left;"></div>
 			<form name="search" action="/search_notice.ck">
 				<div
@@ -215,6 +280,7 @@
 
 
 
+
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=63f56496ce33aada63acf5d83d3eb9b9&libraries=clusterer""></script>
 	<script>
@@ -274,8 +340,11 @@
 				getEvent();
 				var message = '현재 지도 레벨은 10 이하' + level + ' 입니다';
 			}
-			// 			var resultDiv = document.getElementById('levelresult');
-			// 			resultDiv.innerHTML = message;
+
+
+// 			var resultDiv = document.getElementById('levelresult');
+// 			resultDiv.innerHTML = message;
+
 		});
 	</script>
 </body>

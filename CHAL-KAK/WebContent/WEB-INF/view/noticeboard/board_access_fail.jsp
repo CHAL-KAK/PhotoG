@@ -9,7 +9,7 @@
 <body>
 	<script type="text/javascript">
 		alert("Please Login to check the NoticeBoard.");
-		document.location.href="/CHAL-KAK/model_login.jsp";
+		document.location.href="login/model_login.jsp";
 	</script>
 </body>
 </html>
