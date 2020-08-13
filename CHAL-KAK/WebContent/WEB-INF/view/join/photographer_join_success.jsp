@@ -9,7 +9,7 @@
 <body>
 <script type="text/javascript">
 		alert("Congratulations on your Membership");
-		document.location.href="index.jsp";
+		document.location.href="login/photographer_login.jsp";
 	</script>
 </body>
 </html>
