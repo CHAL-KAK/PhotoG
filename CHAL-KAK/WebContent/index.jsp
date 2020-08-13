@@ -196,6 +196,16 @@
 			</div>
 		</div>
 	</section>
+
+	<!-- Footer -->
+  <footer class="py-5 bg-secondary">
+    <div class="container">
+      <p class="m-0 text-center text-white small"> 만든이 : 배윤희 오지혜 조재웅 최은혜 </p>
+      <p class="m-0 text-center text-white small"> https://github.com/CHAL-KAK/PhotoG</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=63f56496ce33aada63acf5d83d3eb9b9&libraries=clusterer""></script>
 	<script>
@@ -255,8 +265,9 @@
 				getEvent();
 				var message = '현재 지도 레벨은 10 이하' + level + ' 입니다';
 			}
-			// 			var resultDiv = document.getElementById('levelresult');
-			// 			resultDiv.innerHTML = message;
+
+// 			var resultDiv = document.getElementById('levelresult');
+// 			resultDiv.innerHTML = message;
 		});
 	</script>
 </body>
