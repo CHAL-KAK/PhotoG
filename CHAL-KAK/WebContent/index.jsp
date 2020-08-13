@@ -155,13 +155,16 @@
 				</c:if>
 			</c:otherwise>
 		</c:choose>
-
-	<hr>
-		<a href="api/cluster.jsp">클러스터</a> <a href="api/markerclick.jsp">마커클릭</a>
-
-		<a href="api/multipleMarker.jsp">마커 여러개</a>
-
 	</div>
+	<!-- Footer -->
+  <footer class="py-5 bg-secondary">
+    <div class="container">
+      <p class="m-0 text-center text-white small"> 만든이 : 배윤희 오지혜 조재웅 최은혜 </p>
+      <p class="m-0 text-center text-white small"> https://github.com/CHAL-KAK/PhotoG</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+	
 
 
 	<script type="text/javascript"
@@ -223,8 +226,8 @@
 				getEvent();
 				var message = '현재 지도 레벨은 10 이하' + level + ' 입니다';
 			}
-			var resultDiv = document.getElementById('levelresult');
-			resultDiv.innerHTML = message;
+// 			var resultDiv = document.getElementById('levelresult');
+// 			resultDiv.innerHTML = message;
 		});
 	</script>
 </body>
