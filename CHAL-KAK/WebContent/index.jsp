@@ -89,7 +89,7 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item"><a class="nav-link" href="/CHAL-KAK/noticeboard/notice_board.jsp">board</a>
-					<li class="nav-item"><a class="nav-link" href="#">Sign Up</a>
+					<li class="nav-item"><a class="nav-link" href="/CHAL-KAK/join/join.jsp">Sign Up</a>
 					</li>
 					<li class="nav-item"><a class="nav-link" href="#">Log In</a></li>
 				</ul>
