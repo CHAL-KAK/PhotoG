@@ -242,7 +242,7 @@ translateY(
 		String path = application.getContextPath();
 	%>
 	
-	<form method="post" action="/CHAL-KAK/modeljoin.ck" name="join">
+	
 	<!-- Navigation -->
 	<nav
 		class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
@@ -263,6 +263,12 @@ translateY(
 			</div>
 		</div>
 	</nav>
+	
+	
+	
+	
+	
+	
 		<div class="container register">
 			<div class="row">
 				<div class="col-md-3 register-left">
@@ -272,6 +278,7 @@ translateY(
 					
 					
 				</div>
+				
 				<div class="col-md-9 register-right" >
 					<ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
 						<li class="nav-item"><a class="nav-link active" id="home-tab"
@@ -282,7 +289,9 @@ translateY(
 							aria-controls="profile" aria-selected="false" style="font-color:white;">Photographer</a></li>
 					</ul>
 					<div class="tab-content" id="myTabContent">
+					<form method="post" action="/CHAL-KAK/modeljoin.ck" name="join">
 						<div class="tab-pane fade show active" id="home" role="tabpanel"
+						
 							aria-labelledby="home-tab">
 							<h3 class="register-heading">Model Join</h3>
 							<div class="row register-form">
@@ -331,6 +340,8 @@ translateY(
 								</div>
 							</div>
 						</div>
+						</form>
+						<form method="post" action="/CHAL-KAK/photographerjoin.ck" name="join">
 						<div class="tab-pane fade show" id="profile" role="tabpanel"
 							aria-labelledby="profile-tab">
 							<h3 class="register-heading">Photographer Join</h3>
@@ -375,7 +386,7 @@ translateY(
 					
 									</div>
 									<div class="form-group">
-										<select class="form-control">
+										<select class="form-control" name="camera_seq">
                                                 <option class="hidden"  selected disabled>카메라 기종을 선택해 주세요.</option>
                                                 <option>1</option>
                                                 <option>7</option>
@@ -384,7 +395,7 @@ translateY(
                                             </select>
 									</div>
 									<div class="form-group">
-										<select class="form-control">
+										<select class="form-control" name="concept">
                                                 <option class="hidden"  selected disabled>주로 찍는 사진 컨셉을 선택해주세요.</option>
                                                <option value="0">독사진</option>
 					    					   <option value="1">우정사진</option>
@@ -409,12 +420,13 @@ translateY(
 								</div>
 							</div>
 					</div>
+					</form>
 				</div>
 			</div>
 
 		</div>
 		
 		</div>
-	</form>
+	
 </body>
 </html>
