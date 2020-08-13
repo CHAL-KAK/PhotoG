@@ -159,7 +159,7 @@
 					</div>
 				</c:when>
 				<c:otherwise>
-				<a class="navbar-brand" href="/CHAL-KAK/index.jsp">CHAL KAK ${sessionScope.login_user.id}님 </a>
+				<a class="navbar-brand" href="/CHAL-KAK/index.jsp">CHAL KAK</a>
 					<c:if test="${sessionScope.login_user.type eq 'P'}">
 					
 						<div class="collapse navbar-collapse" id="navbarResponsive">
