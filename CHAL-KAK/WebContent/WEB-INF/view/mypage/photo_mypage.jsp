@@ -14,7 +14,7 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean"
 	rel="stylesheet">
-<title>Insert title here</title>
+<title>사진사 마이페이</title>
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
