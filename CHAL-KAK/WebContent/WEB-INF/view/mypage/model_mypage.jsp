@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +40,7 @@
 
 </head>
 <body>
-<!-- Navigation -->
+	<!-- Navigation -->
 	<nav
 		class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
 		<div class="container">
@@ -60,22 +61,43 @@
 		</div>
 	</nav>
 
-	<div style="margin-top:70px">
-	<c:if test="${empty list}">
-		<h3>모델님이 작성한 게시글이 없어요 ^_^</h3>
-	</c:if>
-	<c:if test="${!empty list}">
-		<h3>내 예약 정보</h3>
-		<c:forEach items="${list}" var="reserv">
+	<div style="margin-top: 70px">
+		<c:if test="${empty list}">
+			<h3>모델님이 작성한 예약내역이 없어요 ^_^</h3>
+		</c:if>
+		<c:if test="${!empty list}">
+			<h3>내 예약 정보</h3>
+			<c:forEach items="${list}" var="reserv">
 		${reserv.REV_SEQ}&nbsp;&nbsp;&nbsp;
-		${reserv.CONCEPT}&nbsp;&nbsp;&nbsp;
+		<c:set var="concept" value="${reserv.CONCEPT}" />
+				<c:if test="${concept eq '0'}">
+					<c:out value="독사진"></c:out>
+				</c:if>
+				<c:if test="${concept eq '1'}">
+					<c:out value="우정사진"></c:out>
+				</c:if>
+				<c:if test="${concept eq '2'}">
+					<c:out value="커플사진"></c:out>
+				</c:if>
+				<c:if test="${concept eq '3'}">
+					<c:out value="가족사진"></c:out>
+				</c:if>
 		${reserv.PEOPLE_NUM}&nbsp;&nbsp;&nbsp;
-		${reserv.DAY}&nbsp;&nbsp;&nbsp;
+		<fmt:formatDate value="${reserv.DAY}" pattern="yyyy.MM.dd" />
 		${reserv.START_TIME}&nbsp;&nbsp;&nbsp;
 		${reserv.END_TIME}&nbsp;&nbsp;&nbsp;
-		${reserv.PROGRESS}&nbsp;&nbsp;&nbsp;
-		<hr>
-		</c:forEach>
-	</c:if>
+		<c:set var="progress" value="${reserv.PROGRESS}" />
+				<c:if test="${progress eq '0'}">
+					<c:out value="예약대기"></c:out>
+				</c:if>
+				<c:if test="${progress eq '1'}">
+					<c:out value="예약완료"></c:out>
+				</c:if>
+				<c:if test="${progress eq '2'}">
+					<c:out value="날짜만료"></c:out>
+				</c:if>
+				<hr>
+			</c:forEach>
+		</c:if>
 </body>
 </html>
