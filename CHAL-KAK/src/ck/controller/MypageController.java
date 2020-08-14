@@ -141,7 +141,7 @@ public class MypageController {
 
 		try {
 			inputStream = file.getInputStream();
-			String path = "C:\\Users\\Playdata\\git\\PhotoG\\CHAL-KAK\\WebContent\\uploadImage" + "/" + filename;
+			String path = "/Users/ohjihye/git/PhotoG/CHAL-KAK/WebContent/uploadImage" + "/" + filename;
 			fileobj.setFile_path(path);
 			File newFile = new File(path);
 			if (!newFile.exists()) {
