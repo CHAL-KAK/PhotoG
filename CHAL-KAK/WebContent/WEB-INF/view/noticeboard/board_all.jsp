@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <!DOCTYPE html>
 <html>
@@ -116,7 +117,7 @@
 										<td><a href="confirmProfile.ck?id=${b.p_id}">${b.p_id}</a></td>
 										<td><a href="board_one.ck?seq=${b.brd_seq}">${b.title}</a></td>
 										<td>${b.max}</td>
-										<td>${b.day}</td>
+										<td><fmt:formatDate value="${b.DAY}" pattern="yyyy.MM.dd" /></td>
 										<td>${b.start_time}</td>
 										<td>${b.end_time}</td>
 
