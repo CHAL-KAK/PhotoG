@@ -61,7 +61,7 @@
 		String path = application.getContextPath();
 	%>
 	<div style="margin-top:50px">
-	<img src="/Users/ohjihye/git/PhotoG/CHAL-KAK/WebContent/uploadImage/night.jpg" width="300px" height="300px"></img>
+	<img src="<%=path%>/uploadImage/${file_name}" width="300px" height="300px"></img>
 	</div>
 </body>
 </html>

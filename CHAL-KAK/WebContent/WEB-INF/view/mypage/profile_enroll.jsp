@@ -10,7 +10,6 @@
 <title>Insert title here</title>
 </head>
 <body style="margin: 100px 100px 100px 100px">
-	!!!전송버튼 누르면 안된다!!!
 	<form:form method="post" enctype="multipart/form-data"
 		modelAttribute="pictureVO" action="pictureUpload.ck">
 		<h3>*** 업로드할 파일 선택 ***</h3>
